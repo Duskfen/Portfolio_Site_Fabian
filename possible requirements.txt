@@ -1,0 +1,7 @@
+react-static -> https://www.cloudsavvyit.com/5418/how-to-generate-static-websites-with-react/
+animate on scroll Library -> https://michalsnik.github.io/aos/     -> npm install aos --save
+loading screen animation ->  ? maybe a gif
+
+
+
+-> loading="lazy"

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-
+import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 // Your top level component
 import App from './App'
 
@@ -19,7 +19,7 @@ if (typeof document !== 'undefined') {
   const render = Comp => {
     renderMethod(
       <AppContainer>
-        <Comp />
+            <Comp />
       </AppContainer>,
       target
     )

@@ -3,7 +3,7 @@ import { Root, Routes, addPrefetchExcludes } from 'react-static'
 import { Router } from '@reach/router'
 import Dynamic from 'containers/Dynamic'
 import './app.css'
-import Index from "./components/index"
+const Index = React.lazy(() => import("./components/index")) 
 import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 
 class App extends Component {   

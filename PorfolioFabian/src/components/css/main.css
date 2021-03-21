@@ -15,6 +15,7 @@
 }
 * {
    scroll-behavior: smooth;
+   overflow:hidden;
  } 
 html{
    background-color: var(--background);
@@ -80,7 +81,7 @@ footer{
 
 
 .full_logo{
-   width: 150px;
+   width: 200px;
    object-fit: contain;
 }
 .right_arrow{

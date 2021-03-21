@@ -5,11 +5,12 @@
    border: 1px solid var(--foreground);
    border-radius: 30px;
    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+   pointer-events: none;
 }
 
-
-.ripple:after
+.ripple
 {
+   pointer-events: none;
     content: '';
     position: absolute;
     left:0px;
@@ -18,19 +19,19 @@
     height:100%;
     background-color: var(--foreground); /* Reddish background */
     border-radius: 50%;
-    z-index: 1;
 }
 
-.ripple:after
+.ripple
 {
    opacity: 0; /* This css rule makes #tb:after(ripple layer) invisible */
-   transform: scale(1,1);
-   transition: transform 0.2s, opacity 1s;
+   transform: scale(0,0);
+   transition: 0.2s;
 }
 
-.ripple:active:after
+.rippleactive
 {
+   background-color: var(--foreground); /* Reddish background */
     opacity: 0.9;
-    transform: scale(0,0);
-    transition:0s;
+    transform: scale(1,1);
+    transition: transform 0.2s, opacity 0.5s;
 }

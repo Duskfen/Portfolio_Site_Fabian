@@ -1,11 +1,8 @@
 {
   "name": "react-static-example-blank",
-  "homepage": "http://github.com/Duskfen/Portfolio_Site_Fabian",
   "private": true,
   "scripts": {
     "start": "react-static start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",

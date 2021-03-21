@@ -26,6 +26,7 @@ if (typeof document !== 'undefined') {
   }
 
   // Render!
+  document.title = "Schwarzinger Fabian Portfolio"
   render(App)
 
   // Hot Module Replacement

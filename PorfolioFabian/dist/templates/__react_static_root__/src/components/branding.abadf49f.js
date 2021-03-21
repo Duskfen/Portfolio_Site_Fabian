@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{64:function(n,e,t){"use strict";t.r(e);var a=t(0),l=t.n(a);e.default=function(){return l.a.createElement("div",null,l.a.createElement("p",null,"Branding not Implemented yet"))}}}]);

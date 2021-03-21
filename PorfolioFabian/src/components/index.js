@@ -50,7 +50,7 @@ class Index extends Component{
    }
 
    test = () => {
-      this.wait(4000)
+      this.wait(200)
    }
 
    render(){

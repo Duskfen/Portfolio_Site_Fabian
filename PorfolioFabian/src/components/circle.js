@@ -3,8 +3,8 @@ import "./css/circle.css"
 
 var circle;
 var context;
-var mouseX;
-var mouseY;
+var mouseX=-30;
+var mouseY=-30;
 var canvasPos;
 
 class MouseCircle extends Component{
@@ -30,10 +30,17 @@ class MouseCircle extends Component{
       setTimeout(() => {circle.style.backgroundColor="transparent"}, 300)
    }
 
+   clickCircle(ev){
+      let ripple = document.querySelector("#circle .ripple")
+      ripple.classList.add("rippleactive");
+
+      setTimeout(() => {ripple.classList.remove("rippleactive")}, 400)
+   }
+
    render(){
       return (
          
-            <div id="circle" className=".ripple">
+            <div id="circle">
                <div className="ripple">
                </div>
             </div>
@@ -45,6 +52,7 @@ class MouseCircle extends Component{
    componentDidMount(){
       circle = document.getElementById("circle")
       document.addEventListener("mousemove", this.setMousePosition, false);
+      document.addEventListener("click", this.clickCircle, false)
       // document.addEventListener("click", this.fillCircle, false)
       this.update();
    }

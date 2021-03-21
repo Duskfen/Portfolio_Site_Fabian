@@ -4,17 +4,18 @@ import { Router } from '@reach/router'
 import Dynamic from 'containers/Dynamic'
 import './app.css'
 import Index from "./components/index"
+import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 
 class App extends Component {   
   render() {
     return (
       <div className="App">
-        <React.Suspense fallback={<em>Loading...</em>}>
-          <Router>
-            <Dynamic path="dynamic" />
-            <Routes path="*" />
-          </Router>
-        </React.Suspense>
+        <ReactSuspenseWrapper>
+         <Router>
+               <Dynamic path="dynamic" />
+               <Routes path="*" />
+         </Router>
+        </ReactSuspenseWrapper>
       </div>
     )
   }

@@ -12,6 +12,7 @@ class App extends Component {
       <div className="App">
         <ReactSuspenseWrapper>
          <Router>
+               <Routes path="/"><Index></Index></Routes>
                <Dynamic path="dynamic" />
                <Routes path="*" />
          </Router>

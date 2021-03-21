@@ -56,7 +56,7 @@ class Index extends Component{
    render(){
       return (
          <div id="wrapper">
-            {this.test()}
+            {/* {this.test()} */}
             <MouseCircle></MouseCircle>
             <header>
                   <div id="head_items">

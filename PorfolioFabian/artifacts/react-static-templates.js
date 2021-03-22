@@ -8,6 +8,7 @@ export default {
 '__react_static_root__/src/components/branding.js': require('__react_static_root__/src/components/branding.js').default,
 '__react_static_root__/src/components/circle.js': require('__react_static_root__/src/components/circle.js').default,
 '__react_static_root__/src/components/index.js': require('__react_static_root__/src/components/index.js').default,
+'__react_static_root__/src/components/LoadingScreen.js': require('__react_static_root__/src/components/LoadingScreen.js').default,
 '__react_static_root__/src/components/ReactSuspenseWrapper.js': require('__react_static_root__/src/components/ReactSuspenseWrapper.js').default
 }
 

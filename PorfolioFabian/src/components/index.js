@@ -3,7 +3,7 @@ import MouseCircle from "./circle"
 
 const ProjectInformation = require('./projects/projects_information.json')
 import './css/main.css'
-const full_logo = require("./img/logo_full.svg")
+const full_logo = require("./img/logo_full.svg"); 
 const right_arrow = require("./img/arrow_right.svg")
 
 
@@ -60,7 +60,9 @@ class Index extends Component{
             <MouseCircle></MouseCircle>
             <header>
                   <div id="head_items">
-                     <img src={full_logo} alt="logo" className="full_logo"></img>
+                     <a href="/">
+                        <img src={full_logo} alt="logo" className="full_logo"></img>
+                     </a>
                      <p>portfolio</p>
                   </div>
                </header>
@@ -79,6 +81,10 @@ class Index extends Component{
          </div>
       );
    }
+
+   componentDidMount(){
+     document.querySelector("#loadingScreen").remove();
+  }
 }
 
 export default Index;

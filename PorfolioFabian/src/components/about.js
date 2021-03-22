@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default () => (
-  <div>
-    <p>About not Implemented yet</p>
-  </div>
-)
+class Branding extends Component{
+   render(){
+      return (
+         <div id="brandingWrapper">
+            <p>About me page is not implemented yet</p>
+         </div>
+      );
+   }
+
+   componentDidMount(){
+     document.querySelector("#loadingScreen").remove();
+  }
+}
+
+export default Branding;

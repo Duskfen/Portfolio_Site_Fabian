@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         {/* <LoadingScreen></LoadingScreen> */}
+         <LoadingScreen></LoadingScreen>
          <ReactSuspenseWrapper>
             <Router>
                <Routes path="/"><Index></Index></Routes>

@@ -83,7 +83,7 @@ class Index extends Component{
    }
 
    componentDidMount(){
-     document.querySelector("#loadingScreen").remove();
+    // document.querySelector("#loadingScreen").remove();
   }
 }
 

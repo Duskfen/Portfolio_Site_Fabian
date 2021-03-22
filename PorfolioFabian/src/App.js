@@ -3,14 +3,16 @@ import { Root, Routes, addPrefetchExcludes } from 'react-static'
 import { Router } from '@reach/router'
 const Dynamic = React.lazy(() => import('containers/Dynamic'))
 import './app.css'
-const Index = React.lazy(() => import("./components/index")) 
+import Index  from "./components/index"
 import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 import LoadingScreen from "./components/LoadingScreen"
+import MouseCircle from "./components/circle"
 
 class App extends Component {   
   render() {
     return (
       <div className="App">
+         <MouseCircle></MouseCircle>
          <LoadingScreen></LoadingScreen>
          <ReactSuspenseWrapper>
             <Router>

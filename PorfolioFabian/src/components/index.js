@@ -1,14 +1,36 @@
-import React, {Component} from 'react'
-import MouseCircle from "./circle"
+import React, { Component } from 'react'
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import AOS from 'aos';
 
 const ProjectInformation = require('./projects/projects_information.json')
 import './css/main.css'
-const full_logo = require("./img/logo_full.svg"); 
+import './css/project_overview.css'
+import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg")
 
+import 'aos/dist/aos.css'
 
-class Project{
-   constructor(information){
+
+class ProjectList {
+   constructor() {
+      this.projects = [];
+      for (let project of ProjectInformation.projects) {
+         this.projects.push(new Project(project))
+      }
+   }
+
+   getProjectAt(index) {
+
+      if(index < 0){
+         return this.projects[this.projects.length + (index % this.projects.length)]
+      }
+
+      return this.projects[index % this.projects.length];
+   }
+}
+
+class Project {
+   constructor(information) {
       //this.path = information.path;
       this.title = information.title;
       this.textheading = information.textheading;
@@ -16,75 +38,116 @@ class Project{
 
       this.titleImage = require(`./projects/${information.path}/main.png`)
       this.images = []
-      for(let i = 0; i < information.count_imgs; i++){
-         this.images.push(require(`./projects/${information.path}/img/${i}.png`))
+      for (let i = 0; i < information.count_imgs; i++) {
+         this.images.push(import(`./projects/${information.path}/img/${i}.png`))
       }
    }
 }
 
-class Index extends Component{
-   constructor(props){
+class Index extends Component {
+   constructor(props) {
       super(props);
       this.state = {
-         projects: this.initProjects()
+         projects: new ProjectList(),
+         currentProject: 0,
+         showDetails: false,
+         showMarquee: false
       };
+
+
    }
 
-   wait(ms){
+
+   wait(ms) {
       var start = new Date().getTime();
       var end = start;
-      while(end < start + ms) {
-        end = new Date().getTime();
-     }
-   }
-
-   initProjects = () =>{
-      let projects = []
-      for(let project of ProjectInformation.projects){
-         projects.push(new Project(project))
+      while (end < start + ms) {
+         end = new Date().getTime();
       }
    }
 
    nextPicture = (ev) => {
-      console.log(ev)
+      this.setState({ currentProject: this.state.currentProject + 1 })
    }
 
-   test = () => {
-      this.wait(200)
+   openProjectdetails = (ev) => {
+
+      this.setState({ showDetails: true });
+      let test = document.querySelector("#project_overview_section");
+      console.log(test)
+      test.classList.add("project_overview_section_clicked")
+      // todo load project Details 
    }
 
-   render(){
+   showProjectTitle = (ev) => this.setState({ showMarquee: true })
+   hideProjectTitle = (ev) => this.setState({showMarquee: false});
+
+   render() {
       return (
          <div id="wrapper">
-            {/* {this.test()} */}
-            <MouseCircle></MouseCircle>
-            <header>
-                  <div id="head_items">
+            <div id="projectDetailWrapper">
+
+               {this.state.showMarquee ?
+                  <div id="marquee" data-aos="fade-down" >
+                     <p className="marquee_text">{this.state.projects.getProjectAt(this.state.currentProject).title}</p>
+                  </div>
+                  : null
+               }
+               <header>
+                  <div id="head_items" data-aos="fade-down">
                      <a href="/">
                         <img src={full_logo} alt="logo" className="full_logo"></img>
                      </a>
                      <p>portfolio</p>
                   </div>
                </header>
-               
-               <section id="project_overview_section">
 
+               <section id="project_overview_wrapper">
+                  <div className="line"></div>
+                  <div id="project_overview_section" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)} data-aos="zoom-in">
+                           <picture>
+                              <img src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage"></img>
+                           </picture>
+                           <picture id="#picturebefore">
+                              <img src={this.state.projects.getProjectAt((this.state.currentProject-1)).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject-1).title} className="TitleImage"></img>
+                           </picture>
+                  </div>
+                  <div className="line"></div>
                </section>
-               
-               <footer>
+               <footer data-aos="fade-up">
                   <div id="footer_overview_items">
                      <a href="/branding">branding</a>
                      <a href="/about">über mich</a>
                      <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev)}><img src={right_arrow}></img></a>
                   </div>
                </footer>
+            </div>
          </div>
       );
    }
 
-   componentDidMount(){
-     document.querySelector("#loadingScreen").remove();
-  }
+   componentDidMount() {
+      AOS.init();
+      document.querySelector("#loadingScreen").remove();
+   }
+   componentDidUpdate() {
+      this.state.showMarquee ? this.calculateMarqueeKeyFrames() : null;
+   }
+
+   calculateMarqueeKeyFrames = () => {
+      let marquee = document.querySelector("#marquee");
+      const keyFrames = document.createElement("style");
+      keyFrames.innerHTML =
+         `@keyframes floatText {
+         0%{
+            left: 100%
+         }
+         100% {
+           left: -${marquee.scrollWidth + 30}px
+         }
+       }`;
+      marquee.appendChild(keyFrames)
+   }
 }
 
 export default Index;

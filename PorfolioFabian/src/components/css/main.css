@@ -37,17 +37,19 @@ a{
 
 
 #root{height: 100%;}
-#wrapper{
+#projectDetailWrapper{
    display: grid;
    height: calc(100vh - 100px);
    padding:50px;
-   grid-template-rows: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
    grid-template-areas:
    "header"
    "project_overview"
    "project_overview"
+   "project_overview"
    "footer";
 }
+
 
 header{
    display: flex;
@@ -74,7 +76,7 @@ footer{
    align-items: flex-end;
    justify-content: space-between;
 }
-#project_overview_section{
+#project_overview_wrapper{
    grid-area: project_overview;
    /* background-color: yellow; */
 }
@@ -85,5 +87,5 @@ footer{
    object-fit: contain;
 }
 .right_arrow{
-   width:45px;
+   width:60px;
 }

@@ -8,6 +8,10 @@
    src: url(../fonts/ClarikaProGrot-Md.otf);
    font-weight: bold;
 }
+@font-face{
+   font-family: Coconut;
+   src: url(../fonts/Coconat-Regular.otf)
+}
 
 :root{
    --background:#003a38;
@@ -21,11 +25,11 @@ html{
    background-color: var(--background);
    color: var(--foreground);
    padding: 0;
-   font-family: ClarikaProGrotesque;
 }
 body{
    padding:0;
    margin:0;
+   font-family: ClarikaProGrotesque;
 }
 img{
    object-fit: cover;
@@ -39,8 +43,8 @@ a{
 #root{height: 100%;}
 #projectDetailWrapper{
    display: grid;
-   height: calc(100vh - 100px);
-   padding:50px;
+   height: calc(100vh - 140px);
+   padding:70px;
    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
    grid-template-areas:
    "header"

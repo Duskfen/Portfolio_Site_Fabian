@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Root, Routes, addPrefetchExcludes } from 'react-static'
 import { Router } from '@reach/router'
 const Dynamic = React.lazy(() => import('containers/Dynamic'))
-import './app.css'
 import Index  from "./components/index"
 import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 import LoadingScreen from "./components/LoadingScreen"

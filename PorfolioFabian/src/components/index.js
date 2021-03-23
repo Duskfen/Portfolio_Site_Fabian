@@ -36,10 +36,10 @@ class Project {
       this.textheading = information.textheading;
       this.subtext = information.subtext
 
-      this.titleImage = require(`./projects/${information.path}/main.png`)
+      this.titleImage = require(`./projects/${information.path}/main.jpg`)
       this.images = []
       for (let i = 0; i < information.count_imgs; i++) {
-         this.images.push(import(`./projects/${information.path}/img/${i}.png`))
+         this.images.push(import(`./projects/${information.path}/img/${i}.${information.image_extention[i%information.image_extention.length]}`))
       }
    }
 }
@@ -85,10 +85,10 @@ class Index extends Component {
    render() {
       return (
          <div id="wrapper">
-            <div id="projectDetailWrapper">
+            <div id="projectDetailWrapper" className={this.state.showMarquee? "marqueeactive":null}>
 
                {this.state.showMarquee ?
-                  <div id="marquee" data-aos="fade-down" >
+                  <div id="marquee" data-aos="fade-up" >
                      <p className="marquee_text">{this.state.projects.getProjectAt(this.state.currentProject).title}</p>
                   </div>
                   : null
@@ -140,10 +140,13 @@ class Index extends Component {
       keyFrames.innerHTML =
          `@keyframes floatText {
          0%{
-            left: 100%
+            left: 80px
          }
-         100% {
-           left: -${marquee.scrollWidth + 30}px
+         50%{
+            left: calc(100% - ${marquee.scrollWidth+300}px)
+         }
+         100%{
+            left: 80px
          }
        }`;
       marquee.appendChild(keyFrames)

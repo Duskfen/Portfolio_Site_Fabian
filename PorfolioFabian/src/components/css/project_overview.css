@@ -48,9 +48,11 @@
    height: 0px;
    width: calc(20% - 40px);
    animation: lineanimation 0.3s ease 0s;
+   margin:-70px;
 }
 
 #marquee {
+   font-family: Coconut;
    z-index: 1;
    height: 100%;
    position: absolute;
@@ -67,6 +69,15 @@
    margin:0;
 }
 
+#projectDetailWrapper > *{
+   transition: 0.3s;
+}
+.marqueeactive > *{
+   opacity:0.3;
+}
+.marqueeactive #marquee{
+   opacity: 1;
+}
 
 @keyframes lineanimation {
    0% {

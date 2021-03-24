@@ -10,7 +10,8 @@
 }
 @font-face{
    font-family: Coconut;
-   src: url(../fonts/Coconat-Regular.otf)
+   src: url(../fonts/Coconat-Regular.otf);
+   font-weight: normal;
 }
 
 :root{
@@ -26,10 +27,11 @@ html{
    color: var(--foreground);
    padding: 0;
 }
+
 body{
    padding:0;
    margin:0;
-   font-family: ClarikaProGrotesque;
+   font-family: Coconut;
 }
 img{
    object-fit: cover;
@@ -60,6 +62,7 @@ header{
    grid-area: header;
    /* background-color: blue; */
    align-items: flex-start ;
+   font-family: ClarikaProGrotesque;
 }
 #head_items{
    height:70px;
@@ -72,6 +75,7 @@ header{
 footer{
    display: flex;
    grid-area: footer;
+   font-family: ClarikaProGrotesque;
    /* background-color: red; */
 }
 #footer_overview_items{

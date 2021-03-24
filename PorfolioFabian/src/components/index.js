@@ -51,7 +51,7 @@ class Index extends Component {
          currentProject: 0,
          showDetails: false,
          showMarquee: false,
-         marqueeCount: 2
+         marqueeCount: 2,
       };
    }
 
@@ -139,11 +139,14 @@ class Index extends Component {
       document.querySelector("#loadingScreen").remove();
       window.addEventListener("resize", this.calculateMarqueeCount);
       this.calculateMarqueeCount();
+   
+      this.animateMarquee(document.querySelectorAll(".marquee_text")) //TODO delete
    }
 
    animateMarquee = (marqueeElements) => {
       marqueeElements.forEach((element, index) => {
-         element.getAnimations()[0]?.cancel();
+         element.getAnimations()[0]?.cancel();        
+
          element.animate([
            {transform: `translateX(-${element.scrollWidth}px)`}
          ],{duration: element.scrollWidth*2, iterations:Infinity, easing: "linear", id:`marquee_${index}`})

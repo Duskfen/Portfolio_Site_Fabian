@@ -2,12 +2,12 @@
   "errors": [],
   "warnings": [
     "asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).\nThis can impact web performance.\nAssets: \n  static/main.3dc3237d.jpg (356 KiB)\n  static/main.a05ce779.jpg (711 KiB)\n  static/1.bd44ef41.jpg (486 KiB)\n  static/2.e079c157.mp4 (2.95 MiB)\n  static/1.692c5a9f.jpg (8.86 MiB)\n  templates/vendors~main.2d886432.js (259 KiB)",
-    "entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (293 KiB). This can impact web performance.\nEntrypoints:\n  main (319 KiB)\n      styles.e542f868.css\n      templates/styles.6f81a142.js\n      templates/vendors~main.2d886432.js\n      main.f394cc49.js\n"
+    "entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (293 KiB). This can impact web performance.\nEntrypoints:\n  main (320 KiB)\n      styles.1265b3b3.css\n      templates/styles.a46ff87a.js\n      templates/vendors~main.2d886432.js\n      main.8f5e1003.js\n"
   ],
   "version": "4.46.0",
-  "hash": "a209b01e91edc1872939",
-  "time": 9372,
-  "builtAt": 1616584912348,
+  "hash": "3ea70f612c8e33503b0d",
+  "time": 14454,
+  "builtAt": 1616591628236,
   "publicPath": "/",
   "outputPath": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\dist",
   "assetsByChunkName": {
@@ -15,7 +15,7 @@
     "__react_static_root__/src/components/about": "templates/__react_static_root__/src/components/about.e9038dc2.js",
     "__react_static_root__/src/components/branding": "templates/__react_static_root__/src/components/branding.4d41bf4a.js",
     "containers/Dynamic": "templates/containers/Dynamic.784c161d.js",
-    "main": "main.f394cc49.js",
+    "main": "main.8f5e1003.js",
     "projects/europify-img-0-jpg": "templates/projects/europify-img-0-jpg.b2cc94ac.js",
     "projects/europify-img-1-jpg": "templates/projects/europify-img-1-jpg.3666038e.js",
     "projects/europify-img-2-mp4": "templates/projects/europify-img-2-mp4.d310d407.js",
@@ -25,15 +25,15 @@
     "projects/temp_project2-img-0-jpg": "templates/projects/temp_project2-img-0-jpg.61f2c4fe.js",
     "projects/temp_project2-img-1-jpg": "templates/projects/temp_project2-img-1-jpg.3b9100cf.js",
     "styles": [
-      "styles.e542f868.css",
-      "templates/styles.6f81a142.js"
+      "styles.1265b3b3.css",
+      "templates/styles.a46ff87a.js"
     ],
     "vendors~main": "templates/vendors~main.2d886432.js"
   },
   "assets": [
     {
-      "name": "main.f394cc49.js",
-      "size": 32547,
+      "name": "main.8f5e1003.js",
+      "size": 32611,
       "chunks": [
         4
       ],
@@ -155,8 +155,8 @@
       "emitted": true
     },
     {
-      "name": "styles.e542f868.css",
-      "size": 29276,
+      "name": "styles.1265b3b3.css",
+      "size": 29337,
       "chunks": [
         13
       ],
@@ -337,7 +337,7 @@
       "emitted": true
     },
     {
-      "name": "templates/styles.6f81a142.js",
+      "name": "templates/styles.a46ff87a.js",
       "size": 171,
       "chunks": [
         13
@@ -375,10 +375,10 @@
         4
       ],
       "assets": [
-        "styles.e542f868.css",
-        "templates/styles.6f81a142.js",
+        "styles.1265b3b3.css",
+        "templates/styles.a46ff87a.js",
         "templates/vendors~main.2d886432.js",
-        "main.f394cc49.js"
+        "main.8f5e1003.js"
       ],
       "children": {},
       "childAssets": {},
@@ -393,10 +393,10 @@
         4
       ],
       "assets": [
-        "styles.e542f868.css",
-        "templates/styles.6f81a142.js",
+        "styles.1265b3b3.css",
+        "templates/styles.a46ff87a.js",
         "templates/vendors~main.2d886432.js",
-        "main.f394cc49.js"
+        "main.8f5e1003.js"
       ],
       "children": {},
       "childAssets": {},
@@ -1004,14 +1004,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 38496,
+      "size": 38574,
       "names": [
         "main"
       ],
       "files": [
-        "main.f394cc49.js"
+        "main.8f5e1003.js"
       ],
-      "hash": "47521321276675637311",
+      "hash": "dab202c92bcb07bee058",
       "siblings": [
         13,
         14
@@ -1339,7 +1339,7 @@
           "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
           "index": 130,
           "index2": 142,
-          "size": 9658,
+          "size": 9736,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1417,7 +1417,7 @@
             "ModuleConcatenation bailout: Module uses injected variables (__dirname)"
           ],
           "depth": 3,
-          "source": "import _assertThisInitialized from\"@babel/runtime/helpers/assertThisInitialized\";import _inherits from\"@babel/runtime/helpers/inherits\";import _possibleConstructorReturn from\"@babel/runtime/helpers/possibleConstructorReturn\";import _getPrototypeOf from\"@babel/runtime/helpers/getPrototypeOf\";import _defineProperty from\"@babel/runtime/helpers/defineProperty\";import _path from\"path\";import _universalImport from\"babel-plugin-universal-import/universalImport\";import _classCallCheck from\"@babel/runtime/helpers/classCallCheck\";import _createClass from\"@babel/runtime/helpers/createClass\";function _createSuper(Derived){var hasNativeReflectConstruct=_isNativeReflectConstruct();return function _createSuperInternal(){var Super=_getPrototypeOf(Derived),result;if(hasNativeReflectConstruct){var NewTarget=_getPrototypeOf(this).constructor;result=Reflect.construct(Super,arguments,NewTarget);}else{result=Super.apply(this,arguments);}return _possibleConstructorReturn(this,result);};}function _isNativeReflectConstruct(){if(typeof Reflect===\"undefined\"||!Reflect.construct)return false;if(Reflect.construct.sham)return false;if(typeof Proxy===\"function\")return true;try{Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}));return true;}catch(e){return false;}}function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol===\"undefined\"||o[Symbol.iterator]==null){if(Array.isArray(o)||(it=_unsupportedIterableToArray(o))||allowArrayLike&&o&&typeof o.length===\"number\"){if(it)o=it;var i=0;var F=function F(){};return{s:F,n:function n(){if(i>=o.length)return{done:true};return{done:false,value:o[i++]};},e:function e(_e){throw _e;},f:F};}throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\");}var normalCompletion=true,didErr=false,err;return{s:function s(){it=o[Symbol.iterator]();},n:function n(){var step=it.next();normalCompletion=step.done;return step;},e:function e(_e2){didErr=true;err=_e2;},f:function f(){try{if(!normalCompletion&&it[\"return\"]!=null)it[\"return\"]();}finally{if(didErr)throw err;}}};}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o===\"string\")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n===\"Object\"&&o.constructor)n=o.constructor.name;if(n===\"Map\"||n===\"Set\")return Array.from(o);if(n===\"Arguments\"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen);}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i];}return arr2;}import React,{Component}from'react';import AOS from'aos';var ProjectInformation=require('./projects/projects_information.json');import'./css/main.css';import'./css/project_overview.css';import full_logo from\"./img/logo_full.svg\";var right_arrow=require(\"./img/arrow_right.svg\");import'aos/dist/aos.css';//\nvar ProjectList=/*#__PURE__*/function(){function ProjectList(){_classCallCheck(this,ProjectList);this.projects=[];var _iterator=_createForOfIteratorHelper(ProjectInformation.projects),_step;try{for(_iterator.s();!(_step=_iterator.n()).done;){var project=_step.value;this.projects.push(new Project(project));}}catch(err){_iterator.e(err);}finally{_iterator.f();}}_createClass(ProjectList,[{key:\"getProjectAt\",value:function getProjectAt(index){if(index<0){return this.projects[this.projects.length+index%this.projects.length];}return this.projects[index%this.projects.length];}}]);return ProjectList;}();var Project=function Project(information){_classCallCheck(this,Project);//this.path = information.path;\nthis.title=information.title;this.textheading=information.textheading;this.subtext=information.subtext;this.titleImage=require(\"./projects/\".concat(information.path,\"/main.jpg\"));this.images=[];for(var i=0;i<information.count_imgs;i++){this.images.push(_universalImport({id:\"./projects//img/${i}.\",load:function load(){return Promise.all([import(/* webpackChunkName: 'projects/[request]' */\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]))]).then(function(proms){return proms[0];});},path:function path(){return _path.join(__dirname,\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},resolve:function resolve(){return require.resolveWeak(\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},chunkName:function chunkName(){return\"projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]);}}));}};var Index=/*#__PURE__*/function(_Component){_inherits(Index,_Component);var _super=_createSuper(Index);function Index(props){var _this;_classCallCheck(this,Index);_this=_super.call(this,props);_defineProperty(_assertThisInitialized(_this),\"calculateMarqueeCount\",function(){var ev=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;var marquee=document.querySelectorAll(\".marquee_text\")[0];_this.setState({marqueeCount:Math.ceil(window.innerWidth/marquee.scrollWidth)+1});});_defineProperty(_assertThisInitialized(_this),\"nextPicture\",function(ev){_this.setState({currentProject:_this.state.currentProject+1},function(){return _this.calculateMarqueeCount();});});_defineProperty(_assertThisInitialized(_this),\"openProjectdetails\",function(ev){_this.setState({showDetails:true});var test=document.querySelector(\"#project_overview_section\");test.classList.add(\"project_overview_section_clicked\");// todo load project Details \n});_defineProperty(_assertThisInitialized(_this),\"showProjectTitle\",function(ev){_this.setState({showMarquee:true},function(){return _this.animateMarquee(document.querySelectorAll(\".marquee_text\"));});});_defineProperty(_assertThisInitialized(_this),\"hideProjectTitle\",function(ev){return _this.setState({showMarquee:false});});_defineProperty(_assertThisInitialized(_this),\"createMarquees\",function(){var marquees=[];for(var i=0;i<_this.state.marqueeCount;i++){marquees.push(/*#__PURE__*/React.createElement(\"p\",{className:\"marquee_text\",key:\"marqueetext_\".concat(i)},_this.state.projects.getProjectAt(_this.state.currentProject).title));}return marquees;});_defineProperty(_assertThisInitialized(_this),\"animateMarquee\",function(marqueeElements){marqueeElements.forEach(function(element,index){var _element$getAnimation;(_element$getAnimation=element.getAnimations()[0])===null||_element$getAnimation===void 0?void 0:_element$getAnimation.cancel();element.animate([{transform:\"translateX(-\".concat(element.scrollWidth,\"px)\")}],{duration:element.scrollWidth*2,iterations:Infinity,easing:\"linear\",id:\"marquee_\".concat(index)});// element.style.left = (element.style.left+1) + \"px\"\n});});_this.state={projects:new ProjectList(),currentProject:0,showDetails:false,showMarquee:false,marqueeCount:2};return _this;}_createClass(Index,[{key:\"wait\",value:function wait(ms){var start=new Date().getTime();var end=start;while(end<start+ms){end=new Date().getTime();}}},{key:\"render\",value:function render(){var _this2=this;return/*#__PURE__*/React.createElement(\"div\",{id:\"wrapper\"},/*#__PURE__*/React.createElement(\"div\",{id:\"projectDetailWrapper\",className:this.state.showMarquee?\"marqueeactive\":null},/*#__PURE__*/React.createElement(\"div\",{id:\"marquee\",className:this.state.showMarquee?null:\"hide\"},this.createMarquees()),/*#__PURE__*/React.createElement(\"header\",null,/*#__PURE__*/React.createElement(\"div\",{id:\"head_items\",\"data-aos\":\"fade-down\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/\"},/*#__PURE__*/React.createElement(\"img\",{src:full_logo,alt:\"logo\",className:\"full_logo\"})),/*#__PURE__*/React.createElement(\"p\",null,\"portfolio\"))),/*#__PURE__*/React.createElement(\"section\",{id:\"project_overview_wrapper\"},/*#__PURE__*/React.createElement(\"div\",{className:\"line\"}),/*#__PURE__*/React.createElement(\"div\",{id:\"project_overview_section\",onClick:function onClick(ev){return _this2.openProjectdetails(ev);},onMouseOver:function onMouseOver(ev){return _this2.showProjectTitle(ev);},onMouseLeave:function onMouseLeave(ev){return _this2.hideProjectTitle(ev);},\"data-aos\":\"zoom-in\"},/*#__PURE__*/React.createElement(\"picture\",null,/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject).title,className:\"TitleImage\"})),/*#__PURE__*/React.createElement(\"picture\",{id:\"#picturebefore\"},/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject-1).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject-1).title,className:\"TitleImage\"}))),/*#__PURE__*/React.createElement(\"div\",{className:\"line\"})),/*#__PURE__*/React.createElement(\"footer\",{\"data-aos\":\"fade-up\"},/*#__PURE__*/React.createElement(\"div\",{id:\"footer_overview_items\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/branding\"},\"branding\"),/*#__PURE__*/React.createElement(\"a\",{href:\"/about\"},\"\\xFCber mich\"),/*#__PURE__*/React.createElement(\"a\",{href:\"#\",className:\"right_arrow\",onClick:function onClick(ev){return _this2.nextPicture(ev);}},/*#__PURE__*/React.createElement(\"img\",{src:right_arrow}))))));}},{key:\"componentDidMount\",value:function componentDidMount(){AOS.init();document.querySelector(\"#loadingScreen\").remove();window.addEventListener(\"resize\",this.calculateMarqueeCount);this.calculateMarqueeCount();}}]);return Index;}(Component);export default Index;"
+          "source": "import _assertThisInitialized from\"@babel/runtime/helpers/assertThisInitialized\";import _inherits from\"@babel/runtime/helpers/inherits\";import _possibleConstructorReturn from\"@babel/runtime/helpers/possibleConstructorReturn\";import _getPrototypeOf from\"@babel/runtime/helpers/getPrototypeOf\";import _defineProperty from\"@babel/runtime/helpers/defineProperty\";import _path from\"path\";import _universalImport from\"babel-plugin-universal-import/universalImport\";import _classCallCheck from\"@babel/runtime/helpers/classCallCheck\";import _createClass from\"@babel/runtime/helpers/createClass\";function _createSuper(Derived){var hasNativeReflectConstruct=_isNativeReflectConstruct();return function _createSuperInternal(){var Super=_getPrototypeOf(Derived),result;if(hasNativeReflectConstruct){var NewTarget=_getPrototypeOf(this).constructor;result=Reflect.construct(Super,arguments,NewTarget);}else{result=Super.apply(this,arguments);}return _possibleConstructorReturn(this,result);};}function _isNativeReflectConstruct(){if(typeof Reflect===\"undefined\"||!Reflect.construct)return false;if(Reflect.construct.sham)return false;if(typeof Proxy===\"function\")return true;try{Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}));return true;}catch(e){return false;}}function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol===\"undefined\"||o[Symbol.iterator]==null){if(Array.isArray(o)||(it=_unsupportedIterableToArray(o))||allowArrayLike&&o&&typeof o.length===\"number\"){if(it)o=it;var i=0;var F=function F(){};return{s:F,n:function n(){if(i>=o.length)return{done:true};return{done:false,value:o[i++]};},e:function e(_e){throw _e;},f:F};}throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\");}var normalCompletion=true,didErr=false,err;return{s:function s(){it=o[Symbol.iterator]();},n:function n(){var step=it.next();normalCompletion=step.done;return step;},e:function e(_e2){didErr=true;err=_e2;},f:function f(){try{if(!normalCompletion&&it[\"return\"]!=null)it[\"return\"]();}finally{if(didErr)throw err;}}};}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o===\"string\")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n===\"Object\"&&o.constructor)n=o.constructor.name;if(n===\"Map\"||n===\"Set\")return Array.from(o);if(n===\"Arguments\"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen);}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i];}return arr2;}import React,{Component}from'react';import AOS from'aos';var ProjectInformation=require('./projects/projects_information.json');import'./css/main.css';import'./css/project_overview.css';import full_logo from\"./img/logo_full.svg\";var right_arrow=require(\"./img/arrow_right.svg\");import'aos/dist/aos.css';//\nvar ProjectList=/*#__PURE__*/function(){function ProjectList(){_classCallCheck(this,ProjectList);this.projects=[];var _iterator=_createForOfIteratorHelper(ProjectInformation.projects),_step;try{for(_iterator.s();!(_step=_iterator.n()).done;){var project=_step.value;this.projects.push(new Project(project));}}catch(err){_iterator.e(err);}finally{_iterator.f();}}_createClass(ProjectList,[{key:\"getProjectAt\",value:function getProjectAt(index){if(index<0){return this.projects[this.projects.length+index%this.projects.length];}return this.projects[index%this.projects.length];}}]);return ProjectList;}();var Project=function Project(information){_classCallCheck(this,Project);//this.path = information.path;\nthis.title=information.title;this.textheading=information.textheading;this.subtext=information.subtext;this.titleImage=require(\"./projects/\".concat(information.path,\"/main.jpg\"));this.images=[];for(var i=0;i<information.count_imgs;i++){this.images.push(_universalImport({id:\"./projects//img/${i}.\",load:function load(){return Promise.all([import(/* webpackChunkName: 'projects/[request]' */\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]))]).then(function(proms){return proms[0];});},path:function path(){return _path.join(__dirname,\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},resolve:function resolve(){return require.resolveWeak(\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},chunkName:function chunkName(){return\"projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]);}}));}};var Index=/*#__PURE__*/function(_Component){_inherits(Index,_Component);var _super=_createSuper(Index);function Index(props){var _this;_classCallCheck(this,Index);_this=_super.call(this,props);_defineProperty(_assertThisInitialized(_this),\"calculateMarqueeCount\",function(){var ev=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;var marquee=document.querySelectorAll(\".marquee_text\")[0];_this.setState({marqueeCount:Math.ceil(window.innerWidth/marquee.scrollWidth)+1});});_defineProperty(_assertThisInitialized(_this),\"nextPicture\",function(ev){_this.setState({currentProject:_this.state.currentProject+1},function(){return _this.calculateMarqueeCount();});});_defineProperty(_assertThisInitialized(_this),\"openProjectdetails\",function(ev){_this.setState({showDetails:true});var test=document.querySelector(\"#project_overview_section\");test.classList.add(\"project_overview_section_clicked\");// todo load project Details \n});_defineProperty(_assertThisInitialized(_this),\"showProjectTitle\",function(ev){_this.setState({showMarquee:true},function(){return _this.animateMarquee(document.querySelectorAll(\".marquee_text\"));});});_defineProperty(_assertThisInitialized(_this),\"hideProjectTitle\",function(ev){return _this.setState({showMarquee:false});});_defineProperty(_assertThisInitialized(_this),\"createMarquees\",function(){var marquees=[];for(var i=0;i<_this.state.marqueeCount;i++){marquees.push(/*#__PURE__*/React.createElement(\"p\",{className:\"marquee_text\",key:\"marqueetext_\".concat(i)},_this.state.projects.getProjectAt(_this.state.currentProject).title));}return marquees;});_defineProperty(_assertThisInitialized(_this),\"animateMarquee\",function(marqueeElements){marqueeElements.forEach(function(element,index){var _element$getAnimation;(_element$getAnimation=element.getAnimations()[0])===null||_element$getAnimation===void 0?void 0:_element$getAnimation.cancel();element.animate([{transform:\"translateX(-\".concat(element.scrollWidth,\"px)\")}],{duration:element.scrollWidth*2,iterations:Infinity,easing:\"linear\",id:\"marquee_\".concat(index)});// element.style.left = (element.style.left+1) + \"px\"\n});});_this.state={projects:new ProjectList(),currentProject:0,showDetails:false,showMarquee:false,marqueeCount:2};return _this;}_createClass(Index,[{key:\"wait\",value:function wait(ms){var start=new Date().getTime();var end=start;while(end<start+ms){end=new Date().getTime();}}},{key:\"render\",value:function render(){var _this2=this;return/*#__PURE__*/React.createElement(\"div\",{id:\"wrapper\"},/*#__PURE__*/React.createElement(\"div\",{id:\"projectDetailWrapper\",className:this.state.showMarquee?\"marqueeactive\":null},/*#__PURE__*/React.createElement(\"div\",{id:\"marquee\",className:this.state.showMarquee?null:\"hide\"},this.createMarquees()),/*#__PURE__*/React.createElement(\"header\",null,/*#__PURE__*/React.createElement(\"div\",{id:\"head_items\",\"data-aos\":\"fade-down\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/\"},/*#__PURE__*/React.createElement(\"img\",{src:full_logo,alt:\"logo\",className:\"full_logo\"})),/*#__PURE__*/React.createElement(\"p\",null,\"portfolio\"))),/*#__PURE__*/React.createElement(\"section\",{id:\"project_overview_wrapper\"},/*#__PURE__*/React.createElement(\"div\",{className:\"line\"}),/*#__PURE__*/React.createElement(\"div\",{id:\"project_overview_section\",onClick:function onClick(ev){return _this2.openProjectdetails(ev);},onMouseOver:function onMouseOver(ev){return _this2.showProjectTitle(ev);},onMouseLeave:function onMouseLeave(ev){return _this2.hideProjectTitle(ev);},\"data-aos\":\"zoom-in\"},/*#__PURE__*/React.createElement(\"picture\",null,/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject).title,className:\"TitleImage\"})),/*#__PURE__*/React.createElement(\"picture\",{id:\"#picturebefore\"},/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject-1).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject-1).title,className:\"TitleImage\"}))),/*#__PURE__*/React.createElement(\"div\",{className:\"line\"})),/*#__PURE__*/React.createElement(\"footer\",{\"data-aos\":\"fade-up\"},/*#__PURE__*/React.createElement(\"div\",{id:\"footer_overview_items\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/branding\"},\"branding\"),/*#__PURE__*/React.createElement(\"a\",{href:\"/about\"},\"\\xFCber mich\"),/*#__PURE__*/React.createElement(\"a\",{href:\"#\",className:\"right_arrow\",onClick:function onClick(ev){return _this2.nextPicture(ev);}},/*#__PURE__*/React.createElement(\"img\",{src:right_arrow}))))));}},{key:\"componentDidMount\",value:function componentDidMount(){AOS.init();document.querySelector(\"#loadingScreen\").remove();window.addEventListener(\"resize\",this.calculateMarqueeCount);this.calculateMarqueeCount();this.animateMarquee(document.querySelectorAll(\".marquee_text\"));//TODO delete\n}}]);return Index;}(Component);export default Index;"
         },
         {
           "id": 30,
@@ -3445,15 +3445,15 @@
       "initial": true,
       "entry": false,
       "reason": "split chunk (cache group: styles) (name: styles)",
-      "size": 33043,
+      "size": 33128,
       "names": [
         "styles"
       ],
       "files": [
-        "styles.e542f868.css",
-        "templates/styles.6f81a142.js"
+        "styles.1265b3b3.css",
+        "templates/styles.a46ff87a.js"
       ],
-      "hash": "bbf4190c524ca5d6630d",
+      "hash": "6aaeaf9473442891b99e",
       "siblings": [
         4,
         14
@@ -3535,7 +3535,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 4,
-          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908023\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620424\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
         },
         {
           "id": 147,
@@ -3601,7 +3601,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 4,
-          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908040\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620469\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
         },
         {
           "id": 148,
@@ -3663,7 +3663,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 4,
-          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908016\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620446\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
         },
         {
           "id": 150,
@@ -3725,7 +3725,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 4,
-          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908033\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620459\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
         },
         {
           "id": 154,
@@ -3787,7 +3787,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 4,
-          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584907999\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+          "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620438\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
         },
         {
           "id": "",
@@ -3857,7 +3857,7 @@
           "name": "css D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/main.css",
           "index": 134,
           "index2": 128,
-          "size": 1764,
+          "size": 1856,
           "built": false,
           "optional": false,
           "prefetched": false,
@@ -3919,7 +3919,7 @@
           "name": "css D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/project_overview.css",
           "index": 136,
           "index2": 130,
-          "size": 1993,
+          "size": 1986,
           "built": false,
           "optional": false,
           "prefetched": false,
@@ -4503,7 +4503,7 @@
               "moduleName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
               "type": "harmony import specifier",
               "userRequest": "react",
-              "loc": "5:2702-2711"
+              "loc": "6:20-29"
             },
             {
               "moduleId": 30,
@@ -7007,9 +7007,9 @@
           "chunks": [
             14
           ],
-          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-          "issuerId": 29,
-          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
+          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+          "issuerId": 30,
+          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js",
           "issuerPath": [
             {
               "id": 82,
@@ -7027,9 +7027,9 @@
               "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/artifacts/react-static-templates.js"
             },
             {
-              "id": 29,
-              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js"
+              "id": 30,
+              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js"
             }
           ],
           "failed": false,
@@ -7168,9 +7168,9 @@
           "chunks": [
             14
           ],
-          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-          "issuerId": 29,
-          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
+          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+          "issuerId": 30,
+          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js",
           "issuerPath": [
             {
               "id": 82,
@@ -7188,9 +7188,9 @@
               "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/artifacts/react-static-templates.js"
             },
             {
-              "id": 29,
-              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js"
+              "id": 30,
+              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js"
             }
           ],
           "failed": false,
@@ -10475,9 +10475,9 @@
           "chunks": [
             14
           ],
-          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-          "issuerId": 94,
-          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js",
+          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+          "issuerId": 17,
+          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js",
           "issuerPath": [
             {
               "id": 82,
@@ -10495,9 +10495,9 @@
               "name": "../lib/browser/index.js"
             },
             {
-              "id": 94,
-              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js"
+              "id": 17,
+              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js"
             }
           ],
           "failed": false,
@@ -10546,9 +10546,9 @@
           "chunks": [
             14
           ],
-          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\arrayWithoutHoles.js",
-          "issuerId": 95,
-          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/arrayWithoutHoles.js",
+          "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\unsupportedIterableToArray.js",
+          "issuerId": 42,
+          "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js",
           "issuerPath": [
             {
               "id": 82,
@@ -10566,14 +10566,14 @@
               "name": "../lib/browser/index.js"
             },
             {
-              "id": 94,
-              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js"
+              "id": 17,
+              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js"
             },
             {
-              "id": 95,
-              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\arrayWithoutHoles.js",
-              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/arrayWithoutHoles.js"
+              "id": 42,
+              "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\unsupportedIterableToArray.js",
+              "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js"
             }
           ],
           "failed": false,
@@ -16756,7 +16756,7 @@
           "moduleName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
           "type": "harmony import specifier",
           "userRequest": "react",
-          "loc": "5:2702-2711"
+          "loc": "6:20-29"
         },
         {
           "moduleId": 30,
@@ -19260,9 +19260,9 @@
       "chunks": [
         14
       ],
-      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-      "issuerId": 29,
-      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
+      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+      "issuerId": 30,
+      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js",
       "issuerPath": [
         {
           "id": 82,
@@ -19280,9 +19280,9 @@
           "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/artifacts/react-static-templates.js"
         },
         {
-          "id": 29,
-          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js"
+          "id": 30,
+          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js"
         }
       ],
       "failed": false,
@@ -19421,9 +19421,9 @@
       "chunks": [
         14
       ],
-      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-      "issuerId": 29,
-      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
+      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+      "issuerId": 30,
+      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js",
       "issuerPath": [
         {
           "id": 82,
@@ -19441,9 +19441,9 @@
           "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/artifacts/react-static-templates.js"
         },
         {
-          "id": 29,
-          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\index.js",
-          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js"
+          "id": 30,
+          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\babel-loader\\lib\\index.js??ref--4-oneOf-0-0!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\react-hot-loader\\webpack.js!D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\src\\components\\circle.js",
+          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/circle.js"
         }
       ],
       "failed": false,
@@ -21941,7 +21941,7 @@
       "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/index.js",
       "index": 130,
       "index2": 142,
-      "size": 9658,
+      "size": 9736,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -22019,7 +22019,7 @@
         "ModuleConcatenation bailout: Module uses injected variables (__dirname)"
       ],
       "depth": 3,
-      "source": "import _assertThisInitialized from\"@babel/runtime/helpers/assertThisInitialized\";import _inherits from\"@babel/runtime/helpers/inherits\";import _possibleConstructorReturn from\"@babel/runtime/helpers/possibleConstructorReturn\";import _getPrototypeOf from\"@babel/runtime/helpers/getPrototypeOf\";import _defineProperty from\"@babel/runtime/helpers/defineProperty\";import _path from\"path\";import _universalImport from\"babel-plugin-universal-import/universalImport\";import _classCallCheck from\"@babel/runtime/helpers/classCallCheck\";import _createClass from\"@babel/runtime/helpers/createClass\";function _createSuper(Derived){var hasNativeReflectConstruct=_isNativeReflectConstruct();return function _createSuperInternal(){var Super=_getPrototypeOf(Derived),result;if(hasNativeReflectConstruct){var NewTarget=_getPrototypeOf(this).constructor;result=Reflect.construct(Super,arguments,NewTarget);}else{result=Super.apply(this,arguments);}return _possibleConstructorReturn(this,result);};}function _isNativeReflectConstruct(){if(typeof Reflect===\"undefined\"||!Reflect.construct)return false;if(Reflect.construct.sham)return false;if(typeof Proxy===\"function\")return true;try{Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}));return true;}catch(e){return false;}}function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol===\"undefined\"||o[Symbol.iterator]==null){if(Array.isArray(o)||(it=_unsupportedIterableToArray(o))||allowArrayLike&&o&&typeof o.length===\"number\"){if(it)o=it;var i=0;var F=function F(){};return{s:F,n:function n(){if(i>=o.length)return{done:true};return{done:false,value:o[i++]};},e:function e(_e){throw _e;},f:F};}throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\");}var normalCompletion=true,didErr=false,err;return{s:function s(){it=o[Symbol.iterator]();},n:function n(){var step=it.next();normalCompletion=step.done;return step;},e:function e(_e2){didErr=true;err=_e2;},f:function f(){try{if(!normalCompletion&&it[\"return\"]!=null)it[\"return\"]();}finally{if(didErr)throw err;}}};}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o===\"string\")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n===\"Object\"&&o.constructor)n=o.constructor.name;if(n===\"Map\"||n===\"Set\")return Array.from(o);if(n===\"Arguments\"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen);}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i];}return arr2;}import React,{Component}from'react';import AOS from'aos';var ProjectInformation=require('./projects/projects_information.json');import'./css/main.css';import'./css/project_overview.css';import full_logo from\"./img/logo_full.svg\";var right_arrow=require(\"./img/arrow_right.svg\");import'aos/dist/aos.css';//\nvar ProjectList=/*#__PURE__*/function(){function ProjectList(){_classCallCheck(this,ProjectList);this.projects=[];var _iterator=_createForOfIteratorHelper(ProjectInformation.projects),_step;try{for(_iterator.s();!(_step=_iterator.n()).done;){var project=_step.value;this.projects.push(new Project(project));}}catch(err){_iterator.e(err);}finally{_iterator.f();}}_createClass(ProjectList,[{key:\"getProjectAt\",value:function getProjectAt(index){if(index<0){return this.projects[this.projects.length+index%this.projects.length];}return this.projects[index%this.projects.length];}}]);return ProjectList;}();var Project=function Project(information){_classCallCheck(this,Project);//this.path = information.path;\nthis.title=information.title;this.textheading=information.textheading;this.subtext=information.subtext;this.titleImage=require(\"./projects/\".concat(information.path,\"/main.jpg\"));this.images=[];for(var i=0;i<information.count_imgs;i++){this.images.push(_universalImport({id:\"./projects//img/${i}.\",load:function load(){return Promise.all([import(/* webpackChunkName: 'projects/[request]' */\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]))]).then(function(proms){return proms[0];});},path:function path(){return _path.join(__dirname,\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},resolve:function resolve(){return require.resolveWeak(\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},chunkName:function chunkName(){return\"projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]);}}));}};var Index=/*#__PURE__*/function(_Component){_inherits(Index,_Component);var _super=_createSuper(Index);function Index(props){var _this;_classCallCheck(this,Index);_this=_super.call(this,props);_defineProperty(_assertThisInitialized(_this),\"calculateMarqueeCount\",function(){var ev=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;var marquee=document.querySelectorAll(\".marquee_text\")[0];_this.setState({marqueeCount:Math.ceil(window.innerWidth/marquee.scrollWidth)+1});});_defineProperty(_assertThisInitialized(_this),\"nextPicture\",function(ev){_this.setState({currentProject:_this.state.currentProject+1},function(){return _this.calculateMarqueeCount();});});_defineProperty(_assertThisInitialized(_this),\"openProjectdetails\",function(ev){_this.setState({showDetails:true});var test=document.querySelector(\"#project_overview_section\");test.classList.add(\"project_overview_section_clicked\");// todo load project Details \n});_defineProperty(_assertThisInitialized(_this),\"showProjectTitle\",function(ev){_this.setState({showMarquee:true},function(){return _this.animateMarquee(document.querySelectorAll(\".marquee_text\"));});});_defineProperty(_assertThisInitialized(_this),\"hideProjectTitle\",function(ev){return _this.setState({showMarquee:false});});_defineProperty(_assertThisInitialized(_this),\"createMarquees\",function(){var marquees=[];for(var i=0;i<_this.state.marqueeCount;i++){marquees.push(/*#__PURE__*/React.createElement(\"p\",{className:\"marquee_text\",key:\"marqueetext_\".concat(i)},_this.state.projects.getProjectAt(_this.state.currentProject).title));}return marquees;});_defineProperty(_assertThisInitialized(_this),\"animateMarquee\",function(marqueeElements){marqueeElements.forEach(function(element,index){var _element$getAnimation;(_element$getAnimation=element.getAnimations()[0])===null||_element$getAnimation===void 0?void 0:_element$getAnimation.cancel();element.animate([{transform:\"translateX(-\".concat(element.scrollWidth,\"px)\")}],{duration:element.scrollWidth*2,iterations:Infinity,easing:\"linear\",id:\"marquee_\".concat(index)});// element.style.left = (element.style.left+1) + \"px\"\n});});_this.state={projects:new ProjectList(),currentProject:0,showDetails:false,showMarquee:false,marqueeCount:2};return _this;}_createClass(Index,[{key:\"wait\",value:function wait(ms){var start=new Date().getTime();var end=start;while(end<start+ms){end=new Date().getTime();}}},{key:\"render\",value:function render(){var _this2=this;return/*#__PURE__*/React.createElement(\"div\",{id:\"wrapper\"},/*#__PURE__*/React.createElement(\"div\",{id:\"projectDetailWrapper\",className:this.state.showMarquee?\"marqueeactive\":null},/*#__PURE__*/React.createElement(\"div\",{id:\"marquee\",className:this.state.showMarquee?null:\"hide\"},this.createMarquees()),/*#__PURE__*/React.createElement(\"header\",null,/*#__PURE__*/React.createElement(\"div\",{id:\"head_items\",\"data-aos\":\"fade-down\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/\"},/*#__PURE__*/React.createElement(\"img\",{src:full_logo,alt:\"logo\",className:\"full_logo\"})),/*#__PURE__*/React.createElement(\"p\",null,\"portfolio\"))),/*#__PURE__*/React.createElement(\"section\",{id:\"project_overview_wrapper\"},/*#__PURE__*/React.createElement(\"div\",{className:\"line\"}),/*#__PURE__*/React.createElement(\"div\",{id:\"project_overview_section\",onClick:function onClick(ev){return _this2.openProjectdetails(ev);},onMouseOver:function onMouseOver(ev){return _this2.showProjectTitle(ev);},onMouseLeave:function onMouseLeave(ev){return _this2.hideProjectTitle(ev);},\"data-aos\":\"zoom-in\"},/*#__PURE__*/React.createElement(\"picture\",null,/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject).title,className:\"TitleImage\"})),/*#__PURE__*/React.createElement(\"picture\",{id:\"#picturebefore\"},/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject-1).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject-1).title,className:\"TitleImage\"}))),/*#__PURE__*/React.createElement(\"div\",{className:\"line\"})),/*#__PURE__*/React.createElement(\"footer\",{\"data-aos\":\"fade-up\"},/*#__PURE__*/React.createElement(\"div\",{id:\"footer_overview_items\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/branding\"},\"branding\"),/*#__PURE__*/React.createElement(\"a\",{href:\"/about\"},\"\\xFCber mich\"),/*#__PURE__*/React.createElement(\"a\",{href:\"#\",className:\"right_arrow\",onClick:function onClick(ev){return _this2.nextPicture(ev);}},/*#__PURE__*/React.createElement(\"img\",{src:right_arrow}))))));}},{key:\"componentDidMount\",value:function componentDidMount(){AOS.init();document.querySelector(\"#loadingScreen\").remove();window.addEventListener(\"resize\",this.calculateMarqueeCount);this.calculateMarqueeCount();}}]);return Index;}(Component);export default Index;"
+      "source": "import _assertThisInitialized from\"@babel/runtime/helpers/assertThisInitialized\";import _inherits from\"@babel/runtime/helpers/inherits\";import _possibleConstructorReturn from\"@babel/runtime/helpers/possibleConstructorReturn\";import _getPrototypeOf from\"@babel/runtime/helpers/getPrototypeOf\";import _defineProperty from\"@babel/runtime/helpers/defineProperty\";import _path from\"path\";import _universalImport from\"babel-plugin-universal-import/universalImport\";import _classCallCheck from\"@babel/runtime/helpers/classCallCheck\";import _createClass from\"@babel/runtime/helpers/createClass\";function _createSuper(Derived){var hasNativeReflectConstruct=_isNativeReflectConstruct();return function _createSuperInternal(){var Super=_getPrototypeOf(Derived),result;if(hasNativeReflectConstruct){var NewTarget=_getPrototypeOf(this).constructor;result=Reflect.construct(Super,arguments,NewTarget);}else{result=Super.apply(this,arguments);}return _possibleConstructorReturn(this,result);};}function _isNativeReflectConstruct(){if(typeof Reflect===\"undefined\"||!Reflect.construct)return false;if(Reflect.construct.sham)return false;if(typeof Proxy===\"function\")return true;try{Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}));return true;}catch(e){return false;}}function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol===\"undefined\"||o[Symbol.iterator]==null){if(Array.isArray(o)||(it=_unsupportedIterableToArray(o))||allowArrayLike&&o&&typeof o.length===\"number\"){if(it)o=it;var i=0;var F=function F(){};return{s:F,n:function n(){if(i>=o.length)return{done:true};return{done:false,value:o[i++]};},e:function e(_e){throw _e;},f:F};}throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\");}var normalCompletion=true,didErr=false,err;return{s:function s(){it=o[Symbol.iterator]();},n:function n(){var step=it.next();normalCompletion=step.done;return step;},e:function e(_e2){didErr=true;err=_e2;},f:function f(){try{if(!normalCompletion&&it[\"return\"]!=null)it[\"return\"]();}finally{if(didErr)throw err;}}};}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o===\"string\")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n===\"Object\"&&o.constructor)n=o.constructor.name;if(n===\"Map\"||n===\"Set\")return Array.from(o);if(n===\"Arguments\"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen);}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i];}return arr2;}import React,{Component}from'react';import AOS from'aos';var ProjectInformation=require('./projects/projects_information.json');import'./css/main.css';import'./css/project_overview.css';import full_logo from\"./img/logo_full.svg\";var right_arrow=require(\"./img/arrow_right.svg\");import'aos/dist/aos.css';//\nvar ProjectList=/*#__PURE__*/function(){function ProjectList(){_classCallCheck(this,ProjectList);this.projects=[];var _iterator=_createForOfIteratorHelper(ProjectInformation.projects),_step;try{for(_iterator.s();!(_step=_iterator.n()).done;){var project=_step.value;this.projects.push(new Project(project));}}catch(err){_iterator.e(err);}finally{_iterator.f();}}_createClass(ProjectList,[{key:\"getProjectAt\",value:function getProjectAt(index){if(index<0){return this.projects[this.projects.length+index%this.projects.length];}return this.projects[index%this.projects.length];}}]);return ProjectList;}();var Project=function Project(information){_classCallCheck(this,Project);//this.path = information.path;\nthis.title=information.title;this.textheading=information.textheading;this.subtext=information.subtext;this.titleImage=require(\"./projects/\".concat(information.path,\"/main.jpg\"));this.images=[];for(var i=0;i<information.count_imgs;i++){this.images.push(_universalImport({id:\"./projects//img/${i}.\",load:function load(){return Promise.all([import(/* webpackChunkName: 'projects/[request]' */\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]))]).then(function(proms){return proms[0];});},path:function path(){return _path.join(__dirname,\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},resolve:function resolve(){return require.resolveWeak(\"./projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]));},chunkName:function chunkName(){return\"projects/\".concat(information.path,\"/img/\").concat(i,\".\").concat(information.image_extention[i%information.image_extention.length]);}}));}};var Index=/*#__PURE__*/function(_Component){_inherits(Index,_Component);var _super=_createSuper(Index);function Index(props){var _this;_classCallCheck(this,Index);_this=_super.call(this,props);_defineProperty(_assertThisInitialized(_this),\"calculateMarqueeCount\",function(){var ev=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;var marquee=document.querySelectorAll(\".marquee_text\")[0];_this.setState({marqueeCount:Math.ceil(window.innerWidth/marquee.scrollWidth)+1});});_defineProperty(_assertThisInitialized(_this),\"nextPicture\",function(ev){_this.setState({currentProject:_this.state.currentProject+1},function(){return _this.calculateMarqueeCount();});});_defineProperty(_assertThisInitialized(_this),\"openProjectdetails\",function(ev){_this.setState({showDetails:true});var test=document.querySelector(\"#project_overview_section\");test.classList.add(\"project_overview_section_clicked\");// todo load project Details \n});_defineProperty(_assertThisInitialized(_this),\"showProjectTitle\",function(ev){_this.setState({showMarquee:true},function(){return _this.animateMarquee(document.querySelectorAll(\".marquee_text\"));});});_defineProperty(_assertThisInitialized(_this),\"hideProjectTitle\",function(ev){return _this.setState({showMarquee:false});});_defineProperty(_assertThisInitialized(_this),\"createMarquees\",function(){var marquees=[];for(var i=0;i<_this.state.marqueeCount;i++){marquees.push(/*#__PURE__*/React.createElement(\"p\",{className:\"marquee_text\",key:\"marqueetext_\".concat(i)},_this.state.projects.getProjectAt(_this.state.currentProject).title));}return marquees;});_defineProperty(_assertThisInitialized(_this),\"animateMarquee\",function(marqueeElements){marqueeElements.forEach(function(element,index){var _element$getAnimation;(_element$getAnimation=element.getAnimations()[0])===null||_element$getAnimation===void 0?void 0:_element$getAnimation.cancel();element.animate([{transform:\"translateX(-\".concat(element.scrollWidth,\"px)\")}],{duration:element.scrollWidth*2,iterations:Infinity,easing:\"linear\",id:\"marquee_\".concat(index)});// element.style.left = (element.style.left+1) + \"px\"\n});});_this.state={projects:new ProjectList(),currentProject:0,showDetails:false,showMarquee:false,marqueeCount:2};return _this;}_createClass(Index,[{key:\"wait\",value:function wait(ms){var start=new Date().getTime();var end=start;while(end<start+ms){end=new Date().getTime();}}},{key:\"render\",value:function render(){var _this2=this;return/*#__PURE__*/React.createElement(\"div\",{id:\"wrapper\"},/*#__PURE__*/React.createElement(\"div\",{id:\"projectDetailWrapper\",className:this.state.showMarquee?\"marqueeactive\":null},/*#__PURE__*/React.createElement(\"div\",{id:\"marquee\",className:this.state.showMarquee?null:\"hide\"},this.createMarquees()),/*#__PURE__*/React.createElement(\"header\",null,/*#__PURE__*/React.createElement(\"div\",{id:\"head_items\",\"data-aos\":\"fade-down\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/\"},/*#__PURE__*/React.createElement(\"img\",{src:full_logo,alt:\"logo\",className:\"full_logo\"})),/*#__PURE__*/React.createElement(\"p\",null,\"portfolio\"))),/*#__PURE__*/React.createElement(\"section\",{id:\"project_overview_wrapper\"},/*#__PURE__*/React.createElement(\"div\",{className:\"line\"}),/*#__PURE__*/React.createElement(\"div\",{id:\"project_overview_section\",onClick:function onClick(ev){return _this2.openProjectdetails(ev);},onMouseOver:function onMouseOver(ev){return _this2.showProjectTitle(ev);},onMouseLeave:function onMouseLeave(ev){return _this2.hideProjectTitle(ev);},\"data-aos\":\"zoom-in\"},/*#__PURE__*/React.createElement(\"picture\",null,/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject).title,className:\"TitleImage\"})),/*#__PURE__*/React.createElement(\"picture\",{id:\"#picturebefore\"},/*#__PURE__*/React.createElement(\"img\",{src:this.state.projects.getProjectAt(this.state.currentProject-1).titleImage,alt:this.state.projects.getProjectAt(this.state.currentProject-1).title,className:\"TitleImage\"}))),/*#__PURE__*/React.createElement(\"div\",{className:\"line\"})),/*#__PURE__*/React.createElement(\"footer\",{\"data-aos\":\"fade-up\"},/*#__PURE__*/React.createElement(\"div\",{id:\"footer_overview_items\"},/*#__PURE__*/React.createElement(\"a\",{href:\"/branding\"},\"branding\"),/*#__PURE__*/React.createElement(\"a\",{href:\"/about\"},\"\\xFCber mich\"),/*#__PURE__*/React.createElement(\"a\",{href:\"#\",className:\"right_arrow\",onClick:function onClick(ev){return _this2.nextPicture(ev);}},/*#__PURE__*/React.createElement(\"img\",{src:right_arrow}))))));}},{key:\"componentDidMount\",value:function componentDidMount(){AOS.init();document.querySelector(\"#loadingScreen\").remove();window.addEventListener(\"resize\",this.calculateMarqueeCount);this.calculateMarqueeCount();this.animateMarquee(document.querySelectorAll(\".marquee_text\"));//TODO delete\n}}]);return Index;}(Component);export default Index;"
     },
     {
       "id": 30,
@@ -23549,9 +23549,9 @@
       "chunks": [
         14
       ],
-      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-      "issuerId": 94,
-      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js",
+      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+      "issuerId": 17,
+      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js",
       "issuerPath": [
         {
           "id": 82,
@@ -23569,9 +23569,9 @@
           "name": "../lib/browser/index.js"
         },
         {
-          "id": 94,
-          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js"
+          "id": 17,
+          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js"
         }
       ],
       "failed": false,
@@ -23620,9 +23620,9 @@
       "chunks": [
         14
       ],
-      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\arrayWithoutHoles.js",
-      "issuerId": 95,
-      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/arrayWithoutHoles.js",
+      "issuer": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\unsupportedIterableToArray.js",
+      "issuerId": 42,
+      "issuerName": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js",
       "issuerPath": [
         {
           "id": 82,
@@ -23640,14 +23640,14 @@
           "name": "../lib/browser/index.js"
         },
         {
-          "id": 94,
-          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\toConsumableArray.js",
-          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/toConsumableArray.js"
+          "id": 17,
+          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\slicedToArray.js",
+          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/slicedToArray.js"
         },
         {
-          "id": 95,
-          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\arrayWithoutHoles.js",
-          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/arrayWithoutHoles.js"
+          "id": 42,
+          "identifier": "D:\\Documents\\Projekte\\2021\\Webseite_Fabian_Schwarzinger\\Program2\\PorfolioFabian\\node_modules\\@babel\\runtime\\helpers\\unsupportedIterableToArray.js",
+          "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js"
         }
       ],
       "failed": false,
@@ -30776,7 +30776,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 4,
-      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908023\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620424\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
     },
     {
       "id": 147,
@@ -30842,7 +30842,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 4,
-      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908040\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620469\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
     },
     {
       "id": 148,
@@ -30904,7 +30904,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 4,
-      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908016\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620446\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
     },
     {
       "id": 149,
@@ -31028,7 +31028,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 4,
-      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584908033\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620459\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
     },
     {
       "id": 151,
@@ -31270,7 +31270,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 4,
-      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616584907999\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
+      "source": "// extracted by extract-css-chunks-webpack-plugin\n    if(module.hot) {\n      // 1616591620438\n      var cssReload = require(\"D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/extract-css-chunks-webpack-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"hot\":true,\"hmr\":true,\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  "
     },
     {
       "id": 155,
@@ -31526,7 +31526,7 @@
       "name": "css D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/main.css",
       "index": 134,
       "index2": 128,
-      "size": 1764,
+      "size": 1856,
       "built": false,
       "optional": false,
       "prefetched": false,
@@ -31588,7 +31588,7 @@
       "name": "css D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/project_overview.css",
       "index": 136,
       "index2": 130,
-      "size": 1993,
+      "size": 1986,
       "built": false,
       "optional": false,
       "prefetched": false,
@@ -32454,14 +32454,14 @@
           "rendered": true,
           "initial": true,
           "entry": true,
-          "size": 5561,
+          "size": 5661,
           "names": [
             "extract-css-chunks-webpack-plugin"
           ],
           "files": [
             "*"
           ],
-          "hash": "899b571449dd1307070b",
+          "hash": "5d787538c86f43ab01c8",
           "siblings": [],
           "parents": [],
           "children": [],
@@ -32473,7 +32473,7 @@
               "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/main.css",
               "index": 0,
               "index2": 5,
-              "size": 2448,
+              "size": 2548,
               "cacheable": true,
               "built": true,
               "optional": false,
@@ -32506,7 +32506,7 @@
                 "ModuleConcatenation bailout: Module is not an ECMAScript module"
               ],
               "depth": 0,
-              "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nvar urlEscape = require(\"../../../node_modules/css-loader/dist/runtime/url-escape.js\");\nvar ___CSS_LOADER_URL___0___ = urlEscape(require(\"../fonts/ClarikaProGrot-Lt.otf\"));\nvar ___CSS_LOADER_URL___1___ = urlEscape(require(\"../fonts/ClarikaProGrot-Md.otf\"));\nvar ___CSS_LOADER_URL___2___ = urlEscape(require(\"../fonts/Coconat-Regular.otf\"));\n\n// Module\nexports.push([module.id, \"@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___0___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___1___ + \");\\r\\n   font-weight: bold;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: Coconut;\\r\\n   src: url(\" + ___CSS_LOADER_URL___2___ + \")\\r\\n}\\r\\n\\r\\n:root{\\r\\n   --background:#003a38;\\r\\n   --foreground: #fad2aa;\\r\\n}\\r\\n* {\\r\\n   scroll-behavior: smooth;\\r\\n   overflow:hidden;\\r\\n } \\r\\nhtml{\\r\\n   background-color: var(--background);\\r\\n   color: var(--foreground);\\r\\n   padding: 0;\\r\\n}\\r\\nbody{\\r\\n   padding:0;\\r\\n   margin:0;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n}\\r\\nimg{\\r\\n   -o-object-fit: cover;\\r\\n      object-fit: cover;\\r\\n}\\r\\na{\\r\\n   text-decoration: none;\\r\\n   color: var(--foreground);\\r\\n}\\r\\n\\r\\n\\r\\n#root{height: 100%;}\\r\\n#projectDetailWrapper{\\r\\n   display: grid;\\r\\n   height: calc(100vh - 140px);\\r\\n   padding:70px;\\r\\n   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;\\r\\n   grid-template-areas:\\r\\n   \\\"header\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"footer\\\";\\r\\n}\\r\\n\\r\\n\\r\\nheader{\\r\\n   display: flex;\\r\\n   grid-area: header;\\r\\n   /* background-color: blue; */\\r\\n   align-items: flex-start ;\\r\\n}\\r\\n#head_items{\\r\\n   height:70px;\\r\\n   width:100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\nfooter{\\r\\n   display: flex;\\r\\n   grid-area: footer;\\r\\n   /* background-color: red; */\\r\\n}\\r\\n#footer_overview_items{\\r\\n   display: flex;\\r\\n   width:100%;\\r\\n   align-items: flex-end;\\r\\n   justify-content: space-between;\\r\\n}\\r\\n#project_overview_wrapper{\\r\\n   grid-area: project_overview;\\r\\n   /* background-color: yellow; */\\r\\n}\\r\\n\\r\\n\\r\\n.full_logo{\\r\\n   width: 200px;\\r\\n   -o-object-fit: contain;\\r\\n      object-fit: contain;\\r\\n}\\r\\n.right_arrow{\\r\\n   width:60px;\\r\\n}\", \"\"]);\n\n"
+              "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nvar urlEscape = require(\"../../../node_modules/css-loader/dist/runtime/url-escape.js\");\nvar ___CSS_LOADER_URL___0___ = urlEscape(require(\"../fonts/ClarikaProGrot-Lt.otf\"));\nvar ___CSS_LOADER_URL___1___ = urlEscape(require(\"../fonts/ClarikaProGrot-Md.otf\"));\nvar ___CSS_LOADER_URL___2___ = urlEscape(require(\"../fonts/Coconat-Regular.otf\"));\n\n// Module\nexports.push([module.id, \"@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___0___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___1___ + \");\\r\\n   font-weight: bold;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: Coconut;\\r\\n   src: url(\" + ___CSS_LOADER_URL___2___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n\\r\\n:root{\\r\\n   --background:#003a38;\\r\\n   --foreground: #fad2aa;\\r\\n}\\r\\n* {\\r\\n   scroll-behavior: smooth;\\r\\n   overflow:hidden;\\r\\n } \\r\\nhtml{\\r\\n   background-color: var(--background);\\r\\n   color: var(--foreground);\\r\\n   padding: 0;\\r\\n}\\r\\n\\r\\nbody{\\r\\n   padding:0;\\r\\n   margin:0;\\r\\n   font-family: Coconut;\\r\\n}\\r\\nimg{\\r\\n   -o-object-fit: cover;\\r\\n      object-fit: cover;\\r\\n}\\r\\na{\\r\\n   text-decoration: none;\\r\\n   color: var(--foreground);\\r\\n}\\r\\n\\r\\n\\r\\n#root{height: 100%;}\\r\\n#projectDetailWrapper{\\r\\n   display: grid;\\r\\n   height: calc(100vh - 140px);\\r\\n   padding:70px;\\r\\n   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;\\r\\n   grid-template-areas:\\r\\n   \\\"header\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"footer\\\";\\r\\n}\\r\\n\\r\\n\\r\\nheader{\\r\\n   display: flex;\\r\\n   grid-area: header;\\r\\n   /* background-color: blue; */\\r\\n   align-items: flex-start ;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n}\\r\\n#head_items{\\r\\n   height:70px;\\r\\n   width:100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\nfooter{\\r\\n   display: flex;\\r\\n   grid-area: footer;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   /* background-color: red; */\\r\\n}\\r\\n#footer_overview_items{\\r\\n   display: flex;\\r\\n   width:100%;\\r\\n   align-items: flex-end;\\r\\n   justify-content: space-between;\\r\\n}\\r\\n#project_overview_wrapper{\\r\\n   grid-area: project_overview;\\r\\n   /* background-color: yellow; */\\r\\n}\\r\\n\\r\\n\\r\\n.full_logo{\\r\\n   width: 200px;\\r\\n   -o-object-fit: contain;\\r\\n      object-fit: contain;\\r\\n}\\r\\n.right_arrow{\\r\\n   width:60px;\\r\\n}\", \"\"]);\n\n"
             },
             {
               "id": 1,
@@ -32764,7 +32764,7 @@
           "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/main.css",
           "index": 0,
           "index2": 5,
-          "size": 2448,
+          "size": 2548,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -32797,7 +32797,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 0,
-          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nvar urlEscape = require(\"../../../node_modules/css-loader/dist/runtime/url-escape.js\");\nvar ___CSS_LOADER_URL___0___ = urlEscape(require(\"../fonts/ClarikaProGrot-Lt.otf\"));\nvar ___CSS_LOADER_URL___1___ = urlEscape(require(\"../fonts/ClarikaProGrot-Md.otf\"));\nvar ___CSS_LOADER_URL___2___ = urlEscape(require(\"../fonts/Coconat-Regular.otf\"));\n\n// Module\nexports.push([module.id, \"@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___0___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___1___ + \");\\r\\n   font-weight: bold;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: Coconut;\\r\\n   src: url(\" + ___CSS_LOADER_URL___2___ + \")\\r\\n}\\r\\n\\r\\n:root{\\r\\n   --background:#003a38;\\r\\n   --foreground: #fad2aa;\\r\\n}\\r\\n* {\\r\\n   scroll-behavior: smooth;\\r\\n   overflow:hidden;\\r\\n } \\r\\nhtml{\\r\\n   background-color: var(--background);\\r\\n   color: var(--foreground);\\r\\n   padding: 0;\\r\\n}\\r\\nbody{\\r\\n   padding:0;\\r\\n   margin:0;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n}\\r\\nimg{\\r\\n   -o-object-fit: cover;\\r\\n      object-fit: cover;\\r\\n}\\r\\na{\\r\\n   text-decoration: none;\\r\\n   color: var(--foreground);\\r\\n}\\r\\n\\r\\n\\r\\n#root{height: 100%;}\\r\\n#projectDetailWrapper{\\r\\n   display: grid;\\r\\n   height: calc(100vh - 140px);\\r\\n   padding:70px;\\r\\n   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;\\r\\n   grid-template-areas:\\r\\n   \\\"header\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"footer\\\";\\r\\n}\\r\\n\\r\\n\\r\\nheader{\\r\\n   display: flex;\\r\\n   grid-area: header;\\r\\n   /* background-color: blue; */\\r\\n   align-items: flex-start ;\\r\\n}\\r\\n#head_items{\\r\\n   height:70px;\\r\\n   width:100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\nfooter{\\r\\n   display: flex;\\r\\n   grid-area: footer;\\r\\n   /* background-color: red; */\\r\\n}\\r\\n#footer_overview_items{\\r\\n   display: flex;\\r\\n   width:100%;\\r\\n   align-items: flex-end;\\r\\n   justify-content: space-between;\\r\\n}\\r\\n#project_overview_wrapper{\\r\\n   grid-area: project_overview;\\r\\n   /* background-color: yellow; */\\r\\n}\\r\\n\\r\\n\\r\\n.full_logo{\\r\\n   width: 200px;\\r\\n   -o-object-fit: contain;\\r\\n      object-fit: contain;\\r\\n}\\r\\n.right_arrow{\\r\\n   width:60px;\\r\\n}\", \"\"]);\n\n"
+          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nvar urlEscape = require(\"../../../node_modules/css-loader/dist/runtime/url-escape.js\");\nvar ___CSS_LOADER_URL___0___ = urlEscape(require(\"../fonts/ClarikaProGrot-Lt.otf\"));\nvar ___CSS_LOADER_URL___1___ = urlEscape(require(\"../fonts/ClarikaProGrot-Md.otf\"));\nvar ___CSS_LOADER_URL___2___ = urlEscape(require(\"../fonts/Coconat-Regular.otf\"));\n\n// Module\nexports.push([module.id, \"@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___0___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   src: url(\" + ___CSS_LOADER_URL___1___ + \");\\r\\n   font-weight: bold;\\r\\n}\\r\\n@font-face{\\r\\n   font-family: Coconut;\\r\\n   src: url(\" + ___CSS_LOADER_URL___2___ + \");\\r\\n   font-weight: normal;\\r\\n}\\r\\n\\r\\n:root{\\r\\n   --background:#003a38;\\r\\n   --foreground: #fad2aa;\\r\\n}\\r\\n* {\\r\\n   scroll-behavior: smooth;\\r\\n   overflow:hidden;\\r\\n } \\r\\nhtml{\\r\\n   background-color: var(--background);\\r\\n   color: var(--foreground);\\r\\n   padding: 0;\\r\\n}\\r\\n\\r\\nbody{\\r\\n   padding:0;\\r\\n   margin:0;\\r\\n   font-family: Coconut;\\r\\n}\\r\\nimg{\\r\\n   -o-object-fit: cover;\\r\\n      object-fit: cover;\\r\\n}\\r\\na{\\r\\n   text-decoration: none;\\r\\n   color: var(--foreground);\\r\\n}\\r\\n\\r\\n\\r\\n#root{height: 100%;}\\r\\n#projectDetailWrapper{\\r\\n   display: grid;\\r\\n   height: calc(100vh - 140px);\\r\\n   padding:70px;\\r\\n   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;\\r\\n   grid-template-areas:\\r\\n   \\\"header\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"project_overview\\\"\\r\\n   \\\"footer\\\";\\r\\n}\\r\\n\\r\\n\\r\\nheader{\\r\\n   display: flex;\\r\\n   grid-area: header;\\r\\n   /* background-color: blue; */\\r\\n   align-items: flex-start ;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n}\\r\\n#head_items{\\r\\n   height:70px;\\r\\n   width:100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\nfooter{\\r\\n   display: flex;\\r\\n   grid-area: footer;\\r\\n   font-family: ClarikaProGrotesque;\\r\\n   /* background-color: red; */\\r\\n}\\r\\n#footer_overview_items{\\r\\n   display: flex;\\r\\n   width:100%;\\r\\n   align-items: flex-end;\\r\\n   justify-content: space-between;\\r\\n}\\r\\n#project_overview_wrapper{\\r\\n   grid-area: project_overview;\\r\\n   /* background-color: yellow; */\\r\\n}\\r\\n\\r\\n\\r\\n.full_logo{\\r\\n   width: 200px;\\r\\n   -o-object-fit: contain;\\r\\n      object-fit: contain;\\r\\n}\\r\\n.right_arrow{\\r\\n   width:60px;\\r\\n}\", \"\"]);\n\n"
         },
         {
           "id": 1,
@@ -33084,14 +33084,14 @@
           "rendered": true,
           "initial": true,
           "entry": true,
-          "size": 4752,
+          "size": 4745,
           "names": [
             "extract-css-chunks-webpack-plugin"
           ],
           "files": [
             "*"
           ],
-          "hash": "2246db06df2ad6434d26",
+          "hash": "7bee1fd9ae9a45043e6b",
           "siblings": [],
           "parents": [],
           "children": [],
@@ -33103,7 +33103,7 @@
               "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/project_overview.css",
               "index": 0,
               "index2": 1,
-              "size": 2346,
+              "size": 2339,
               "cacheable": true,
               "built": true,
               "optional": false,
@@ -33136,7 +33136,7 @@
                 "ModuleConcatenation bailout: Module is not an ECMAScript module"
               ],
               "depth": 0,
-              "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \"#project_overview_wrapper {\\r\\n   width: 100%;\\r\\n   height: 100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\n#project_overview_section {\\r\\n   width: 60%;\\r\\n   height: 80%;\\r\\n}\\r\\n\\r\\n#project_overview_section picture {\\r\\n   box-sizing: border-box;\\r\\n   margin: 0;\\r\\n   padding: 0;\\r\\n   border: 0;\\r\\n}\\r\\n\\r\\n#project_overview_section img {\\r\\n   cursor: pointer;\\r\\n   width: 120%;\\r\\n   height: 100%;\\r\\n   left: -10%;\\r\\n   position: relative;\\r\\n   transform: scale(1) translateZ(0);\\r\\n   -webkit-backface-visibility: hidden;\\r\\n           backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n}\\r\\n\\r\\n/* #project_overview_section img:hover{\\r\\n   transform: scale(1.08);\\r\\n   backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n} */\\r\\n\\r\\n.project_overview_section_clicked {\\r\\n   transform: perspective(1000px) translateZ(30px) !important;\\r\\n}\\r\\n\\r\\n.project_overview_section_clicked img {\\r\\n   transform: scale(0.9) !important;\\r\\n}\\r\\n\\r\\n#project_overview_wrapper .line {\\r\\n   border-bottom: 1px solid var(--foreground);\\r\\n   height: 0px;\\r\\n   width: calc(20% - 40px);\\r\\n   -webkit-animation: lineanimation 0.3s ease 0s;\\r\\n           animation: lineanimation 0.3s ease 0s;\\r\\n   margin:-70px;\\r\\n}\\r\\n\\r\\n#marquee {\\r\\n   font-family: Coconut;\\r\\n   z-index: 1;\\r\\n   height: 100%;\\r\\n   position: absolute;\\r\\n   top:0;\\r\\n   left:0;\\r\\n   display:inline-flex;\\r\\n   align-items: center;\\r\\n   font-size: 130pt;\\r\\n   pointer-events: none;\\r\\n   white-space: nowrap;\\r\\n   /* animation: floatText 8s infinite linear; */\\r\\n}\\r\\n\\r\\n.hide{\\r\\n   opacity: 0;\\r\\n}\\r\\n\\r\\n#projectDetailWrapper > *{\\r\\n   transition: 0.3s;\\r\\n}\\r\\n.marqueeactive > *{\\r\\n   opacity:0.3 !important;\\r\\n}\\r\\n.marqueeactive #marquee{\\r\\n   opacity: 1 !important;\\r\\n}\\r\\n\\r\\n.marquee_text{\\r\\n   padding-right: 130pt; \\r\\n}\\r\\n\\r\\n@-webkit-keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\\r\\n\\r\\n@keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\", \"\"]);\n\n"
+              "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \"#project_overview_wrapper {\\r\\n   width: 100%;\\r\\n   height: 100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\n#project_overview_section {\\r\\n   width: 60%;\\r\\n   height: 80%;\\r\\n}\\r\\n\\r\\n#project_overview_section picture {\\r\\n   box-sizing: border-box;\\r\\n   margin: 0;\\r\\n   padding: 0;\\r\\n   border: 0;\\r\\n}\\r\\n\\r\\n#project_overview_section img {\\r\\n   cursor: pointer;\\r\\n   width: 120%;\\r\\n   height: 100%;\\r\\n   left: -10%;\\r\\n   position: relative;\\r\\n   transform: scale(1) translateZ(0);\\r\\n   -webkit-backface-visibility: hidden;\\r\\n           backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n}\\r\\n\\r\\n/* #project_overview_section img:hover{\\r\\n   transform: scale(1.08);\\r\\n   backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n} */\\r\\n\\r\\n.project_overview_section_clicked {\\r\\n   transform: perspective(1000px) translateZ(30px) !important;\\r\\n}\\r\\n\\r\\n.project_overview_section_clicked img {\\r\\n   transform: scale(0.9) !important;\\r\\n}\\r\\n\\r\\n#project_overview_wrapper .line {\\r\\n   border-bottom: 1px solid var(--foreground);\\r\\n   height: 0px;\\r\\n   width: calc(20% - 40px);\\r\\n   -webkit-animation: lineanimation 0.3s ease 0s;\\r\\n           animation: lineanimation 0.3s ease 0s;\\r\\n   margin:-70px;\\r\\n}\\r\\n\\r\\n#marquee {\\r\\n   font-family: Coconut;\\r\\n   z-index: 1;\\r\\n   height: 100%;\\r\\n   position: absolute;\\r\\n   top:0;\\r\\n   left:0;\\r\\n   display:flex;\\r\\n   align-items: center;\\r\\n   font-size: 130pt;\\r\\n   pointer-events: none;\\r\\n   white-space: nowrap;\\r\\n   /* animation: floatText 8s infinite linear; */\\r\\n}\\r\\n\\r\\n.hide{\\r\\n   opacity: 0;\\r\\n}\\r\\n\\r\\n#projectDetailWrapper > *{\\r\\n   transition: 0.3s;\\r\\n}\\r\\n.marqueeactive > *{\\r\\n   opacity:0.3 !important;\\r\\n}\\r\\n.marqueeactive #marquee{\\r\\n   opacity: 1 !important;\\r\\n}\\r\\n\\r\\n.marquee_text{\\r\\n   padding-right: 130pt; \\r\\n}\\r\\n\\r\\n@-webkit-keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\\r\\n\\r\\n@keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\", \"\"]);\n\n"
             },
             {
               "id": 1,
@@ -33206,7 +33206,7 @@
           "name": "D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/css-loader/dist/cjs.js??ref--4-oneOf-2-1!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/node_modules/postcss-loader/src??postcss!D:/Documents/Projekte/2021/Webseite_Fabian_Schwarzinger/Program2/PorfolioFabian/src/components/css/project_overview.css",
           "index": 0,
           "index2": 1,
-          "size": 2346,
+          "size": 2339,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -33239,7 +33239,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 0,
-          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \"#project_overview_wrapper {\\r\\n   width: 100%;\\r\\n   height: 100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\n#project_overview_section {\\r\\n   width: 60%;\\r\\n   height: 80%;\\r\\n}\\r\\n\\r\\n#project_overview_section picture {\\r\\n   box-sizing: border-box;\\r\\n   margin: 0;\\r\\n   padding: 0;\\r\\n   border: 0;\\r\\n}\\r\\n\\r\\n#project_overview_section img {\\r\\n   cursor: pointer;\\r\\n   width: 120%;\\r\\n   height: 100%;\\r\\n   left: -10%;\\r\\n   position: relative;\\r\\n   transform: scale(1) translateZ(0);\\r\\n   -webkit-backface-visibility: hidden;\\r\\n           backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n}\\r\\n\\r\\n/* #project_overview_section img:hover{\\r\\n   transform: scale(1.08);\\r\\n   backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n} */\\r\\n\\r\\n.project_overview_section_clicked {\\r\\n   transform: perspective(1000px) translateZ(30px) !important;\\r\\n}\\r\\n\\r\\n.project_overview_section_clicked img {\\r\\n   transform: scale(0.9) !important;\\r\\n}\\r\\n\\r\\n#project_overview_wrapper .line {\\r\\n   border-bottom: 1px solid var(--foreground);\\r\\n   height: 0px;\\r\\n   width: calc(20% - 40px);\\r\\n   -webkit-animation: lineanimation 0.3s ease 0s;\\r\\n           animation: lineanimation 0.3s ease 0s;\\r\\n   margin:-70px;\\r\\n}\\r\\n\\r\\n#marquee {\\r\\n   font-family: Coconut;\\r\\n   z-index: 1;\\r\\n   height: 100%;\\r\\n   position: absolute;\\r\\n   top:0;\\r\\n   left:0;\\r\\n   display:inline-flex;\\r\\n   align-items: center;\\r\\n   font-size: 130pt;\\r\\n   pointer-events: none;\\r\\n   white-space: nowrap;\\r\\n   /* animation: floatText 8s infinite linear; */\\r\\n}\\r\\n\\r\\n.hide{\\r\\n   opacity: 0;\\r\\n}\\r\\n\\r\\n#projectDetailWrapper > *{\\r\\n   transition: 0.3s;\\r\\n}\\r\\n.marqueeactive > *{\\r\\n   opacity:0.3 !important;\\r\\n}\\r\\n.marqueeactive #marquee{\\r\\n   opacity: 1 !important;\\r\\n}\\r\\n\\r\\n.marquee_text{\\r\\n   padding-right: 130pt; \\r\\n}\\r\\n\\r\\n@-webkit-keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\\r\\n\\r\\n@keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\", \"\"]);\n\n"
+          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \"#project_overview_wrapper {\\r\\n   width: 100%;\\r\\n   height: 100%;\\r\\n   display: flex;\\r\\n   justify-content: space-between;\\r\\n   align-items: center;\\r\\n}\\r\\n\\r\\n#project_overview_section {\\r\\n   width: 60%;\\r\\n   height: 80%;\\r\\n}\\r\\n\\r\\n#project_overview_section picture {\\r\\n   box-sizing: border-box;\\r\\n   margin: 0;\\r\\n   padding: 0;\\r\\n   border: 0;\\r\\n}\\r\\n\\r\\n#project_overview_section img {\\r\\n   cursor: pointer;\\r\\n   width: 120%;\\r\\n   height: 100%;\\r\\n   left: -10%;\\r\\n   position: relative;\\r\\n   transform: scale(1) translateZ(0);\\r\\n   -webkit-backface-visibility: hidden;\\r\\n           backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n}\\r\\n\\r\\n/* #project_overview_section img:hover{\\r\\n   transform: scale(1.08);\\r\\n   backface-visibility: hidden;\\r\\n   transition: transform 0.3s ease-out;\\r\\n} */\\r\\n\\r\\n.project_overview_section_clicked {\\r\\n   transform: perspective(1000px) translateZ(30px) !important;\\r\\n}\\r\\n\\r\\n.project_overview_section_clicked img {\\r\\n   transform: scale(0.9) !important;\\r\\n}\\r\\n\\r\\n#project_overview_wrapper .line {\\r\\n   border-bottom: 1px solid var(--foreground);\\r\\n   height: 0px;\\r\\n   width: calc(20% - 40px);\\r\\n   -webkit-animation: lineanimation 0.3s ease 0s;\\r\\n           animation: lineanimation 0.3s ease 0s;\\r\\n   margin:-70px;\\r\\n}\\r\\n\\r\\n#marquee {\\r\\n   font-family: Coconut;\\r\\n   z-index: 1;\\r\\n   height: 100%;\\r\\n   position: absolute;\\r\\n   top:0;\\r\\n   left:0;\\r\\n   display:flex;\\r\\n   align-items: center;\\r\\n   font-size: 130pt;\\r\\n   pointer-events: none;\\r\\n   white-space: nowrap;\\r\\n   /* animation: floatText 8s infinite linear; */\\r\\n}\\r\\n\\r\\n.hide{\\r\\n   opacity: 0;\\r\\n}\\r\\n\\r\\n#projectDetailWrapper > *{\\r\\n   transition: 0.3s;\\r\\n}\\r\\n.marqueeactive > *{\\r\\n   opacity:0.3 !important;\\r\\n}\\r\\n.marqueeactive #marquee{\\r\\n   opacity: 1 !important;\\r\\n}\\r\\n\\r\\n.marquee_text{\\r\\n   padding-right: 130pt; \\r\\n}\\r\\n\\r\\n@-webkit-keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\\r\\n\\r\\n@keyframes lineanimation {\\r\\n   0% {\\r\\n      width: 0;\\r\\n   }\\r\\n   100% {\\r\\n      width: calc(20% - 40px);\\r\\n   }\\r\\n}\", \"\"]);\n\n"
         },
         {
           "id": 1,

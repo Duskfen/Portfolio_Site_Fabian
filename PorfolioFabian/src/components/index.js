@@ -8,7 +8,6 @@ import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg")
 
 import 'aos/dist/aos.css'
-
 //
 class ProjectList {
    constructor() {
@@ -53,6 +52,12 @@ class Index extends Component {
          showMarquee: false,
          marqueeCount: 2,
       };
+
+      this.loadFont();
+   }
+
+   loadFont = async () => {
+     await <link rel="preload" href={"./fonts/Coconat-Regular.otf"} as="font" type="font/otf"></link> //i don't know actually if that does anything..
    }
 
    calculateMarqueeCount = (ev = null) => {

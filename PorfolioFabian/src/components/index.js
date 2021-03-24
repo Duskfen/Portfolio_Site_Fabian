@@ -51,12 +51,15 @@ class Index extends Component {
          projects: new ProjectList(),
          currentProject: 0,
          showDetails: false,
-         showMarquee: false
+         showMarquee: false,
+         marqueeCount: 2
       };
-
-
    }
 
+   calculateMarqueeCount = (ev = null) => {
+      let marquee = document.querySelectorAll(".marquee_text")[0]
+      this.setState({marqueeCount: Math.ceil(window.innerWidth/marquee.scrollWidth)+1})
+   }
 
    wait(ms) {
       var start = new Date().getTime();
@@ -67,32 +70,38 @@ class Index extends Component {
    }
 
    nextPicture = (ev) => {
-      this.setState({ currentProject: this.state.currentProject + 1 })
+      this.setState({ currentProject: this.state.currentProject + 1 }, () => this.calculateMarqueeCount())
    }
 
    openProjectdetails = (ev) => {
-
       this.setState({ showDetails: true });
       let test = document.querySelector("#project_overview_section");
-      console.log(test)
       test.classList.add("project_overview_section_clicked")
       // todo load project Details 
    }
 
-   showProjectTitle = (ev) => this.setState({ showMarquee: true })
+   showProjectTitle = (ev) => {
+      this.setState({ showMarquee: true }, () => this.animateMarquee(document.querySelectorAll(".marquee_text")))
+   }
    hideProjectTitle = (ev) => this.setState({showMarquee: false});
+
+   createMarquees= () => {
+      let marquees = [];
+
+      for(let i = 0; i < this.state.marqueeCount; i++){
+         marquees.push(<p className="marquee_text" key={`marqueetext_${i}`}>{this.state.projects.getProjectAt(this.state.currentProject).title}</p>)
+      }
+
+      return marquees
+   }
 
    render() {
       return (
          <div id="wrapper">
             <div id="projectDetailWrapper" className={this.state.showMarquee? "marqueeactive":null}>
-
-               {this.state.showMarquee ?
-                  <div id="marquee" data-aos="fade-up" >
-                     <p className="marquee_text">{this.state.projects.getProjectAt(this.state.currentProject).title}</p>
+                  <div id="marquee" className={this.state.showMarquee? null:"hide"}>
+                     {this.createMarquees()}
                   </div>
-                  : null
-               }
                <header>
                   <div id="head_items" data-aos="fade-down">
                      <a href="/">
@@ -129,27 +138,18 @@ class Index extends Component {
    componentDidMount() {
       AOS.init();
       document.querySelector("#loadingScreen").remove();
-   }
-   componentDidUpdate() {
-      this.state.showMarquee ? this.calculateMarqueeKeyFrames() : null;
+      window.addEventListener("resize", this.calculateMarqueeCount);
+      this.calculateMarqueeCount();
    }
 
-   calculateMarqueeKeyFrames = () => {
-      let marquee = document.querySelector("#marquee");
-      const keyFrames = document.createElement("style");
-      keyFrames.innerHTML =
-         `@keyframes floatText {
-         0%{
-            left: 80px
-         }
-         50%{
-            left: calc(100% - ${marquee.scrollWidth+300}px)
-         }
-         100%{
-            left: 80px
-         }
-       }`;
-      marquee.appendChild(keyFrames)
+   animateMarquee = (marqueeElements) => {
+      marqueeElements.forEach((element, index) => {
+         element.getAnimations()[0]?.cancel();
+         element.animate([
+           {transform: `translateX(-${element.scrollWidth}px)`}
+         ],{duration: element.scrollWidth*2, iterations:Infinity, easing: "linear", id:`marquee_${index}`})
+         // element.style.left = (element.style.left+1) + "px"
+      });
    }
 }
 

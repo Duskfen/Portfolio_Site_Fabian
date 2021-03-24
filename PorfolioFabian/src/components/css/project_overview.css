@@ -62,21 +62,25 @@
    font-size: 130pt;
    pointer-events: none;
    white-space: nowrap;
-   animation: floatText 8s infinite linear;
+   /* animation: floatText 8s infinite linear; */
 }
 
-#marquee p {
-   margin:0;
+.hide{
+   opacity: 0;
 }
 
 #projectDetailWrapper > *{
    transition: 0.3s;
 }
 .marqueeactive > *{
-   opacity:0.3;
+   opacity:0.3 !important;
 }
 .marqueeactive #marquee{
-   opacity: 1;
+   opacity: 1 !important;
+}
+
+.marquee_text{
+   padding-right: 130pt; 
 }
 
 @keyframes lineanimation {

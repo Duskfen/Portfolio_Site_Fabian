@@ -10,7 +10,7 @@ const right_arrow = require("./img/arrow_right.svg")
 
 import 'aos/dist/aos.css'
 
-
+//
 class ProjectList {
    constructor() {
       this.projects = [];

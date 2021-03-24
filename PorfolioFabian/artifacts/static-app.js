@@ -1200,8 +1200,7 @@ var Index = /*#__PURE__*/function (_Component) {
       aos__WEBPACK_IMPORTED_MODULE_12___default.a.init();
       document.querySelector("#loadingScreen").remove();
       window.addEventListener("resize", this.calculateMarqueeCount);
-      this.calculateMarqueeCount();
-      this.animateMarquee(document.querySelectorAll(".marquee_text")); //TODO delete
+      this.calculateMarqueeCount(); // this.animateMarquee(document.querySelectorAll(".marquee_text")) //TODO delete
     }
   }]);
 

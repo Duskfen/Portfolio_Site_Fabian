@@ -145,7 +145,7 @@ class Index extends Component {
       window.addEventListener("resize", this.calculateMarqueeCount);
       this.calculateMarqueeCount();
    
-      this.animateMarquee(document.querySelectorAll(".marquee_text")) //TODO delete
+      // this.animateMarquee(document.querySelectorAll(".marquee_text")) //TODO delete
    }
 
    animateMarquee = (marqueeElements) => {

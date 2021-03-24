@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { SwitchTransition, CSSTransition } from "react-transition-group";
 import AOS from 'aos';
 
 const ProjectInformation = require('./projects/projects_information.json')

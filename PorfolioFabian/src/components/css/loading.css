@@ -1,26 +1,52 @@
-@font-face{
+@font-face {
    font-family: Coconut;
    src: url(../fonts/Coconat-Regular.otf);
    font-weight: normal;
 }
 
-
-#loadingScreen{
-   position:absolute;
+#loadingScreen {
+   position: absolute;
    top: 0;
-   left:0;
+   left: 0;
    height: 100%;
-   width:100%;
+   width: 100%;
    background-color: var(--background);
    z-index: 6;
-}
-.loadingItem{
-   width:100%;
-   height: 100%;
    display: flex;
-   justify-content: center;
    align-items: center;
+   justify-content: center;
 }
-.loadingItem img{
-   width:200px;
+
+.loadingItem{
+   width:120px;
+   height: 120px;
+}
+
+.loadingItem img {
+   width: 120px;
+   display: block;
+   padding:0;
+   margin:0;
+}
+
+#loading_empty {
+   height: 100%;
+   opacity: 0.2;
+}
+
+#loading_full {
+   height: 100%;
+   width:120px;
+   position:relative;
+   bottom:120px;
+   animation: 2s fill_loading ease-in-out;
+}
+
+@keyframes fill_loading {
+   0% {
+      clip-path: inset(100% 0 0 0); 
+   }
+   100% {
+      clip-path: inset(0);
+   }
 }

@@ -16,9 +16,10 @@ class Branding extends Component{
             { opacity: 1 },
             { opacity: 0 }
          ], {
-            duration: 600,
+            duration: 300,
+            delay:1400,
             iterations: 1,
-            easing: "ease-out"
+            easing: "linear"
          })
          animation.onfinish = () => loading_screen.remove();
       } catch { console.error("this should not happen; Loading screen couldn't be removed") };

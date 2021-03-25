@@ -38,6 +38,9 @@ a{
    text-decoration: none;
    color: var(--foreground);
 }
+a:active{
+   border:none;
+}
 
 
 #root{height: 100%;}
@@ -54,7 +57,7 @@ a{
 
 header *, footer *{
    font-family: ClarikaProGrotesque;
-   font-size:15pt;
+   font-size:14pt;
 }
 
 header{
@@ -68,7 +71,7 @@ header{
    width:100%;
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   align-items: flex-start;
 }
 
 footer{
@@ -89,7 +92,7 @@ footer{
 
 
 .full_logo{
-   width: 170px;
+   width: 153px;
    object-fit: contain;
 }
 .right_arrow{

@@ -68,39 +68,20 @@ class Index extends Component {
    }
 
    handleNextAnimations = () => {
-      let picturebefore = document.querySelector("#picturebefore")
       let currentpicture = document.querySelector("#currentpicture")
 
-
-      picturebefore.style = "display:block;"
-      let beforeanimation = picturebefore.animate([
-         { width: "100%" },
-         { width: 0 },
-         { width: 0 }
-      ], {
-         duration: 1600,
-         iterations: 1,
-         easing: "ease-in-out"
-      })
-      beforeanimation.onfinish = () => {
-         picturebefore.style = "display:none" //maybe also display it before
+      if(this.state.currentProject > this.state.lastProject){
+         currentpicture.animate([
+            { clipPath: "inset(0 100% 0 0)"},
+            { clipPath: "inset(0)" }
+         ], { duration: 900, iterations: 1, easing: "ease-in-out" })
       }
-
-      currentpicture.style = ``;
-      let currentanimation = currentpicture.animate([
-         { width: 0 },
-         { width: "100%" },
-         { width: "100%" }
-      ], {
-         duration: 1600,
-         iterations: 1,
-         easing: "ease-in-out"
-      })
-      currentanimation.onfinish = () => {
-         currentpicture.style = "";
+      else{
+         currentpicture.animate([
+            { clipPath: "inset(0 0 0 100%)"},
+            { clipPath: "inset(0)" }
+         ], { duration: 900, iterations: 1, easing: "ease-in-out" })
       }
-
-      // console.log(picturebefore.getAnimations())
    }
 
    openProjectdetails = (ev) => {
@@ -141,8 +122,8 @@ class Index extends Component {
    render() {
       return (
          <div id="wrapper" onWheel={(e) => {
-            if (e.deltaY < 0) this.nextPicture(e, 1)
-            else this.nextPicture(e, -1)
+            if (e.deltaY < 0) this.nextPicture(e, -1)
+            else this.nextPicture(e, 1)
          }}>
             <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
                <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
@@ -153,23 +134,28 @@ class Index extends Component {
                      <a href="/">
                         <img src={full_logo} alt="logo" className="full_logo"></img>
                      </a>
-                     <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev)}><img src={right_arrow}></img></a>
+                     <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
                   </div>
                </header>
 
                <section id="project_overview_wrapper">
 
                   <div className="line lineleft"></div>
-                  {this.state.currentProject > this.state.lastProject ?
+                  {/* {this.state.currentProject > this.state.lastProject ?
                      <div id="project_overview_section" data-aos="zoom-in">
-                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
                         <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
+                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
                      </div> :
                      <div id="project_overview_section" data-aos="zoom-in">
-                        <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
                         <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
+                        <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
                      </div>
-                  }
+                  } */}
+
+                  <div id="project_overview_section" data-aos="zoom-in">
+                     <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
+                     <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
+                  </div>
                   <div className="line lineright"></div>
 
                </section>
@@ -190,11 +176,10 @@ class Index extends Component {
          let loading_screen = document.querySelector("#loadingScreen")
          let animation = loading_screen.animate([
             { opacity: 1 },
-            { opacity: 1 },
-            { opacity: 1 },
             { opacity: 0 }
          ], {
-            duration: 2450,
+            duration: 300,
+            delay: 1400,
             iterations: 1,
             easing: "linear"
          })

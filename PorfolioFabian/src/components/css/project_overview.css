@@ -10,23 +10,33 @@
 #project_overview_section {
    height: 100%;
    text-align: center;
-   display: flex;
-   justify-content: center;
+   /* display: flex; */
+   /* justify-content: center; */
 }
 #picturebefore{
-   display:none;
+   /* display:none; */
+   position:relative;
+   bottom:100%;
+   /* left: 50%; */
+}
+#currentpicture{
+   z-index: 1;
 }
 
 
 #project_overview_section img {
    cursor: pointer;
+   display: block;
    height: 100%;
+   width:100%;
    position: relative;
    transform: scale(1) translateZ(0);
    backface-visibility: hidden;
    object-fit: contain;
    transition: 0.3s ease-out;
+   margin:auto;
 }
+
 
 /* #project_overview_section img:hover{
    transform: scale(1.08);
@@ -91,8 +101,6 @@
 .marquee_text{
    padding-right: 130pt; 
 }
-
-
 
 @keyframes lineanimation {
    0% {

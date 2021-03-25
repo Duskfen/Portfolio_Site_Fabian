@@ -1859,9 +1859,33 @@ var NotFound = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "404 - not found");
     }
   }, {
+    key: "removeLoadingScreen",
+    value: function removeLoadingScreen() {
+      try {
+        var loading_screen = document.querySelector("#loadingScreen");
+        var animation = loading_screen.animate([{
+          opacity: 1
+        }, {
+          opacity: 0
+        }], {
+          duration: 600,
+          iterations: 1,
+          easing: "ease-out"
+        });
+
+        animation.onfinish = function () {
+          return loading_screen.remove();
+        };
+      } catch (_unused) {
+        console.error("this should not happen; Loading screen couldn't be removed");
+      }
+
+      ;
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      document.querySelector("#loadingScreen").remove();
+      this.removeLoadingScreen();
     }
   }]);
 

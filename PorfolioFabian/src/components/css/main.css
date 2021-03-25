@@ -33,9 +33,7 @@ body{
    padding:0;
    margin:0;
 }
-img{
-   object-fit: cover;
-}
+
 a{
    text-decoration: none;
    color: var(--foreground);
@@ -47,22 +45,23 @@ a{
    display: grid;
    height: calc(100vh - 140px);
    padding:70px;
-   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 5fr 1fr;
    grid-template-areas:
    "header"
-   "project_overview"
-   "project_overview"
    "project_overview"
    "footer";
 }
 
+header *, footer *{
+   font-family: ClarikaProGrotesque;
+   font-size:18pt;
+}
 
 header{
    display: flex;
    grid-area: header;
    /* background-color: blue; */
    align-items: flex-start ;
-   font-family: ClarikaProGrotesque;
 }
 #head_items{
    height:70px;
@@ -75,7 +74,6 @@ header{
 footer{
    display: flex;
    grid-area: footer;
-   font-family: ClarikaProGrotesque;
    /* background-color: red; */
 }
 #footer_overview_items{
@@ -95,5 +93,5 @@ footer{
    object-fit: contain;
 }
 .right_arrow{
-   width:60px;
+   width:90px;
 }

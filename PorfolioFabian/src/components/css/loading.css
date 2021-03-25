@@ -1,3 +1,10 @@
+@font-face{
+   font-family: Coconut;
+   src: url(../fonts/Coconat-Regular.otf);
+   font-weight: normal;
+}
+
+
 #loadingScreen{
    position:absolute;
    top: 0;
@@ -5,6 +12,7 @@
    height: 100%;
    width:100%;
    background-color: var(--background);
+   z-index: 6;
 }
 .loadingItem{
    width:100%;

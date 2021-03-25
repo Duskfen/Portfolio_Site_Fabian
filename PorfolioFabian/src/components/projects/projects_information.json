@@ -1,28 +1,28 @@
 {
    "projects": [
       {
-         "path": "temp_project",
-         "title": "BRANDING x LOGOTEMPDESIGN",
-         "textheading": "logodesign",
-         "subtext": "this is a temp project for testing purposes. yeah..",
-         "count_imgs": 2,
-         "image_extention": ["jpg"]
-      },
-      {
-         "path": "temp_project2",
-         "title": "BRANDING x P2",
-         "textheading": "propject 2 texthaeding",
-         "subtext": "this is a temp project for testing purposes. yeah..",
-         "count_imgs": 2,
-         "image_extention":["jpg"]
-      },
-      {
          "path": "europify",
          "title": "BRANDING x LOGODESIGN",
          "textheading": "propject 2 textheading TODO",
          "subtext": "Lorem Ipsum TODO",
          "count_imgs": 4,
          "image_extention":["jpg", "jpg", "mp4", "jpg"]
+      },
+      {
+         "path": "bhl",
+         "title": "NOT EXISTENT",
+         "textheading": "NOT EXISTENT",
+         "subtext": "Lorem Ipsum TODO",
+         "count_imgs": 6,
+         "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
+      },
+      {
+         "path": "gin_packaging",
+         "title": "NOT EXISTENT",
+         "textheading": "NOT EXISTENT",
+         "subtext": "Lorem Ipsum TODO",
+         "count_imgs": 4,
+         "image_extention":["jpg"]
       }
    ]
 }

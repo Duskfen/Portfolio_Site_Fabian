@@ -54,7 +54,7 @@ a{
 
 header *, footer *{
    font-family: ClarikaProGrotesque;
-   font-size:18pt;
+   font-size:15pt;
 }
 
 header{
@@ -89,9 +89,9 @@ footer{
 
 
 .full_logo{
-   width: 200px;
+   width: 170px;
    object-fit: contain;
 }
 .right_arrow{
-   width:90px;
+   width:80px;
 }

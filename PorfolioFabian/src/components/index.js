@@ -75,9 +75,10 @@ class Index extends Component {
       picturebefore.style = "display:block;"
       let beforeanimation = picturebefore.animate([
          { width: "100%" },
+         { width: 0 },
          { width: 0 }
       ], {
-         duration: 900,
+         duration: 1600,
          iterations: 1,
          easing: "ease-in-out"
       })
@@ -88,9 +89,10 @@ class Index extends Component {
       currentpicture.style = ``;
       let currentanimation = currentpicture.animate([
          { width: 0 },
+         { width: "100%" },
          { width: "100%" }
       ], {
-         duration: 900,
+         duration: 1600,
          iterations: 1,
          easing: "ease-in-out"
       })
@@ -139,8 +141,8 @@ class Index extends Component {
    render() {
       return (
          <div id="wrapper" onWheel={(e) => {
-            if (e.deltaY < 0) this.nextPicture(e, -1)
-            else this.nextPicture(e, 1)
+            if (e.deltaY < 0) this.nextPicture(e, 1)
+            else this.nextPicture(e, -1)
          }}>
             <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
                <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
@@ -188,11 +190,13 @@ class Index extends Component {
          let loading_screen = document.querySelector("#loadingScreen")
          let animation = loading_screen.animate([
             { opacity: 1 },
+            { opacity: 1 },
+            { opacity: 1 },
             { opacity: 0 }
          ], {
-            duration: 600,
+            duration: 2450,
             iterations: 1,
-            easing: "ease-out"
+            easing: "linear"
          })
          animation.onfinish = () => loading_screen.remove();
       } catch { console.error("this should not happen; Loading screen couldn't be removed") };

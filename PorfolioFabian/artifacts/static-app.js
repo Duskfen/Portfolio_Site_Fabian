@@ -1039,8 +1039,10 @@ var Index = /*#__PURE__*/function (_Component) {
         width: "100%"
       }, {
         width: 0
+      }, {
+        width: 0
       }], {
-        duration: 900,
+        duration: 1600,
         iterations: 1,
         easing: "ease-in-out"
       });
@@ -1054,8 +1056,10 @@ var Index = /*#__PURE__*/function (_Component) {
         width: 0
       }, {
         width: "100%"
+      }, {
+        width: "100%"
       }], {
-        duration: 900,
+        duration: 1600,
         iterations: 1,
         easing: "ease-in-out"
       });
@@ -1139,7 +1143,7 @@ var Index = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         id: "wrapper",
         onWheel: function onWheel(e) {
-          if (e.deltaY < 0) _this2.nextPicture(e, -1);else _this2.nextPicture(e, 1);
+          if (e.deltaY < 0) _this2.nextPicture(e, 1);else _this2.nextPicture(e, -1);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         id: "projectDetailWrapper",
@@ -1234,11 +1238,15 @@ var Index = /*#__PURE__*/function (_Component) {
         var animation = loading_screen.animate([{
           opacity: 1
         }, {
+          opacity: 1
+        }, {
+          opacity: 1
+        }, {
           opacity: 0
         }], {
-          duration: 600,
+          duration: 2450,
           iterations: 1,
-          easing: "ease-out"
+          easing: "linear"
         });
 
         animation.onfinish = function () {
@@ -3330,7 +3338,7 @@ var urlEscape = __webpack_require__(35);
 var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(36));
 
 // Module
-exports.push([module.i, "@font-face{\r\n   font-family: Coconut;\r\n   src: url(" + ___CSS_LOADER_URL___0___ + ");\r\n   font-weight: normal;\r\n}\r\n\r\n\r\n#loadingScreen{\r\n   position:absolute;\r\n   top: 0;\r\n   left:0;\r\n   height: 100%;\r\n   width:100%;\r\n   background-color: var(--background);\r\n   z-index: 6;\r\n}\r\n.loadingItem{\r\n   width:100%;\r\n   height: 100%;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}", ""]);
+exports.push([module.i, "@font-face{\r\n   font-family: Coconut;\r\n   src: url(" + ___CSS_LOADER_URL___0___ + ");\r\n   font-weight: normal;\r\n}\r\n\r\n\r\n#loadingScreen{\r\n   position:absolute;\r\n   top: 0;\r\n   left:0;\r\n   height: 100%;\r\n   width:100%;\r\n   background-color: var(--background);\r\n   z-index: 6;\r\n}\r\n.loadingItem{\r\n   width:100%;\r\n   height: 100%;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.loadingItem img{\r\n   width:200px;\r\n}", ""]);
 
 
 
@@ -3346,7 +3354,7 @@ var ___CSS_LOADER_URL___1___ = urlEscape(__webpack_require__(85));
 var ___CSS_LOADER_URL___2___ = urlEscape(__webpack_require__(36));
 
 // Module
-exports.push([module.i, "@font-face{\r\n   font-family: ClarikaProGrotesque;\r\n   src: url(" + ___CSS_LOADER_URL___0___ + ");\r\n   font-weight: normal;\r\n}\r\n@font-face{\r\n   font-family: ClarikaProGrotesque;\r\n   src: url(" + ___CSS_LOADER_URL___1___ + ");\r\n   font-weight: bold;\r\n}\r\n@font-face{\r\n   font-family: Coconut;\r\n   src: url(" + ___CSS_LOADER_URL___2___ + ");\r\n   font-weight: normal;\r\n}\r\n\r\n:root{\r\n   --background:#003a38;\r\n   --foreground: #fad2aa;\r\n}\r\n* {\r\n   scroll-behavior: smooth;\r\n   overflow:hidden;\r\n   font-family: Coconut;\r\n } \r\nhtml{\r\n   background-color: var(--background);\r\n   color: var(--foreground);\r\n   padding: 0;\r\n}\r\n\r\nbody{\r\n   padding:0;\r\n   margin:0;\r\n}\r\n\r\na{\r\n   text-decoration: none;\r\n   color: var(--foreground);\r\n}\r\n\r\n\r\n#root{height: 100%;}\r\n#projectDetailWrapper{\r\n   display: grid;\r\n   height: calc(100vh - 140px);\r\n   padding:70px;\r\n   grid-template-rows: 1fr 5fr 1fr;\r\n   grid-template-areas:\r\n   \"header\"\r\n   \"project_overview\"\r\n   \"footer\";\r\n}\r\n\r\nheader *, footer *{\r\n   font-family: ClarikaProGrotesque;\r\n   font-size:18pt;\r\n}\r\n\r\nheader{\r\n   display: flex;\r\n   grid-area: header;\r\n   /* background-color: blue; */\r\n   align-items: flex-start ;\r\n}\r\n#head_items{\r\n   height:70px;\r\n   width:100%;\r\n   display: flex;\r\n   justify-content: space-between;\r\n   align-items: center;\r\n}\r\n\r\nfooter{\r\n   display: flex;\r\n   grid-area: footer;\r\n   /* background-color: red; */\r\n}\r\n#footer_overview_items{\r\n   display: flex;\r\n   width:100%;\r\n   align-items: flex-end;\r\n   justify-content: space-between;\r\n}\r\n#project_overview_wrapper{\r\n   grid-area: project_overview;\r\n   /* background-color: yellow; */\r\n}\r\n\r\n\r\n.full_logo{\r\n   width: 200px;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n}\r\n.right_arrow{\r\n   width:90px;\r\n}", ""]);
+exports.push([module.i, "@font-face{\r\n   font-family: ClarikaProGrotesque;\r\n   src: url(" + ___CSS_LOADER_URL___0___ + ");\r\n   font-weight: normal;\r\n}\r\n@font-face{\r\n   font-family: ClarikaProGrotesque;\r\n   src: url(" + ___CSS_LOADER_URL___1___ + ");\r\n   font-weight: bold;\r\n}\r\n@font-face{\r\n   font-family: Coconut;\r\n   src: url(" + ___CSS_LOADER_URL___2___ + ");\r\n   font-weight: normal;\r\n}\r\n\r\n:root{\r\n   --background:#003a38;\r\n   --foreground: #fad2aa;\r\n}\r\n* {\r\n   scroll-behavior: smooth;\r\n   overflow:hidden;\r\n   font-family: Coconut;\r\n } \r\nhtml{\r\n   background-color: var(--background);\r\n   color: var(--foreground);\r\n   padding: 0;\r\n}\r\n\r\nbody{\r\n   padding:0;\r\n   margin:0;\r\n}\r\n\r\na{\r\n   text-decoration: none;\r\n   color: var(--foreground);\r\n}\r\n\r\n\r\n#root{height: 100%;}\r\n#projectDetailWrapper{\r\n   display: grid;\r\n   height: calc(100vh - 140px);\r\n   padding:70px;\r\n   grid-template-rows: 1fr 5fr 1fr;\r\n   grid-template-areas:\r\n   \"header\"\r\n   \"project_overview\"\r\n   \"footer\";\r\n}\r\n\r\nheader *, footer *{\r\n   font-family: ClarikaProGrotesque;\r\n   font-size:15pt;\r\n}\r\n\r\nheader{\r\n   display: flex;\r\n   grid-area: header;\r\n   /* background-color: blue; */\r\n   align-items: flex-start ;\r\n}\r\n#head_items{\r\n   height:70px;\r\n   width:100%;\r\n   display: flex;\r\n   justify-content: space-between;\r\n   align-items: center;\r\n}\r\n\r\nfooter{\r\n   display: flex;\r\n   grid-area: footer;\r\n   /* background-color: red; */\r\n}\r\n#footer_overview_items{\r\n   display: flex;\r\n   width:100%;\r\n   align-items: flex-end;\r\n   justify-content: space-between;\r\n}\r\n#project_overview_wrapper{\r\n   grid-area: project_overview;\r\n   /* background-color: yellow; */\r\n}\r\n\r\n\r\n.full_logo{\r\n   width: 170px;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n}\r\n.right_arrow{\r\n   width:80px;\r\n}", ""]);
 
 
 

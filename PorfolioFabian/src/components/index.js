@@ -10,7 +10,7 @@ import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg")
 
 import 'aos/dist/aos.css'
-//
+
 class ProjectList {
    constructor() {
       this.projects = [];
@@ -28,7 +28,6 @@ class ProjectList {
 }
 class Project {
    constructor(information) {
-      //this.path = information.path;
       this.title = information.title;
       this.textheading = information.textheading;
       this.subtext = information.subtext
@@ -43,7 +42,7 @@ class Project {
 }
 
 class Index extends Component {
-   constructor(props) {
+   constructor(props) { 
       super(props);
       this.state = {
          projects: new ProjectList(),

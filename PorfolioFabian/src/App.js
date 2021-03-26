@@ -34,6 +34,10 @@ class App extends Component {
 
    componentDidMount(){
       this.setState({hasmount: true});
+      window.addEventListener("touchmove",(e) => e.preventDefault())
+   }
+   componentWillUnmount(){
+      window.removeEventListener("touchmove");
    }
 }
 

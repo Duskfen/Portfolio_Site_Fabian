@@ -1463,7 +1463,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
             duration: 300,
             easing: "ease-out"
           });
-        }, 600); //timeout so this component has enough time to render
+        }, 900); //timeout so this component has enough time to render
       } catch (e) {
         console.error(e);
       }
@@ -1720,6 +1720,14 @@ var App = /*#__PURE__*/function (_Component) {
       this.setState({
         hasmount: true
       });
+      window.addEventListener("touchmove", function (e) {
+        return e.preventDefault();
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("touchmove");
     }
   }]);
 

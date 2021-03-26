@@ -138,7 +138,7 @@ class ProjectDetails extends Component {
                { position: "relative", left: "0" }
             ], { duration: 300, easing: "ease-out" });
 
-         }, 600) //timeout so this component has enough time to render
+         }, 900) //timeout so this component has enough time to render
       } catch (e) { console.error(e) };
    }
 

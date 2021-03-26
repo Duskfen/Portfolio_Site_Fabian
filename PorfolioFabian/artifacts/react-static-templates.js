@@ -35,8 +35,11 @@ const t_5 = universal(import('__react_static_root__/src/components/index.js'), u
 const t_6 = universal(import('__react_static_root__/src/components/LoadingScreen.js'), universalOptions)
       t_6.template = '__react_static_root__/src/components/LoadingScreen.js'
       
-const t_7 = universal(import('__react_static_root__/src/components/ReactSuspenseWrapper.js'), universalOptions)
-      t_7.template = '__react_static_root__/src/components/ReactSuspenseWrapper.js'
+const t_7 = universal(import('__react_static_root__/src/components/ProjectDetails.js'), universalOptions)
+      t_7.template = '__react_static_root__/src/components/ProjectDetails.js'
+      
+const t_8 = universal(import('__react_static_root__/src/components/ReactSuspenseWrapper.js'), universalOptions)
+      t_8.template = '__react_static_root__/src/components/ReactSuspenseWrapper.js'
       
 
 // Template Map
@@ -48,7 +51,8 @@ export default {
 '__react_static_root__/src/components/contact.js': t_4,
 '__react_static_root__/src/components/index.js': t_5,
 '__react_static_root__/src/components/LoadingScreen.js': t_6,
-'__react_static_root__/src/components/ReactSuspenseWrapper.js': t_7
+'__react_static_root__/src/components/ProjectDetails.js': t_7,
+'__react_static_root__/src/components/ReactSuspenseWrapper.js': t_8
 }
 // Not Found Template
 export const notFoundTemplate = "__react_static_root__/src/components/404.js"

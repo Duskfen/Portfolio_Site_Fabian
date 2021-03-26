@@ -1,0 +1,28 @@
+
+#main_wrapper {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   width: calc(100% + 340px);
+   margin-left:-170px;
+}
+#main_wrapper > div{
+   height: 100%;  
+}
+
+#main_wrapper .left, #main_wrapper .right{
+   width: 20%;
+}
+#main_wrapper .center{
+   width:80%;
+   margin-right: 20px;
+   margin-left:20px;
+}
+
+
+
+#main_wrapper img, #main_wrapper video{
+   object-fit: contain;
+   width: 100%;
+   height: 100%;
+}

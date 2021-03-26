@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ProjectDetails from './ProjectDetails.js'
+
 import AOS from 'aos';
 
 const ProjectInformation = require('./projects/projects_information.json')
@@ -21,7 +23,6 @@ class ProjectList {
       if ((index % this.projects.length) < 0) {
          return this.projects[this.projects.length + (index % this.projects.length)]
       }
-
       return this.projects[index % this.projects.length];
    }
 }
@@ -31,11 +32,12 @@ class Project {
       this.title = information.title;
       this.textheading = information.textheading;
       this.subtext = information.subtext
+      this.image_extention = information.image_extention
 
       this.titleImage = require(`./projects/${information.path}/main.jpg`)
       this.images = []
       for (let i = 0; i < information.count_imgs; i++) {
-         this.images.push(import(`./projects/${information.path}/img/${i}.${information.image_extention[i % information.image_extention.length]}`))
+         this.images.push(require(`./projects/${information.path}/img/${i}.${information.image_extention[i % information.image_extention.length]}`))
       }
    }
 }
@@ -54,8 +56,11 @@ class Index extends Component {
    }
 
    calculateMarqueeCount = (ev = null) => {
-      let marquee = document.querySelectorAll(".marquee_text")[0]
-      this.setState({ marqueeCount: Math.ceil(window.innerWidth / marquee.scrollWidth) + 1 })
+      try {
+         let marquee = document.querySelectorAll(".marquee_text")[0]
+         this.setState({ marqueeCount: Math.ceil(window.innerWidth / marquee.scrollWidth) + 1 })
+      }
+      catch { }
    }
 
    nextPicture = (ev, add = 1) => {
@@ -70,25 +75,27 @@ class Index extends Component {
    handleNextAnimations = () => {
       let currentpicture = document.querySelector("#currentpicture")
 
-      if(this.state.currentProject > this.state.lastProject){
+      if (this.state.currentProject < this.state.lastProject) {
          currentpicture.animate([
-            { clipPath: "inset(0 100% 0 0)"},
-            { clipPath: "inset(0)" }
+            { clipPath: "inset(5% 95% 5% 5%)" },
+            { clipPath: "inset(5%)" }
          ], { duration: 900, iterations: 1, easing: "ease-in-out" })
       }
-      else{
+      else {
          currentpicture.animate([
-            { clipPath: "inset(0 0 0 100%)"},
-            { clipPath: "inset(0)" }
+            { clipPath: "inset(5% 5% 5% 95%)" },
+            { clipPath: "inset(5%)" }
          ], { duration: 900, iterations: 1, easing: "ease-in-out" })
       }
    }
 
    openProjectdetails = (ev) => {
-      this.setState({ showDetails: true });
       let test = document.querySelector("#project_overview_section");
       test.classList.add("project_overview_section_clicked")
-      // todo load project Details 
+
+      setTimeout(() => {
+         this.setState({ showDetails: true })
+      }, 1000);
    }
 
    showProjectTitle = (ev) => {
@@ -120,28 +127,31 @@ class Index extends Component {
    }
 
    render() {
+
       return (
-         <div id="wrapper" onWheel={(e) => {
-            if (e.deltaY < 0) this.nextPicture(e, -1)
-            else this.nextPicture(e, 1)
-         }}>
-            <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
-               <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
-                  {this.createMarquees()}
-               </div>
-               <header>
-                  <div id="head_items" data-aos="fade-down">
-                     <a href="/">
-                        <img src={full_logo} alt="logo" className="full_logo"></img>
-                     </a>
-                     <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
+         <React.Fragment>
+            
+            <div id="wrapper" onWheel={(e) => {
+               if (e.deltaY < 0) this.nextPicture(e, -1)
+               else this.nextPicture(e, 1)
+            }}>
+               <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
+                  <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
+                     {this.createMarquees()}
                   </div>
-               </header>
+                  <header>
+                     <div id="head_items" data-aos="fade-down">
+                        <a href="/">
+                           <img src={full_logo} alt="logo" className="full_logo"></img>
+                        </a>
+                        <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
+                     </div>
+                  </header>
 
-               <section id="project_overview_wrapper">
+                  <section id="project_overview_wrapper">
 
-                  <div className="line lineleft"></div>
-                  {/* {this.state.currentProject > this.state.lastProject ?
+                     <div className="line lineleft"></div>
+                     {/* {this.state.currentProject > this.state.lastProject ?
                      <div id="project_overview_section" data-aos="zoom-in">
                         <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
                         <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
@@ -152,22 +162,24 @@ class Index extends Component {
                      </div>
                   } */}
 
-                  <div id="project_overview_section" data-aos="zoom-in">
-                     <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
-                     <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
-                  </div>
-                  <div className="line lineright"></div>
+                     <div id="project_overview_section" data-aos="zoom-in">
+                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
+                        <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
+                     </div>
+                     <div className="line lineright"></div>
 
-               </section>
-               <footer data-aos="fade-up">
-                  <div id="footer_overview_items">
-                     <a href="/branding">branding</a>
-                     <a href="/about">über mich</a>
-                     <a href="/contact">kontakt</a>
-                  </div>
-               </footer>
+                  </section>
+                  <footer data-aos="fade-up">
+                     <div id="footer_overview_items">
+                        <a href="/branding">branding</a>
+                        <a href="/about">über mich</a>
+                        <a href="/contact">kontakt</a>
+                     </div>
+                  </footer>
+               </div>
             </div>
-         </div>
+            {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)}></ProjectDetails> : null}
+         </React.Fragment>
       );
    }
 
@@ -187,10 +199,26 @@ class Index extends Component {
       } catch { console.error("this should not happen; Loading screen couldn't be removed") };
    }
 
+   CheckIfHmoreThanWidth = () =>{
+      if(window.innerHeight > window.innerWidth){
+         document.querySelectorAll("#project_overview_section img").forEach((img) => {
+            img.style = "width: 100%";
+         })
+      }
+      else{
+         document.querySelectorAll("#project_overview_section img").forEach((img) => {
+            img.style = "";
+         })
+      }
+   }
+
    componentDidMount() {
       AOS.init();
 
-      window.addEventListener("resize", this.calculateMarqueeCount);
+
+      window.addEventListener("resize", (e) => {this.CheckIfHmoreThanWidth(); this.calculateMarqueeCount()});
+
+      this.CheckIfHmoreThanWidth()
       this.calculateMarqueeCount();
       this.removeLoadingScreen();
       // this.fixScrollBehavior(document.body)

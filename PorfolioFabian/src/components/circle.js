@@ -12,9 +12,16 @@ class MouseCircle extends Component{
       super(props);
    }
 
-   setMousePosition = (e) => {
-      mouseX = e.clientX //- canvasPos.x;
-      mouseY = e.clientY //- canvasPos.y;
+   
+   setMousePosition = (e, touch = false) => {
+
+      if(touch){
+         mouseX = e.touches[0].clientX 
+         mouseY = e.touches[0].clientY; 
+         return;
+      }
+      mouseX = e.clientX
+      mouseY = e.clientY 
    }
 
    update = () => {
@@ -26,7 +33,6 @@ class MouseCircle extends Component{
 
    fillCircle(e) {
       circle.style.backgroundColor="#fad2aa";
-
       setTimeout(() => {circle.style.backgroundColor="transparent"}, 300)
    }
 
@@ -52,6 +58,7 @@ class MouseCircle extends Component{
    componentDidMount(){
       circle = document.getElementById("circle")
       document.addEventListener("mousemove", this.setMousePosition, false);
+      document.addEventListener("touchmove", (e) =>  this.setMousePosition(e, true), false);
       document.addEventListener("click", this.clickCircle, false)
       // document.addEventListener("click", this.fillCircle, false)
       this.update();

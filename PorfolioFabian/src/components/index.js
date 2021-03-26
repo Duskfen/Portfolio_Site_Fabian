@@ -200,9 +200,9 @@ class Index extends Component {
    }
 
    CheckIfHmoreThanWidth = () =>{
-      if(window.innerHeight > window.innerWidth){
+      if(window.innerHeight >= window.innerWidth){
          document.querySelectorAll("#project_overview_section img").forEach((img) => {
-            img.style = "width: 100%";
+            img.style = "width: 69%";
          })
       }
       else{

@@ -922,7 +922,7 @@ var ProjectInformation = __webpack_require__(23);
 
 var right_arrow = __webpack_require__(35);
 
- //
+
 
 var ProjectList = /*#__PURE__*/function () {
   function ProjectList() {
@@ -962,7 +962,6 @@ var ProjectList = /*#__PURE__*/function () {
 var Project = function Project(information) {
   _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_5___default()(this, Project);
 
-  //this.path = information.path;
   this.title = information.title;
   this.textheading = information.textheading;
   this.subtext = information.subtext;
@@ -1041,8 +1040,24 @@ var Index = /*#__PURE__*/function (_Component) {
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "openProjectdetails", function (ev) {
-      var test = document.querySelector("#project_overview_section");
-      test.classList.add("project_overview_section_clicked");
+      _this.setState({
+        showMarquee: false
+      });
+
+      var project_overview_section = document.querySelector("#project_overview_section");
+      project_overview_section.classList.add("project_overview_section_clicked");
+      var lines = document.querySelectorAll(".line");
+      lines.style = "width: 0";
+      lines.forEach(function (line) {
+        return line.animate([{
+          width: "50%"
+        }, {
+          width: 0
+        }], {
+          duration: 1000,
+          easing: "ease-in-out"
+        });
+      });
       setTimeout(function () {
         _this.setState({
           showDetails: true
@@ -1086,7 +1101,7 @@ var Index = /*#__PURE__*/function (_Component) {
           element.animate([{
             transform: "translateX(-".concat(element.scrollWidth, "px)")
           }], {
-            duration: element.scrollWidth * 2.3,
+            duration: element.scrollWidth * 8,
             iterations: Infinity,
             easing: "linear",
             id: "marquee_".concat(index)
@@ -1431,16 +1446,6 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
         var wrapper = document.querySelector("#wrapper");
         var rightimg = document.querySelector("#main_wrapper .right");
         var leftimg = document.querySelector("#main_wrapper .left");
-        document.querySelectorAll(".line").forEach(function (line) {
-          return line.animate([{
-            width: "50%"
-          }, {
-            width: 0
-          }], {
-            duration: 600,
-            easing: "ease-in-out"
-          });
-        });
         setTimeout(function () {
           wrapper.remove();
           rightimg.animate([{

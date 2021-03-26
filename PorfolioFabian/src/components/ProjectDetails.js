@@ -120,11 +120,6 @@ class ProjectDetails extends Component {
          let rightimg = document.querySelector("#main_wrapper .right")
          let leftimg = document.querySelector("#main_wrapper .left")
 
-         document.querySelectorAll(".line").forEach((line) => line.animate([
-            { width: "50%" },
-            { width: 0 }
-         ], {duration:600, easing:"ease-in-out"}))
-
          setTimeout(() => {
             wrapper.remove()
 

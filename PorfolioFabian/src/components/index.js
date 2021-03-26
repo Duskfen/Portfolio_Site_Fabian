@@ -89,8 +89,18 @@ class Index extends Component {
    }
 
    openProjectdetails = (ev) => {
-      let test = document.querySelector("#project_overview_section");
-      test.classList.add("project_overview_section_clicked")
+      this.setState({showMarquee:false})
+
+      let project_overview_section = document.querySelector("#project_overview_section");
+      project_overview_section.classList.add("project_overview_section_clicked")
+
+      let lines =  document.querySelectorAll(".line")
+
+      lines.style = "width: 0";
+      lines.forEach((line) => line.animate([
+         { width: "50%" },
+         { width: 0 }
+      ], {duration:1000, easing:"ease-in-out"}))
 
       setTimeout(() => {
          this.setState({ showDetails: true })
@@ -120,7 +130,7 @@ class Index extends Component {
 
             element.animate([
                { transform: `translateX(-${element.scrollWidth}px)` }
-            ], { duration: element.scrollWidth * 2.3, iterations: Infinity, easing: "linear", id: `marquee_${index}` })
+            ], { duration: element.scrollWidth * 8, iterations: Infinity, easing: "linear", id: `marquee_${index}` })
          });
       }
    }
@@ -135,7 +145,7 @@ class Index extends Component {
                else this.nextPicture(e, 1)
             }}>
                <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
-                  <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
+                  <div id="marquee"  className={this.state.showMarquee ? null : "hide"}>
                      {this.createMarquees()}
                   </div>
                   <header>

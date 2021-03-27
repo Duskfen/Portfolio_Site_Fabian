@@ -9,7 +9,6 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "aos": "^2.3.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",

@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import ProjectDetails from './ProjectDetails.js'
 
-import AOS from 'aos';
-
 const ProjectInformation = require('./projects/projects_information.json')
 import './css/main.css'
 import './css/project_overview.css'
 import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg")
 
-import 'aos/dist/aos.css'
 
 class ProjectList {
    constructor() {
@@ -43,11 +40,12 @@ class Project {
 
 class Index extends Component {
    constructor(props) { 
+
       super(props);
       this.state = {
          projects: new ProjectList(),
-         currentProject: 0,
-         lastProject: -1,
+         currentProject: this.props.currentProjectNumber | 0,
+         lastProject: this.props.lastProjectNumber | -1,
          showDetails: false,
          showMarquee: false,
          marqueeCount: 2,
@@ -89,6 +87,8 @@ class Index extends Component {
    }
 
    openProjectdetails = (ev) => {
+      //TODO animate footer
+
       this.setState({showMarquee:false})
 
       let project_overview_section = document.querySelector("#project_overview_section");
@@ -141,15 +141,17 @@ class Index extends Component {
          <React.Fragment>
             
             <div id="wrapper" onWheel={(e) => {
-               if (e.deltaY < 0) this.nextPicture(e, -1)
-               else this.nextPicture(e, 1)
+               if(!this.state.showDetails){
+                  if (e.deltaY < 0) this.nextPicture(e, -1)
+                  else this.nextPicture(e, 1)
+               }
             }}>
                <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
                   <div id="marquee"  className={this.state.showMarquee ? null : "hide"}>
                      {this.createMarquees()}
                   </div>
                   <header>
-                     <div id="head_items" data-aos="fade-down">
+                     <div id="head_items">
                         <a href="/">
                            <img src={full_logo} alt="logo" className="full_logo"></img>
                         </a>
@@ -171,14 +173,14 @@ class Index extends Component {
                      </div>
                   } */}
 
-                     <div id="project_overview_section" data-aos="zoom-in">
+                     <div id="project_overview_section">
                         <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
                         <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
                      </div>
                      <div className="line lineright"></div>
 
                   </section>
-                  <footer data-aos="fade-up">
+                  <footer >
                      <div id="footer_overview_items">
                         <a href="/branding">branding</a>
                         <a href="/about">über mich</a>
@@ -187,7 +189,7 @@ class Index extends Component {
                   </footer>
                </div>
             </div>
-            {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)}></ProjectDetails> : null}
+            {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)} currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></ProjectDetails> : null}
          </React.Fragment>
       );
    }
@@ -208,6 +210,16 @@ class Index extends Component {
       } catch { console.error("this should not happen; Loading screen couldn't be removed") };
    }
 
+   removeDetailWrapper() {
+      try {
+         let wrapper = document.querySelector("#Detailwrapper");
+
+         setTimeout(() => {
+            wrapper.remove();
+         }, 900) //timeout so this component has enough time to render
+      } catch (e) { console.error(e) };
+   }
+
    CheckIfHmoreThanWidth = () =>{
       if(window.innerHeight >= window.innerWidth){
          document.querySelectorAll("#project_overview_section img").forEach((img) => {
@@ -222,16 +234,16 @@ class Index extends Component {
    }
 
    componentDidMount() {
-      AOS.init();
-
-
+      if(this.props.removeDetailWrapper) {
+         this.removeDetailWrapper();
+      }
+      else {
+         this.removeLoadingScreen();
+      }
       window.addEventListener("resize", (e) => {this.CheckIfHmoreThanWidth(); this.calculateMarqueeCount()});
 
       this.CheckIfHmoreThanWidth()
       this.calculateMarqueeCount();
-      this.removeLoadingScreen();
-      // this.fixScrollBehavior(document.body)
-      // this.animateMarquee(document.querySelectorAll(".marquee_text")) //TODO delete
    }
 
    componentWillUnmount() {

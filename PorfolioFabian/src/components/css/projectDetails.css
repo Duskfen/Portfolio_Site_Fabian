@@ -1,5 +1,5 @@
 
-#main_wrapper {
+/* #main_wrapper {
    display: flex;
    justify-content: space-around;
    align-items: center;
@@ -17,12 +17,43 @@
    width:100%;
    margin-right: 20px;
    margin-left:20px;
+   text-align: center;
 }
-
-
+#main_wrapper .center #centeritem{
+   display: block;
+   margin: auto;
+}
 
 #main_wrapper img, #main_wrapper video{
    object-fit: contain;
-   width: 100%;
    height: 100%;
+} */
+
+#main_wrapper{
+   position:relative;
+   transition: left 1s;
+}
+#main_wrapper > div{
+   height: 100%;  
+   width: 100vw;
+   float:left;
+}
+/* #main_wrapper > div:not(::first-child){
+   margin-left: calc(-20vw - 70px);
+} */
+
+#main_wrapper .centeritem{
+   display: block;
+   margin: auto;
+   object-fit: contain;
+   height: 100%;
+}
+
+
+.main_wrapper_return_to_overview .centeritem{
+   clip-path: inset(5%);
+}
+
+footer, header{
+   width:calc(100vw - 140px)
 }

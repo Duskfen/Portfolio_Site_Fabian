@@ -43,7 +43,7 @@
 
 #project_overview_section img{
    clip-path: inset(5% 5%  5%  5%);
-   transition: clip-path 1s;
+   transition: clip-path 1s ease-out;
 }
 
 

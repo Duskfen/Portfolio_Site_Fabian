@@ -1321,15 +1321,14 @@ var right_arrow = __webpack_require__(35);
 
 
 
+var BlockNextImage = false;
 
 var Project = /*#__PURE__*/function () {
   function Project(project) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_6___default()(this, Project);
 
-    this.images = project.images; // this.images.push("placeholder")
-
-    this.image_extension = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_5___default()(project.image_extention); // this.image_extension.push("placeholder");
-
+    this.images = project.images;
+    this.image_extension = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_5___default()(project.image_extention);
     this.subtext = project.subtext;
     this.title = project.title;
     this.textheading = project.textheading;
@@ -1338,12 +1337,6 @@ var Project = /*#__PURE__*/function () {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_7___default()(Project, [{
     key: "getImageAt",
     value: function getImageAt(index) {
-      // if ((index % this.images.length) === -1 || (index % this.images.length) === this.images.length - 1) {
-      //    return (<div id="lefttext">
-      //       <h2>{this.textheading}</h2>
-      //       <p>{this.subtext}</p>
-      //    </div>)
-      // }
       var returnstring;
       var ismp4 = false;
 
@@ -1393,32 +1386,57 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
       //TODO animate footer
       //TODO animate left and right
       //TODO scroll back to first img 
-      var mainimg = document.querySelector("#main_wrapper #Mainimg");
+      var timeout = 0;
+      if (_this.state.currentpic != 0) timeout = 1000; //so the page gets time to scroll back to the first image
 
       _this.nextPicture(null, -1 * _this.state.currentpic);
 
-      document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview");
-      mainimg.animate([{
-        clipPath: "inset(0)"
-      }, {
-        clipPath: "inset(5%)"
-      }], {
-        duration: 1000,
-        easing: "ease-out"
-      });
+      setTimeout(function () {
+        var mainimg = document.querySelector("#main_wrapper #Mainimg");
+        document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview");
+        mainimg.animate([{
+          clipPath: "inset(0)"
+        }, {
+          clipPath: "inset(5%)"
+        }], {
+          duration: 1000,
+          easing: "ease-out"
+        });
 
-      _this.setState({
-        returnToOverview: true
-      });
+        _this.setState({
+          returnToOverview: true
+        });
+      }, timeout);
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "nextPicture", function (event, add) {
-      if (_this.state.currentpic + add >= 0 && _this.state.currentpic + add < _this.state.projects.images.length) {
+      if (_this.state.currentpic + add >= 0 && _this.state.currentpic + add < _this.state.projects.images.length && !BlockNextImage) {
         _this.setState({
           currentpic: _this.state.currentpic + add
         }, function () {
           document.querySelector("#main_wrapper").style = "width: ".concat(_this.state.projects.images.length * 100, "vw; left: calc(-").concat(_this.state.currentpic * 100, "vw - 70px)");
         });
+
+        BlockNextImage = true;
+        setTimeout(function () {
+          return BlockNextImage = false;
+        }, 1000);
+      } else if (_this.state.currentpic + add >= _this.state.projects.images.length && !BlockNextImage) {
+        var mainwrapper = document.querySelector("#main_wrapper");
+        mainwrapper.animate([{
+          left: "calc(-".concat(_this.state.currentpic * 100, "vw - 70px)")
+        }, {
+          left: "calc(-".concat(_this.state.currentpic * 100, "vw - 100px)")
+        }, {
+          left: "calc(-".concat(_this.state.currentpic * 100, "vw - 70px)")
+        }], {
+          duration: 900,
+          easing: "ease-out"
+        });
+        BlockNextImage = true;
+        setTimeout(function () {
+          return BlockNextImage = false;
+        }, 1000);
       }
     });
 
@@ -1436,9 +1454,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       projects: new Project(props.currentProject),
-      // lastpic: -1,
       currentpic: 0,
-      // nextpic: 1,
       returnToOverview: false
     };
     return _this;
@@ -3525,7 +3541,7 @@ exports.push([module.i, "@font-face {\r\n   font-family: Coconut;\r\n   src: url
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, "\r\n/* #main_wrapper {\r\n   display: flex;\r\n   justify-content: space-around;\r\n   align-items: center;\r\n   width: calc(100% + 340px);\r\n   margin-left:-170px;\r\n}\r\n#main_wrapper > div{\r\n   height: 100%;  \r\n}\r\n\r\n#main_wrapper .left, #main_wrapper .right{\r\n   width: 20%;\r\n}\r\n#main_wrapper .center{\r\n   width:100%;\r\n   margin-right: 20px;\r\n   margin-left:20px;\r\n   text-align: center;\r\n}\r\n#main_wrapper .center #centeritem{\r\n   display: block;\r\n   margin: auto;\r\n}\r\n\r\n#main_wrapper img, #main_wrapper video{\r\n   object-fit: contain;\r\n   height: 100%;\r\n} */\r\n\r\n#main_wrapper{\r\n   position:relative;\r\n   transition: left 1s;\r\n}\r\n#main_wrapper > div{\r\n   height: 100%;  \r\n   width: 100vw;\r\n   float:left;\r\n}\r\n/* #main_wrapper > div:not(::first-child){\r\n   margin-left: calc(-20vw - 70px);\r\n} */\r\n\r\n#main_wrapper .centeritem{\r\n   display: block;\r\n   margin: auto;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   height: 100%;\r\n}\r\n\r\n\r\n.main_wrapper_return_to_overview .centeritem{\r\n   -webkit-clip-path: inset(5%);\r\n           clip-path: inset(5%);\r\n}\r\n\r\nfooter, header{\r\n   width:calc(100vw - 140px)\r\n}", ""]);
+exports.push([module.i, "\r\n#main_wrapper{\r\n   position:relative;\r\n   transition: left .9s ease-out !important;\r\n}\r\n#main_wrapper > div{\r\n   height: 100%;  \r\n   width: 100vw;\r\n   float:left;\r\n}\r\n\r\n#main_wrapper .centeritem{\r\n   display: block;\r\n   margin: auto;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   height: 100%;\r\n}\r\n\r\n\r\n.main_wrapper_return_to_overview .centeritem{\r\n   -webkit-clip-path: inset(5%);\r\n           clip-path: inset(5%);\r\n}\r\n\r\nfooter, header{\r\n   width:calc(100vw - 140px)\r\n}", ""]);
 
 
 
@@ -3563,7 +3579,7 @@ module.exports = __webpack_require__.p + "static/ClarikaProGrot-Md.28594521.otf"
 
 exports = module.exports = __webpack_require__(14)(false);
 // Module
-exports.push([module.i, "#project_overview_wrapper {\r\n   width: calc(100% + 340px);\r\n   margin-left:-170px;\r\n   /* width: 100%; */\r\n   height: 100%;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n\r\n#project_overview_section {\r\n   height: 100%;\r\n   text-align: center;\r\n   /* width:80%; */\r\n   /* display: flex; */\r\n   /* justify-content: center; */\r\n}\r\n#picturebefore{\r\n   /* display:none; */\r\n   position:relative;\r\n   bottom:100%;\r\n   /* left: 50%; */\r\n}\r\n#currentpicture{\r\n   z-index: 1;\r\n}\r\n\r\n\r\n#project_overview_section img {\r\n   cursor: pointer;\r\n   display: block;\r\n   margin-right: 20px;\r\n   margin-left:20px;\r\n   height: 100%;\r\n   /* width:100%;  */ /* gets added by js if the height > width */\r\n   position: relative;\r\n   transform: scale(1) translateZ(0);\r\n   -webkit-backface-visibility: hidden;\r\n           backface-visibility: hidden;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   transition: 0.3s ease-out;\r\n   margin:auto;\r\n}\r\n\r\n#project_overview_section img{\r\n   -webkit-clip-path: inset(5% 5%  5%  5%);\r\n           clip-path: inset(5% 5%  5%  5%);\r\n   transition: -webkit-clip-path 1s ease-out;\r\n   transition: clip-path 1s ease-out;\r\n   transition: clip-path 1s ease-out, -webkit-clip-path 1s ease-out;\r\n}\r\n\r\n\r\n/* #project_overview_section img:hover{\r\n   transform: scale(1.08);\r\n   backface-visibility: hidden;\r\n   transition: transform 0.3s ease-out;\r\n} */\r\n\r\n.project_overview_section_clicked img{\r\n   -webkit-clip-path: inset(0) !important;\r\n           clip-path: inset(0) !important;\r\n}\r\n\r\n\r\n.line {\r\n   border-bottom: 1px solid var(--foreground);\r\n   height: 0px;\r\n   width: 50%;\r\n   -webkit-animation: lineanimation 2s ease-in-out 0s;\r\n           animation: lineanimation 2s ease-in-out 0s;\r\n   position:absolute;\r\n   top: calc(50% + 1px);\r\n   z-index: -1;\r\n}\r\n\r\n.lineright{\r\n   right:0;\r\n}\r\n.lineleft{\r\n   left: 0;\r\n}\r\n\r\n#marquee {\r\n   font-family: font;\r\n   z-index: 1;\r\n   height: 100%;\r\n   position: absolute;\r\n   top:0;\r\n   left:0;\r\n   display:flex;\r\n   align-items: center;\r\n   font-size: 130pt;\r\n   pointer-events: none;\r\n   white-space: nowrap;\r\n   /* animation: floatText 8s infinite linear; */\r\n}\r\n\r\n.hide{\r\n   opacity: 0;\r\n}\r\n\r\n#projectDetailWrapper > *{\r\n   transition: 0.3s;\r\n}\r\n.marqueeactive > *{\r\n   opacity:0.3 !important;\r\n}\r\n.marqueeactive #marquee{\r\n   opacity: 1 !important;\r\n}\r\n\r\n.marquee_text{\r\n   padding-right: 130pt; \r\n}\r\n\r\n@-webkit-keyframes lineanimation {\r\n   0% {\r\n      width: 0;\r\n   }\r\n   100% {\r\n      width: 50%;\r\n   }\r\n}\r\n\r\n@keyframes lineanimation {\r\n   0% {\r\n      width: 0;\r\n   }\r\n   100% {\r\n      width: 50%;\r\n   }\r\n}", ""]);
+exports.push([module.i, "#project_overview_wrapper {\r\n   width: calc(100% + 340px);\r\n   margin-left:-170px;\r\n   /* width: 100%; */\r\n   height: 100%;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n\r\n#project_overview_section {\r\n   height: 100%;\r\n   text-align: center;\r\n   /* width:80%; */\r\n   /* display: flex; */\r\n   /* justify-content: center; */\r\n}\r\n#picturebefore{\r\n   /* display:none; */\r\n   position:relative;\r\n   bottom:100%;\r\n   /* left: 50%; */\r\n}\r\n#currentpicture{\r\n   z-index: 1;\r\n}\r\n\r\n\r\n#project_overview_section img {\r\n   cursor: pointer;\r\n   display: block;\r\n   margin-right: 20px;\r\n   margin-left:20px;\r\n   height: 100%;\r\n   /* width:100%;  */ /* gets added by js if the height > width */\r\n   position: relative;\r\n   transform: scale(1) translateZ(0);\r\n   -webkit-backface-visibility: hidden;\r\n           backface-visibility: hidden;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   transition: 0.3s ease-out;\r\n   margin:auto;\r\n   -webkit-clip-path: inset(5% 5%  5%  5%);\r\n           clip-path: inset(5% 5%  5%  5%);\r\n   transition: -webkit-clip-path 1s ease-out;\r\n   transition: clip-path 1s ease-out;\r\n   transition: clip-path 1s ease-out, -webkit-clip-path 1s ease-out;\r\n}  \r\n\r\n/* #project_overview_section img:hover{\r\n   transform: scale(1.08);\r\n   backface-visibility: hidden;\r\n   transition: transform 0.3s ease-out;\r\n} */\r\n\r\n.project_overview_section_clicked img{\r\n   -webkit-clip-path: inset(0) !important;\r\n           clip-path: inset(0) !important;\r\n}\r\n\r\n\r\n.line {\r\n   border-bottom: 1px solid var(--foreground);\r\n   height: 0px;\r\n   width: 50%;\r\n   -webkit-animation: lineanimation 2s ease-in-out 0s;\r\n           animation: lineanimation 2s ease-in-out 0s;\r\n   position:absolute;\r\n   top: calc(50% + 1px);\r\n   z-index: -1;\r\n}\r\n\r\n.lineright{\r\n   right:0;\r\n}\r\n.lineleft{\r\n   left: 0;\r\n}\r\n\r\n#marquee {\r\n   font-family: font;\r\n   z-index: 1;\r\n   height: 100%;\r\n   position: absolute;\r\n   top:0;\r\n   left:0;\r\n   display:flex;\r\n   align-items: center;\r\n   font-size: 130pt;\r\n   pointer-events: none;\r\n   white-space: nowrap;\r\n   /* animation: floatText 8s infinite linear; */\r\n}\r\n\r\n.hide{\r\n   opacity: 0;\r\n}\r\n\r\n#projectDetailWrapper > *{\r\n   transition: 0.3s;\r\n}\r\n.marqueeactive > *{\r\n   opacity:0.3 !important;\r\n}\r\n.marqueeactive #marquee{\r\n   opacity: 1 !important;\r\n}\r\n\r\n.marquee_text{\r\n   padding-right: 130pt; \r\n}\r\n\r\n@-webkit-keyframes lineanimation {\r\n   0% {\r\n      width: 0;\r\n   }\r\n   100% {\r\n      width: 50%;\r\n   }\r\n}\r\n\r\n@keyframes lineanimation {\r\n   0% {\r\n      width: 0;\r\n   }\r\n   100% {\r\n      width: 50%;\r\n   }\r\n}", ""]);
 
 
 

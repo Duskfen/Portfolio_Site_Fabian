@@ -6,6 +6,8 @@ const right_arrow = require("./img/arrow_right.svg")
 import "./css/projectDetails.css"
 import Index from "./index"
 
+var BlockNextImage = false;
+
 class Project {
    constructor(project) {
       this.images = project.images
@@ -122,14 +124,33 @@ class ProjectDetails extends Component {
    }
 
    nextPicture = (event, add) => {
-      if(this.state.currentpic + add >= 0
-         && this.state.currentpic + add < this.state.projects.images.length){
+         if(this.state.currentpic + add >= 0
+         && this.state.currentpic + add < this.state.projects.images.length
+         && !BlockNextImage){
 
             this.setState({
                currentpic: this.state.currentpic + add,
             }, () => {
                document.querySelector("#main_wrapper").style=`width: ${this.state.projects.images.length*100}vw; left: calc(-${this.state.currentpic*100}vw - 70px)`
             })
+
+            BlockNextImage = true;
+            setTimeout(() => BlockNextImage = false ,1000)
+
+         }
+         else if (this.state.currentpic + add >= this.state.projects.images.length  && !BlockNextImage){
+
+            let mainwrapper = document.querySelector("#main_wrapper")
+
+            mainwrapper.animate([
+               {left: `calc(-${this.state.currentpic*100}vw - 70px)`},
+               {left: `calc(-${this.state.currentpic*100}vw - 100px)`},
+               {left: `calc(-${this.state.currentpic*100}vw - 70px)`}
+            ],
+            {duration:900, easing:"ease-out"})
+
+            BlockNextImage = true;
+            setTimeout(() => BlockNextImage = false ,1000)
          }
    }
 

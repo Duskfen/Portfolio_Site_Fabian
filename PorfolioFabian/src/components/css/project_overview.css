@@ -39,13 +39,9 @@
    object-fit: contain;
    transition: 0.3s ease-out;
    margin:auto;
-}
-
-#project_overview_section img{
    clip-path: inset(5% 5%  5%  5%);
    transition: clip-path 1s ease-out;
-}
-
+}  
 
 /* #project_overview_section img:hover{
    transform: scale(1.08);

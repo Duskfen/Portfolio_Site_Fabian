@@ -7,6 +7,7 @@ import "./css/projectDetails.css"
 import Index from "./index"
 
 var BlockNextImage = false;
+var nextMultiplier = 60;
 
 class Project {
    constructor(project) {
@@ -21,13 +22,13 @@ class Project {
       let returnstring;
       let ismp4 = false;
 
-      if((index % this.images.length) < 0) {
+      if ((index % this.images.length) < 0) {
          returnstring = this.images[this.images.length + (index % this.images.length)]
-         if(this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") ismp4 = true;
+         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") ismp4 = true;
       }
       else {
          returnstring = this.images[index % this.images.length]
-         if(this.image_extension[index % this.image_extension.length] === "mp4") ismp4 = true;
+         if (this.image_extension[index % this.image_extension.length] === "mp4") ismp4 = true;
       }
 
       if (ismp4) {
@@ -37,7 +38,7 @@ class Project {
             </video>
          )
       }
-      else return <img src={returnstring} className="centeritem" loading="lazy" id={index==0?"Mainimg":null}></img>
+      else return <img src={returnstring} className="centeritem" loading="lazy" id={index == 0 ? "Mainimg" : null}></img>
    }
 }
 
@@ -72,86 +73,104 @@ class ProjectDetails extends Component {
                   </header>
 
                   {/* TODO add the description text */}
-                  <section id="main_wrapper" style={{width: `${this.state.projects.images.length*100}vw`, left:"-70px"}}>
+                  <section id="main_wrapper" style={{ width: `${this.state.projects.images.length * 100}vw`, left: "-70px" }}>
                      {this.state.projects.images.map((image, i) => {
-                       return (
-                        <div key={`detailImage_${i}`}>
-                           {this.state.projects.getImageAt(i)}
-                        </div>  
+                        return (
+                           <div key={`detailImage_${i}`}>
+                              {this.state.projects.getImageAt(i)}
+                           </div>
                         )
                      })}
                   </section>
 
-                  <footer>
-                     <div id="footer_overview_items">
+                  <footer id="DetailsFooter">
+                     <div>
                         <p> TODO </p>
                      </div>
                   </footer>
                </div>
             </div>
-            {this.state.returnToOverview? <Index removeDetailWrapper={true} currentProjectNumber={this.props.currentProjectNumber} lastProjectNumber={this.props.lastProjectNumber}></Index>:null}
+            {this.state.returnToOverview ? <Index removeDetailWrapper={true} currentProjectNumber={this.props.currentProjectNumber} lastProjectNumber={this.props.lastProjectNumber}></Index> : null}
          </React.Fragment>
 
       )
    }
 
    returnToOverview = () => {
-      //TODO animate footer
-      //TODO animate left and right
-      //TODO scroll back to first img 
-      let timeout = 0;
-      if(this.state.currentpic != 0) timeout=1000; //so the page gets time to scroll back to the first image
+      //TODO animate left
 
-      this.nextPicture(null, -1*this.state.currentpic);
+      window.removeEventListener("resize", this.WindowEventHandler) //remove event listener -> to prevent errors
+
+      let timeout = 0;
+      if (this.state.currentpic != 0) timeout = 1000; //so the page gets time to scroll back to the first image
+
+      this.nextPicture(null, -1 * this.state.currentpic);
+      //wait until it is scrolled back to the first img
       setTimeout(() => {
          let mainimg = document.querySelector("#main_wrapper #Mainimg");
+         let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
+         let footer = document.querySelector("#DetailsFooter");
 
+         //animate footer
+         footer.style = "position:relative";
+         footer.animate([
+            { top: 0 },
+            { top: "calc(100% + 140px)" }
+         ], { duration: 1001 })
+
+         //animate right side
+         secondimg.animate([
+            { marginLeft: nextMultiplier - 100 + "vw" },
+            { marginLeft: 0 }
+         ], { duration: 1001 })
+
+         //animate main img
          document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview")
          mainimg.animate([
-            {clipPath: "inset(0)"},
-            {clipPath: "inset(5%)"}
+            { clipPath: "inset(0)" },
+            { clipPath: "inset(5%)" }
          ],
-         {
-            duration:1000,
-            easing:"ease-out"
-         })
+            {
+               duration: 1000,
+               easing: "ease-out"
+            })
 
-         this.setState({returnToOverview: true})
+         this.setState({ returnToOverview: true })
       }, timeout)
 
-     
+
 
    }
 
    nextPicture = (event, add) => {
-         if(this.state.currentpic + add >= 0
+      if (this.state.currentpic + add >= 0
          && this.state.currentpic + add < this.state.projects.images.length
-         && !BlockNextImage){
+         && !BlockNextImage) {
 
-            this.setState({
-               currentpic: this.state.currentpic + add,
-            }, () => {
-               document.querySelector("#main_wrapper").style=`width: ${this.state.projects.images.length*100}vw; left: calc(-${this.state.currentpic*100}vw - 70px)`
-            })
+         this.setState({
+            currentpic: this.state.currentpic + add,
+         }, () => {
+            document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
+         })
 
-            BlockNextImage = true;
-            setTimeout(() => BlockNextImage = false ,1000)
+         BlockNextImage = true;
+         setTimeout(() => BlockNextImage = false, 1000)
 
-         }
-         else if (this.state.currentpic + add >= this.state.projects.images.length  && !BlockNextImage){
+      }
+      else if (this.state.currentpic + add >= this.state.projects.images.length && !BlockNextImage) {
 
-            let mainwrapper = document.querySelector("#main_wrapper")
+         let mainwrapper = document.querySelector("#main_wrapper")
 
-            mainwrapper.animate([
-               {left: `calc(-${this.state.currentpic*100}vw - 70px)`},
-               {left: `calc(-${this.state.currentpic*100}vw - 100px)`},
-               {left: `calc(-${this.state.currentpic*100}vw - 70px)`}
-            ],
-            {duration:900, easing:"ease-out"})
+         mainwrapper.animate([
+            { left: `calc(-${this.state.currentpic * nextMultiplier}vw - 70px)` },
+            { left: `calc(-${this.state.currentpic * nextMultiplier}vw - 150px)` },
+            { left: `calc(-${this.state.currentpic * nextMultiplier}vw - 70px)` }
+         ],
+            { duration: 900, easing: "ease-out" })
 
-            BlockNextImage = true;
-            setTimeout(() => BlockNextImage = false ,1000)
-         }
+         BlockNextImage = true;
+         setTimeout(() => BlockNextImage = false, 900)
+      }
    }
 
 
@@ -166,29 +185,74 @@ class ProjectDetails extends Component {
       } catch (e) { console.error(e) };
    }
 
-   CheckIfHmoreThanWidth = () =>{
-      if(window.innerHeight >= window.innerWidth){
+   CheckIfNextPictureShouldBeTeasered = () => {
+      let mainImg = document.querySelector("#Mainimg");
+      if (document.body.clientWidth < (mainImg.clientWidth / 0.6) + 100) {
+         nextMultiplier = 100;
+         document.querySelectorAll("#main_wrapper > div").forEach((div) => div.classList.add("toSmallToPreview"))
+         this.nextPicture(null, 0);
+
+         //TODO also handle the describing Text right from the picture..
+      }
+      else if (nextMultiplier === 100) {
+         nextMultiplier = 60;
+         document.querySelectorAll("#main_wrapper > div").forEach((div) => div.classList.remove("toSmallToPreview"))
+         this.nextPicture(null, 0);
+      }
+   }
+
+   CheckIfHmoreThanWidth = () => {
+      if (window.innerHeight >= window.innerWidth) {
          document.querySelectorAll("#main_wrapper img, #main_wrapper video").forEach((img) => {
             img.style = "width: 100%";
          })
       }
-      else{
+      else {
          document.querySelectorAll("#main_wrapper img, #main_wrapper video").forEach((img) => {
             img.style = "";
          })
       }
    }
 
+   animateMount = () => {
+
+      //TODO left side
+
+      //right side
+      let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
+      secondimg.animate([
+         { marginLeft: 0 },
+         { marginLeft: nextMultiplier - 100 + "vw" },
+      ], { duration: 1000, delay: 500 })
+
+      //animate footer
+      let footer = document.querySelector("#DetailsFooter");
+      footer.style = "position:relative";
+      let footeranim = footer.animate([
+         { top: "calc(100% + 140px)" },
+         { top: 0 }
+      ], { duration: 1000, delay: 500 })
+      footeranim.onfinish= () => footer.style = "";
+   }
+
    componentDidMount() {
+
+      this.animateMount();
+
       try {
          this.removeOverview();
       }
       catch (e) { console.error(e) }
 
-      window.addEventListener("resize", (e) => {this.CheckIfHmoreThanWidth()});
+      window.addEventListener("resize", this.WindowEventHandler);
       this.CheckIfHmoreThanWidth();
+      setTimeout(this.CheckIfNextPictureShouldBeTeasered, 300)
    }
 
+   WindowEventHandler = () => {
+      this.CheckIfHmoreThanWidth();
+      this.CheckIfNextPictureShouldBeTeasered()
+   }
 }
 
 export default ProjectDetails

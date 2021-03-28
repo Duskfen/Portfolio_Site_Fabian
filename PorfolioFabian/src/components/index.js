@@ -39,7 +39,7 @@ class Project {
 }
 
 class Index extends Component {
-   constructor(props) { 
+   constructor(props) {
 
       super(props);
       this.state = {
@@ -87,20 +87,27 @@ class Index extends Component {
    }
 
    openProjectdetails = (ev) => {
-      //TODO animate footer
+      let footer = document.querySelector("#footerOverview")
+      //animate footer
+      footer.style = "position:relative; top: calc(100% + 140px)";
+      footer.animate([
+         { top: 0 },
+         { top: "calc(100% + 140px)" }
+      ], { duration: 1000, delay:300})
 
-      this.setState({showMarquee:false})
+
+      this.setState({ showMarquee: false })
 
       let project_overview_section = document.querySelector("#project_overview_section");
       project_overview_section.classList.add("project_overview_section_clicked")
 
-      let lines =  document.querySelectorAll(".line")
+      let lines = document.querySelectorAll(".line")
 
       lines.style = "width: 0";
       lines.forEach((line) => line.animate([
          { width: "50%" },
          { width: 0 }
-      ], {duration:1000, easing:"ease-in-out"}))
+      ], { duration: 1000, easing: "ease-in-out" }))
 
       setTimeout(() => {
          this.setState({ showDetails: true })
@@ -130,7 +137,7 @@ class Index extends Component {
 
             element.animate([
                { transform: `translateX(-${element.scrollWidth}px)` }
-            ], { duration: element.scrollWidth * 8, iterations: Infinity, easing: "linear", id: `marquee_${index}` })
+            ], { duration: element.scrollWidth * 3.8, iterations: Infinity, easing: "linear", id: `marquee_${index}` })
          });
       }
    }
@@ -139,15 +146,15 @@ class Index extends Component {
 
       return (
          <React.Fragment>
-            
+
             <div id="wrapper" onWheel={(e) => {
-               if(!this.state.showDetails){
+               if (!this.state.showDetails) {
                   if (e.deltaY < 0) this.nextPicture(e, -1)
                   else this.nextPicture(e, 1)
                }
             }}>
                <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
-                  <div id="marquee"  className={this.state.showMarquee ? null : "hide"}>
+                  <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
                      {this.createMarquees()}
                   </div>
                   <header>
@@ -162,17 +169,6 @@ class Index extends Component {
                   <section id="project_overview_wrapper">
 
                      <div className="line lineleft"></div>
-                     {/* {this.state.currentProject > this.state.lastProject ?
-                     <div id="project_overview_section" data-aos="zoom-in">
-                        <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
-                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
-                     </div> :
-                     <div id="project_overview_section" data-aos="zoom-in">
-                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
-                        <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
-                     </div>
-                  } */}
-
                      <div id="project_overview_section">
                         <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
                         <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
@@ -180,7 +176,7 @@ class Index extends Component {
                      <div className="line lineright"></div>
 
                   </section>
-                  <footer >
+                  <footer id="footerOverview">
                      <div id="footer_overview_items">
                         <a href="/branding">branding</a>
                         <a href="/about">über mich</a>
@@ -220,34 +216,55 @@ class Index extends Component {
       } catch (e) { console.error(e) };
    }
 
-   CheckIfHmoreThanWidth = () =>{
-      if(window.innerHeight >= window.innerWidth){
+   CheckIfHmoreThanWidth = () => {
+      if (window.innerHeight >= window.innerWidth) {
          document.querySelectorAll("#project_overview_section img").forEach((img) => {
             img.style = "width: 69%";
          })
       }
-      else{
+      else {
          document.querySelectorAll("#project_overview_section img").forEach((img) => {
             img.style = "";
          })
       }
    }
 
+   animateFooterIn = () => {
+      let footer = document.querySelector("#footerOverview")
+      //animate footer
+      footer.style = "position:relative; top: calc(100% + 140px)";
+      let footeranim = footer.animate([
+         { top: "calc(100% + 140px)" },
+         { top: 0 }
+      ], { duration: 1000, delay:300})
+      
+      footeranim.onfinish = () =>{footer.style = "";}
+      
+
+   }
+
    componentDidMount() {
-      if(this.props.removeDetailWrapper) {
+      this.animateFooterIn();
+
+      if (this.props.removeDetailWrapper) {
          this.removeDetailWrapper();
       }
       else {
          this.removeLoadingScreen();
       }
-      window.addEventListener("resize", (e) => {this.CheckIfHmoreThanWidth(); this.calculateMarqueeCount()});
+      window.addEventListener("resize", this.windowListenerHandler);
 
       this.CheckIfHmoreThanWidth()
       this.calculateMarqueeCount();
    }
 
    componentWillUnmount() {
-      window.removeEventListener("resize", this.calculateMarqueeCount)
+      window.removeEventListener("resize", this.windowListenerHandler)
+   }
+
+   windowListenerHandler = () => {
+      this.CheckIfHmoreThanWidth();
+      this.calculateMarqueeCount()
    }
 }
 

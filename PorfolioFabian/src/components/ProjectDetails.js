@@ -9,25 +9,13 @@ import Index from "./index"
 class Project {
    constructor(project) {
       this.images = project.images
-      // this.images.push("placeholder")
-
       this.image_extension = [...project.image_extention];
-      // this.image_extension.push("placeholder");
-
       this.subtext = project.subtext;
       this.title = project.title;
       this.textheading = project.textheading;
    }
 
    getImageAt(index) {
-
-      // if ((index % this.images.length) === -1 || (index % this.images.length) === this.images.length - 1) {
-      //    return (<div id="lefttext">
-      //       <h2>{this.textheading}</h2>
-      //       <p>{this.subtext}</p>
-      //    </div>)
-      // }
-
       let returnstring;
       let ismp4 = false;
 
@@ -57,9 +45,7 @@ class ProjectDetails extends Component {
       super(props);
       this.state = {
          projects: new Project(props.currentProject),
-         // lastpic: -1,
          currentpic: 0,
-         // nextpic: 1,
          returnToOverview: false
       };
    }
@@ -83,16 +69,8 @@ class ProjectDetails extends Component {
                      </div>
                   </header>
 
+                  {/* TODO add the description text */}
                   <section id="main_wrapper" style={{width: `${this.state.projects.images.length*100}vw`, left:"-70px"}}>
-                     {/* <div className="left">
-                        {this.state.projects.getImageAt(this.state.lastpic)}
-                     </div>
-                     <div className="center">
-                        {this.state.projects.getImageAt(this.state.currentpic)}
-                     </div>
-                     <div className="right">
-                        {this.state.projects.getImageAt(this.state.nextpic)}
-                     </div> */}
                      {this.state.projects.images.map((image, i) => {
                        return (
                         <div key={`detailImage_${i}`}>
@@ -116,27 +94,30 @@ class ProjectDetails extends Component {
    }
 
    returnToOverview = () => {
-
-
       //TODO animate footer
       //TODO animate left and right
       //TODO scroll back to first img 
-
-      let mainimg = document.querySelector("#main_wrapper #Mainimg");
+      let timeout = 0;
+      if(this.state.currentpic != 0) timeout=1000; //so the page gets time to scroll back to the first image
 
       this.nextPicture(null, -1*this.state.currentpic);
+      setTimeout(() => {
+         let mainimg = document.querySelector("#main_wrapper #Mainimg");
 
-      document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview")
-      mainimg.animate([
-         {clipPath: "inset(0)"},
-         {clipPath: "inset(5%)"}
-      ],
-      {
-         duration:1000,
-         easing:"ease-out"
-      })
-      
-      this.setState({returnToOverview: true})
+         document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview")
+         mainimg.animate([
+            {clipPath: "inset(0)"},
+            {clipPath: "inset(5%)"}
+         ],
+         {
+            duration:1000,
+            easing:"ease-out"
+         })
+
+         this.setState({returnToOverview: true})
+      }, timeout)
+
+     
 
    }
 

@@ -31,7 +31,7 @@
 
 #main_wrapper{
    position:relative;
-   transition: left 1s;
+   transition: left .9s ease-out !important;
 }
 #main_wrapper > div{
    height: 100%;  

@@ -1498,6 +1498,11 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "CheckIfNextPictureShouldBeTeasered", function () {
       var mainImg = document.querySelector("#Mainimg");
 
+      if (mainImg.clientWidth === 0) {
+        setTimeout(_this.CheckIfNextPictureShouldBeTeasered, 100);
+        return;
+      }
+
       if (document.body.clientWidth < mainImg.clientWidth / 0.6 + 100) {
         nextMultiplier = 100;
         document.querySelectorAll("#main_wrapper > div").forEach(function (div) {
@@ -1645,7 +1650,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
       window.addEventListener("resize", this.WindowEventHandler);
       this.CheckIfHmoreThanWidth();
-      setTimeout(this.CheckIfNextPictureShouldBeTeasered, 300);
+      this.CheckIfNextPictureShouldBeTeasered();
     }
   }]);
 

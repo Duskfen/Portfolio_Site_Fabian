@@ -187,6 +187,12 @@ class ProjectDetails extends Component {
 
    CheckIfNextPictureShouldBeTeasered = () => {
       let mainImg = document.querySelector("#Mainimg");
+
+      if(mainImg.clientWidth === 0){
+         setTimeout(this.CheckIfNextPictureShouldBeTeasered, 100)
+         return;
+      }
+
       if (document.body.clientWidth < (mainImg.clientWidth / 0.6) + 100) {
          nextMultiplier = 100;
          document.querySelectorAll("#main_wrapper > div").forEach((div) => div.classList.add("toSmallToPreview"))
@@ -246,7 +252,7 @@ class ProjectDetails extends Component {
 
       window.addEventListener("resize", this.WindowEventHandler);
       this.CheckIfHmoreThanWidth();
-      setTimeout(this.CheckIfNextPictureShouldBeTeasered, 300)
+      this.CheckIfNextPictureShouldBeTeasered()
    }
 
    WindowEventHandler = () => {

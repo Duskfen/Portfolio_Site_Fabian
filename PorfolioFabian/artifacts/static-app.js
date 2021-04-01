@@ -1462,8 +1462,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
       setTimeout(function () {
         var mainimg = document.querySelector("#main_wrapper #Mainimg");
         var secondimg = document.querySelectorAll("#main_wrapper > div")[1];
-        var footer = document.querySelector("#DetailsFooter");
-        var left = document.querySelector("#detail_description_text"); //animate footer
+        var footer = document.querySelector("#DetailsFooter"); //animate footer
 
         footer.style = "position:relative";
         footer.animate([{
@@ -1484,14 +1483,18 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
           easing: "ease-out"
         }); //animate left side
 
-        left.animate([{
-          left: left.getBoundingClientRect().left + "px"
-        }, {
-          left: -left.scrollWidth - 100 + "px"
-        }], {
-          duration: 1001,
-          easing: "ease-out"
-        }); //animate main img
+        if (_this.state.displayDescription) {
+          var left = document.querySelector("#detail_description_text");
+          left.animate([{
+            left: left.getBoundingClientRect().left + "px"
+          }, {
+            left: -left.scrollWidth - 100 + "px"
+          }], {
+            duration: 1001,
+            easing: "ease-out"
+          });
+        } //animate main img
+
 
         document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview");
         mainimg.animate([{
@@ -1517,13 +1520,11 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
         _this.setState({
           currentpic: _this.state.currentpic + add
         }, function () {
-          document.querySelector("#main_wrapper").style = "width: ".concat(_this.state.projects.images.length * nextMultiplier + 100, "vw; left: calc(-").concat(_this.state.currentpic * nextMultiplier, "vw - 70px)");
-          console.log(document.querySelectorAll(".centeritem")[_this.state.projects.calcCurrentPictureInRealIndex(_this.state.currentpic)]); //add highlight to new
+          document.querySelector("#main_wrapper").style = "width: ".concat(_this.state.projects.images.length * nextMultiplier + 100, "vw; left: calc(-").concat(_this.state.currentpic * nextMultiplier, "vw - 70px)"); //add highlight to new
 
           document.querySelectorAll(".centeritem")[_this.state.projects.calcCurrentPictureInRealIndex(_this.state.currentpic)].classList.add("showFull");
 
           if (_this.state.projects.isMp4(_this.state.currentpic)) {
-            console.log(_this.state.projects.getMp4id(_this.state.currentpic));
             lastMP4 = document.querySelector("#video".concat(_this.state.projects.getMp4id(_this.state.currentpic)));
             lastMP4.play();
           } else if (lastMP4 !== null) {
@@ -1605,23 +1606,25 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "animateMount", function () {
       //left side
-      var left = document.querySelector("#detail_description_text");
-      left.style = "opacity:0";
-      var leftanim = left.animate([{
-        left: -left.scrollWidth - 100 + "px",
-        opacity: 1
-      }, {
-        left: left.getBoundingClientRect().left + "px",
-        opacity: 1
-      }], {
-        duration: 1000,
-        delay: 500,
-        easing: "ease-out"
-      });
+      if (_this.state.displayDescription) {
+        var left = document.querySelector("#detail_description_text");
+        left.style = "opacity:0";
+        var leftanim = left.animate([{
+          left: -left.scrollWidth - 100 + "px",
+          opacity: 1
+        }, {
+          left: left.getBoundingClientRect().left + "px",
+          opacity: 1
+        }], {
+          duration: 1000,
+          delay: 500,
+          easing: "ease-out"
+        });
 
-      leftanim.onfinish = function () {
-        _this.calculateTextWidthHeight();
-      }; //right side
+        leftanim.onfinish = function () {
+          _this.calculateTextWidthHeight();
+        };
+      } //right side
 
 
       var secondimg = document.querySelectorAll("#main_wrapper > div")[1];
@@ -1653,18 +1656,19 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "calculateTextWidthHeight", function () {
-      var mainImgWidth = document.querySelector("#Mainimg").clientWidth;
+      if (_this.state.displayDescription) {
+        var mainImgWidth = document.querySelector("#Mainimg").clientWidth;
 
-      if (mainImgWidth === 0) {
-        //just so if it don't get called to early (before rendering of the imgs)..
-        setTimeout(_this.calculateTextWidthHeight, 10);
-        return;
+        if (mainImgWidth === 0) {
+          //just so if it don't get called to early (before rendering of the imgs)..
+          setTimeout(_this.calculateTextWidthHeight, 10);
+          return;
+        }
+
+        var windowwidth = document.body.clientWidth;
+        var texttochange = document.querySelector("#detail_description_text");
+        texttochange.style = "width: calc(".concat((windowwidth - mainImgWidth) / 2, "px - 10%)");
       }
-
-      var windowwidth = document.body.clientWidth;
-      var texttochange = document.querySelector("#detail_description_text");
-      console.log((windowwidth - mainImgWidth) / 2);
-      texttochange.style = "width: calc(".concat((windowwidth - mainImgWidth) / 2, "px - 10%)");
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "WindowEventHandler", function () {

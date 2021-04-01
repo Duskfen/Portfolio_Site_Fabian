@@ -149,7 +149,7 @@ class ProjectDetails extends Component {
          let mainimg = document.querySelector("#main_wrapper #Mainimg");
          let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
          let footer = document.querySelector("#DetailsFooter");
-         let left = document.querySelector("#detail_description_text")
+         
 
          //animate footer
          footer.style = "position:relative";
@@ -165,10 +165,13 @@ class ProjectDetails extends Component {
          ], { duration: 1001, easing:"ease-out" })
 
          //animate left side
-         left.animate([
-            { left: left.getBoundingClientRect().left + "px" },
-            { left: -left.scrollWidth - 100 + "px" },
-         ], { duration: 1001, easing:"ease-out" })
+         if(this.state.displayDescription){
+            let left = document.querySelector("#detail_description_text")
+            left.animate([
+               { left: left.getBoundingClientRect().left + "px" },
+               { left: -left.scrollWidth - 100 + "px" },
+            ], { duration: 1001, easing:"ease-out" })
+         }
 
          //animate main img
          document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview")
@@ -201,12 +204,10 @@ class ProjectDetails extends Component {
          }, () => {
             document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
 
-            console.log(document.querySelectorAll(".centeritem")[this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)])
             //add highlight to new
             document.querySelectorAll(".centeritem")[this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)].classList.add("showFull")
 
             if (this.state.projects.isMp4(this.state.currentpic)) {
-               console.log(this.state.projects.getMp4id(this.state.currentpic))
                lastMP4 = document.querySelector(`#video${this.state.projects.getMp4id(this.state.currentpic)}`)
                lastMP4.play()
             }
@@ -288,14 +289,16 @@ class ProjectDetails extends Component {
    animateMount = () => {
 
       //left side
-      let left = document.querySelector("#detail_description_text");
-      left.style = "opacity:0"
-      let leftanim = left.animate([
-         { left: -left.scrollWidth - 100 + "px", opacity: 1 },
-         { left: left.getBoundingClientRect().left + "px", opacity: 1 },
-      ], { duration: 1000, delay:500, easing:"ease-out" })
-
-      leftanim.onfinish = () => {this.calculateTextWidthHeight()}
+      if(this.state.displayDescription){      
+         let left = document.querySelector("#detail_description_text");
+         left.style = "opacity:0"
+         let leftanim = left.animate([
+            { left: -left.scrollWidth - 100 + "px", opacity: 1 },
+            { left: left.getBoundingClientRect().left + "px", opacity: 1 },
+         ], { duration: 1000, delay:500, easing:"ease-out" })
+   
+         leftanim.onfinish = () => {this.calculateTextWidthHeight()}
+      }
 
       //right side
       let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
@@ -315,19 +318,19 @@ class ProjectDetails extends Component {
    }
 
    calculateTextWidthHeight = () => {
-      let mainImgWidth = document.querySelector("#Mainimg").clientWidth;
+      if(this.state.displayDescription){
+         let mainImgWidth = document.querySelector("#Mainimg").clientWidth;
 
-      if (mainImgWidth === 0) { //just so if it don't get called to early (before rendering of the imgs)..
-         setTimeout(this.calculateTextWidthHeight, 10)
-         return;
+         if (mainImgWidth === 0) { //just so if it don't get called to early (before rendering of the imgs)..
+            setTimeout(this.calculateTextWidthHeight, 10)
+            return;
+         }
+   
+         let windowwidth = document.body.clientWidth;
+         let texttochange = document.querySelector("#detail_description_text")
+   
+         texttochange.style = `width: calc(${(windowwidth - mainImgWidth) / 2}px - 10%)`
       }
-
-      let windowwidth = document.body.clientWidth;
-      let texttochange = document.querySelector("#detail_description_text")
-
-      console.log((windowwidth - mainImgWidth) / 2)
-
-      texttochange.style = `width: calc(${(windowwidth - mainImgWidth) / 2}px - 10%)`
    }
 
    componentDidMount() {

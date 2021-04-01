@@ -8,12 +8,13 @@ import Index from "./index"
 
 var BlockNextImage = false;
 var nextMultiplier = 60;
+var lastMP4 = null;
 
 class Project {
    constructor(project) {
       this.images = project.images
       this.image_extension = [...project.image_extention];
-      this.subtext = project.subtext;
+      this.subtext = [...project.subtext];
       this.title = project.title;
       this.textheading = project.textheading;
    }
@@ -33,12 +34,42 @@ class Project {
 
       if (ismp4) {
          return (
-            <video autoPlay preload="auto" loop className="centeritem">
+            <video preload="auto" loop className="centeritem" id={"video" + returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")}>
                <source src={returnstring} type="video/mp4"></source>
             </video>
          )
       }
-      else return <img src={returnstring} className="centeritem" loading="lazy" id={index == 0 ? "Mainimg" : null}></img>
+      else return <img src={returnstring} className={`centeritem ${index == 0? "showFull":""}`} id={index == 0 ? "Mainimg" : null}></img>
+   }
+
+   isMp4(index) {
+      if ((index % this.images.length) < 0) {
+         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") return true;
+      }
+      else {
+         if (this.image_extension[index % this.image_extension.length] === "mp4") return true;
+      }
+      return false;
+   }
+   getMp4id(index) {
+      let returnstring;
+
+      if ((index % this.images.length) < 0) {
+         returnstring = this.images[this.images.length + (index % this.images.length)]
+      }
+      else {
+         returnstring = this.images[index % this.images.length]
+      }
+      return returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")
+   }
+
+   calcCurrentPictureInRealIndex(index){
+      if ((index % this.images.length) < 0) {
+         return this.images.length + (index % this.images.length)
+      }
+      else {
+         return index % this.images.length
+      }
    }
 }
 
@@ -49,7 +80,8 @@ class ProjectDetails extends Component {
       this.state = {
          projects: new Project(props.currentProject),
          currentpic: 0,
-         returnToOverview: false
+         returnToOverview: false,
+         displayDescription: true
       };
    }
 
@@ -72,7 +104,17 @@ class ProjectDetails extends Component {
                      </div>
                   </header>
 
-                  {/* TODO add the description text */}
+                  {this.state.displayDescription ?
+                     <div id="detail_description_text">
+                        <div>
+                           <h2>{this.state.projects.textheading}</h2>
+                           {this.state.projects.subtext.map((text, i) => {
+                              return <p key={"subtext_" + i}>{text}</p>
+                           })}
+
+                        </div>
+                     </div> : null
+                  }
                   <section id="main_wrapper" style={{ width: `${this.state.projects.images.length * 100}vw`, left: "-70px" }}>
                      {this.state.projects.images.map((image, i) => {
                         return (
@@ -82,7 +124,6 @@ class ProjectDetails extends Component {
                         )
                      })}
                   </section>
-
                   <footer id="DetailsFooter">
                      <div>
                         <p> TODO </p>
@@ -97,8 +138,6 @@ class ProjectDetails extends Component {
    }
 
    returnToOverview = () => {
-      //TODO animate left
-
       window.removeEventListener("resize", this.WindowEventHandler) //remove event listener -> to prevent errors
 
       let timeout = 0;
@@ -110,19 +149,26 @@ class ProjectDetails extends Component {
          let mainimg = document.querySelector("#main_wrapper #Mainimg");
          let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
          let footer = document.querySelector("#DetailsFooter");
+         let left = document.querySelector("#detail_description_text")
 
          //animate footer
          footer.style = "position:relative";
          footer.animate([
             { top: 0 },
             { top: "calc(100% + 140px)" }
-         ], { duration: 1001 })
+         ], { duration: 1001, easing:"ease-out" })
 
          //animate right side
          secondimg.animate([
             { marginLeft: nextMultiplier - 100 + "vw" },
             { marginLeft: 0 }
-         ], { duration: 1001 })
+         ], { duration: 1001, easing:"ease-out" })
+
+         //animate left side
+         left.animate([
+            { left: left.getBoundingClientRect().left + "px" },
+            { left: -left.scrollWidth - 100 + "px" },
+         ], { duration: 1001, easing:"ease-out" })
 
          //animate main img
          document.querySelector("#main_wrapper").classList.add("main_wrapper_return_to_overview")
@@ -147,10 +193,27 @@ class ProjectDetails extends Component {
          && this.state.currentpic + add < this.state.projects.images.length
          && !BlockNextImage) {
 
+            //remove highlight of old
+            document.querySelectorAll(".centeritem")[this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)].classList.remove("showFull")
+
          this.setState({
             currentpic: this.state.currentpic + add,
          }, () => {
             document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
+
+            console.log(document.querySelectorAll(".centeritem")[this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)])
+            //add highlight to new
+            document.querySelectorAll(".centeritem")[this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)].classList.add("showFull")
+
+            if (this.state.projects.isMp4(this.state.currentpic)) {
+               console.log(this.state.projects.getMp4id(this.state.currentpic))
+               lastMP4 = document.querySelector(`#video${this.state.projects.getMp4id(this.state.currentpic)}`)
+               lastMP4.play()
+            }
+            else if (lastMP4 !== null) {
+               lastMP4.pause();
+               lastMP4 = null;
+            }
          })
 
          BlockNextImage = true;
@@ -158,7 +221,7 @@ class ProjectDetails extends Component {
 
       }
       else if (this.state.currentpic + add >= this.state.projects.images.length && !BlockNextImage) {
-
+         //play "end of collection animation"
          let mainwrapper = document.querySelector("#main_wrapper")
 
          mainwrapper.animate([
@@ -188,22 +251,24 @@ class ProjectDetails extends Component {
    CheckIfNextPictureShouldBeTeasered = () => {
       let mainImg = document.querySelector("#Mainimg");
 
-      if(mainImg.clientWidth === 0){
-         setTimeout(this.CheckIfNextPictureShouldBeTeasered, 100)
+      if (mainImg.clientWidth === 0) { //just so if it don't get called to early (before rendering of the imgs)..
+         setTimeout(this.CheckIfNextPictureShouldBeTeasered, 10)
          return;
       }
 
-      if (document.body.clientWidth < (mainImg.clientWidth / 0.6) + 100) {
+      if (document.body.clientWidth < (mainImg.clientWidth / 0.6) + 100) { //to small -> ...
          nextMultiplier = 100;
          document.querySelectorAll("#main_wrapper > div").forEach((div) => div.classList.add("toSmallToPreview"))
          this.nextPicture(null, 0);
 
-         //TODO also handle the describing Text right from the picture..
+         this.setState({ displayDescription: false });
       }
       else if (nextMultiplier === 100) {
          nextMultiplier = 60;
          document.querySelectorAll("#main_wrapper > div").forEach((div) => div.classList.remove("toSmallToPreview"))
          this.nextPicture(null, 0);
+
+         this.setState({ displayDescription: true });
       }
    }
 
@@ -222,14 +287,22 @@ class ProjectDetails extends Component {
 
    animateMount = () => {
 
-      //TODO left side
+      //left side
+      let left = document.querySelector("#detail_description_text");
+      left.style = "opacity:0"
+      let leftanim = left.animate([
+         { left: -left.scrollWidth - 100 + "px", opacity: 1 },
+         { left: left.getBoundingClientRect().left + "px", opacity: 1 },
+      ], { duration: 1000, delay:500, easing:"ease-out" })
+
+      leftanim.onfinish = () => {this.calculateTextWidthHeight()}
 
       //right side
       let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
       secondimg.animate([
          { marginLeft: 0 },
          { marginLeft: nextMultiplier - 100 + "vw" },
-      ], { duration: 1000, delay: 500 })
+      ], { duration: 1000, delay: 500, easing:"ease-out" })
 
       //animate footer
       let footer = document.querySelector("#DetailsFooter");
@@ -237,8 +310,24 @@ class ProjectDetails extends Component {
       let footeranim = footer.animate([
          { top: "calc(100% + 140px)" },
          { top: 0 }
-      ], { duration: 1000, delay: 500 })
-      footeranim.onfinish= () => footer.style = "";
+      ], { duration: 1000, delay: 500, easing:"ease-out" })
+      footeranim.onfinish = () => footer.style = "";
+   }
+
+   calculateTextWidthHeight = () => {
+      let mainImgWidth = document.querySelector("#Mainimg").clientWidth;
+
+      if (mainImgWidth === 0) { //just so if it don't get called to early (before rendering of the imgs)..
+         setTimeout(this.calculateTextWidthHeight, 10)
+         return;
+      }
+
+      let windowwidth = document.body.clientWidth;
+      let texttochange = document.querySelector("#detail_description_text")
+
+      console.log((windowwidth - mainImgWidth) / 2)
+
+      texttochange.style = `width: calc(${(windowwidth - mainImgWidth) / 2}px - 10%)`
    }
 
    componentDidMount() {
@@ -258,6 +347,7 @@ class ProjectDetails extends Component {
    WindowEventHandler = () => {
       this.CheckIfHmoreThanWidth();
       this.CheckIfNextPictureShouldBeTeasered()
+      this.calculateTextWidthHeight();
    }
 }
 

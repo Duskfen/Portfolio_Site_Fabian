@@ -93,7 +93,7 @@ class Index extends Component {
       footer.animate([
          { top: 0 },
          { top: "calc(100% + 140px)" }
-      ], { duration: 1000, delay:300})
+      ], { duration: 1000, delay:300, easing:"ease-out"})
 
 
       this.setState({ showMarquee: false })

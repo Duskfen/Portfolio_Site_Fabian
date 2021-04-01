@@ -3,8 +3,8 @@
       {
          "path": "europify",
          "title": "BRANDING x LOGODESIGN",
-         "textheading": "propject 2 textheading TODO",
-         "subtext": "Lorem Ipsum TODO",
+         "textheading": "logodesign",
+         "subtext": ["europify branding", "wettbewerbseinreichung", "gewinnerdesign"],
          "count_imgs": 4,
          "image_extention":["jpg", "jpg", "mp4", "jpg"]
       },
@@ -12,7 +12,7 @@
          "path": "bhl",
          "title": "NOT EXISTENT",
          "textheading": "NOT EXISTENT",
-         "subtext": "Lorem Ipsum TODO",
+         "subtext": ["Lorem Ipsum"],
          "count_imgs": 6,
          "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
       },
@@ -20,7 +20,7 @@
          "path": "gin_packaging",
          "title": "NOT EXISTENT",
          "textheading": "NOT EXISTENT",
-         "subtext": "Lorem Ipsum TODO",
+         "subtext": ["Lorem Ipsum"],
          "count_imgs": 4,
          "image_extention":["jpg"]
       }

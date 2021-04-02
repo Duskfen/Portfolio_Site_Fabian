@@ -23,6 +23,14 @@
          "subtext": ["Lorem Ipsum"],
          "count_imgs": 4,
          "image_extention":["jpg"]
+      },
+      {
+         "path": "nautilus_branding",
+         "title": "NOT EXISTENT",
+         "textheading": "NOT EXISTENT",
+         "subtext": ["Lorem Ipsum"],
+         "count_imgs": 6,
+         "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
       }
    ]
 }

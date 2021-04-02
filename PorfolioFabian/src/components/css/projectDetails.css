@@ -1,44 +1,43 @@
-
-#main_wrapper{
-   position:relative;
+#main_wrapper {
+   position: relative;
    transition: left .9s ease-out !important;
 }
-#main_wrapper > div{
-   height: 100%;  
+
+#main_wrapper>div {
+   height: 100%;
    width: 100vw;
-   float:left;
+   float: left;
 }
 
-#main_wrapper > div img, #main_wrapper > div video{
+#main_wrapper>div img, #main_wrapper>div video {
    opacity: 0.6;
-   transition:opacity 0.6s
+   transition: opacity 0.6s
 }
 
-#main_wrapper > div:not(:first-child){
-   margin-left:-40vw;
+#main_wrapper>div:not(:first-child) {
+   margin-left: -40vw;
 }
 
-#main_wrapper > .toSmallToPreview:not(:first-child){
-   margin-left:0;
+#main_wrapper>.toSmallToPreview:not(:first-child) {
+   margin-left: 0;
 }
 
-#main_wrapper .centeritem{
+#main_wrapper .centeritem {
    display: block;
    margin: auto;
    object-fit: contain;
    height: 100%;
 }
 
-
-.main_wrapper_return_to_overview #Mainimg{
+.main_wrapper_return_to_overview #Mainimg {
    clip-path: inset(5%);
 }
 
-footer, header{
-   width:calc(100vw - 140px)
+footer, header {
+   width: calc(100vw - 140px)
 }
 
-#detail_description_text{
+#detail_description_text {
    position: fixed;
    top: calc(11% + 70px);
    left: 75px;
@@ -50,23 +49,78 @@ footer, header{
    justify-content: center;
    flex-wrap: wrap;
    word-wrap: break-word;
+   transition: none !important;
+   transition: opacity 0.7s !important;
 }
 
-#detail_description_text p, #detail_description_text h2{
-   margin:0;
+#detail_description_text p, #detail_description_text h2 {
+   margin: 0;
 }
 
-#detail_description_text h2{
+#detail_description_text h2 {
    font-family: Coconut;
    font-size: 14pt;
-   margin-bottom:10px;
+   margin-bottom: 10px;
 }
-#detail_description_text p{
+
+#detail_description_text p {
    font-family: ClarikaProGrotesque;
    font-size: 12pt;
-   margin-left:10px;
+   margin-left: 10px;
 }
 
 .showFull {
    opacity: 1 !important;
 }
+
+.hide {
+   opacity: 0 !important;
+}
+
+/* ------------------- Footer ------------------- */
+
+#DetailsFooter {
+   display: flex;
+   align-items: center;
+   margin-top: 20px;
+}
+
+#DetailsFooter>div {
+   width: 100%;
+}
+
+#DetailsFooter #DetailsFooterBase {
+   width: 100%;
+}
+
+#DetailsFooter .detailsline {
+   width: 100%;
+}
+
+#DetailsFooter #DetailsFooterBase .detailsline {
+   border-bottom: 1px solid var(--foreground);
+   position: relative;
+   bottom: 30px;
+}
+
+#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 60px;
+}
+
+#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle p {
+   display: inline;
+   background-color: var(--background);
+   z-index: 1;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+#DetailsFooter #DetailsProgressLine {
+   width: 0;
+   transition: width 1s;
+}
+
+/* ------------------- End Footer ------------------- */

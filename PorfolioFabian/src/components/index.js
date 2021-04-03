@@ -5,6 +5,9 @@ const ProjectInformation = require('./projects/projects_information.json')
 import './css/main.css'
 import './css/project_overview.css'
 import full_logo from "./img/logo_full.svg"
+import Impressum from './impressum'
+import Contact from './contact'
+import About from './about'
 const right_arrow = require("./img/arrow_right.svg")
 
 
@@ -47,6 +50,7 @@ class Index extends Component {
          currentProject: this.props.currentProjectNumber | 0,
          lastProject: this.props.lastProjectNumber | -1,
          showDetails: false,
+         clickedRoute: null,
          showMarquee: false,
          marqueeCount: 2,
       };
@@ -57,13 +61,14 @@ class Index extends Component {
          let marquee = document.querySelectorAll(".marquee_text")[0]
          this.setState({ marqueeCount: Math.ceil(window.innerWidth / marquee.scrollWidth) + 1 })
       }
-      catch { }
+      catch (e) {}
    }
 
    nextPicture = (ev, add = 1) => {
       if (document.querySelector("#currentpicture").getAnimations()[0] === undefined) {
          this.setState({ currentProject: this.state.currentProject + add, lastProject: this.state.currentProject }, () => {
             this.calculateMarqueeCount();
+            setTimeout(() => { this.calculateMarqueeCount(); this.animateMarquee(document.querySelectorAll(".marquee_text")); }, 1501)
             this.handleNextAnimations();
          })
       }
@@ -93,7 +98,7 @@ class Index extends Component {
       footer.animate([
          { top: 0 },
          { top: "calc(100% + 140px)" }
-      ], { duration: 1000, delay:300, easing:"ease-out"})
+      ], { duration: 1000, delay: 300, easing: "ease-out" })
 
 
       this.setState({ showMarquee: false })
@@ -118,7 +123,12 @@ class Index extends Component {
       this.setState({ showMarquee: true }, () => this.animateMarquee(document.querySelectorAll(".marquee_text")))
    }
 
-   hideProjectTitle = (ev) => this.setState({ showMarquee: false });
+   hideProjectTitle = (ev, showagain = false) => {
+      this.setState({ showMarquee: false });
+      if (showagain) {
+         this.showProjectTitle();
+      }
+   }
 
    createMarquees = () => {
       let marquees = [];
@@ -167,27 +177,56 @@ class Index extends Component {
                   </header>
 
                   <section id="project_overview_wrapper">
-
                      <div className="line lineleft"></div>
                      <div id="project_overview_section">
-                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOver={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
+                        <img id="currentpicture" src={this.state.projects.getProjectAt(this.state.currentProject).titleImage} alt={this.state.projects.getProjectAt(this.state.currentProject).title} className="TitleImage" onClick={(ev) => this.openProjectdetails(ev)} onMouseOverCapture={(ev) => this.showProjectTitle(ev)} onMouseLeave={(ev) => this.hideProjectTitle(ev)}></img>
                         <img id="picturebefore" src={this.state.projects.getProjectAt((this.state.lastProject)).titleImage} alt={this.state.projects.getProjectAt(this.state.lastProject).title} className="TitleImage"></img>
                      </div>
                      <div className="line lineright"></div>
-
                   </section>
+
                   <footer id="footerOverview">
                      <div id="footer_overview_items">
-                        <a href="/branding">branding</a>
-                        <a href="/about">über mich</a>
-                        <a href="/contact">kontakt</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "Impressum" }); this.fadeAnimation() }}>impressum</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "About" }); this.fadeAnimation() }}>über mich</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "Contact" }); this.fadeAnimation() }}>kontakt</a>
                      </div>
                   </footer>
                </div>
             </div>
             {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)} currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></ProjectDetails> : null}
+            {this.state.clickedRoute === "Impressum" ? <Impressum></Impressum> : null}
+            {this.state.clickedRoute === "About" ? <About></About> : null}
+            {this.state.clickedRoute === "Contact" ? <Contact></Contact> : null}
          </React.Fragment>
       );
+   }
+
+   fadeAnimation = () => {
+
+      //TODO:
+      let footer = document.querySelector("#footerOverview")
+      let arrow = document.querySelector("header .right_arrow")
+      let currentpicture = document.querySelector("#currentpicture")
+      document.querySelector("#picturebefore").style="opacity:0"
+
+      currentpicture.animate([
+         { clipPath: "inset(5%)", opacity:1 },
+         { clipPath: "inset(50%)", opacity:0 }
+      ], { duration: 1001, easing: "ease-in-out" })
+
+      arrow.animate([
+         {opacity:1},
+         {opacity:0}
+      ], {duration: 1001, easing: "ease-out"})
+
+      footer.style = "position:relative";
+      footer.animate([
+         { top: 0 },
+         { top: "calc(100% + 140px)" },
+      ], { duration: 1001, easing:"ease-out" })
+
+      setTimeout(() => document.querySelector("#wrapper").remove(),1000);
    }
 
    removeLoadingScreen() {
@@ -236,10 +275,10 @@ class Index extends Component {
       let footeranim = footer.animate([
          { top: "calc(100% + 140px)" },
          { top: 0 }
-      ], { duration: 1000, delay:300})
-      
-      footeranim.onfinish = () =>{footer.style = "";}
-      
+      ], { duration: 1000, delay: 300 })
+
+      footeranim.onfinish = () => { footer.style = ""; }
+
 
    }
 

@@ -3,6 +3,7 @@
    margin-left:-170px;
    height: 100%;
    display: flex;
+   flex-wrap: wrap;
    justify-content: center;
    align-items: center;
 }
@@ -20,6 +21,9 @@
    z-index: 1;
 }
 
+#footerOverview a{
+   cursor: pointer;
+}
 
 #project_overview_section img {
    cursor: pointer;
@@ -37,6 +41,11 @@
    transition: clip-path 1s ease-out;
 }  
 
+#subtext_currentpicture{
+   display: flex;
+   width: 100%;
+   justify-content: center;
+}
 
 .project_overview_section_clicked img{
    clip-path: inset(0) !important;

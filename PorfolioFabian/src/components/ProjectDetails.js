@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import full_logo from "./img/logo_full.svg"
-const right_arrow = require("./img/arrow_right.svg")
+const right_arrow = require("./img/arrow_right.svg");
 
 
 import "./css/projectDetails.css"
@@ -39,7 +39,7 @@ class Project {
             </video>
          )
       }
-      else return <img src={returnstring} className={`centeritem ${index == 0? "showFull":""}`} id={index == 0 ? "Mainimg" : null}></img>
+      else return <img src={returnstring} className={`centeritem ${index == 0 ? "showFull" : ""}`} id={index == 0 ? "Mainimg" : null}></img>
    }
 
    isMp4(index) {
@@ -63,7 +63,7 @@ class Project {
       return returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")
    }
 
-   calcCurrentPictureInRealIndex(index){
+   calcCurrentPictureInRealIndex(index) {
       if ((index % this.images.length) < 0) {
          return this.images.length + (index % this.images.length)
       }
@@ -84,7 +84,7 @@ class ProjectDetails extends Component {
          displayDescription: true
       };
 
-      this.perCentStep = 100/this.state.projects.images.length;
+      this.perCentStep = 100 / (this.state.projects.images.length - 1);
    }
 
 
@@ -132,8 +132,8 @@ class ProjectDetails extends Component {
                            <div id="DetailsFooterBaseTitle">
                               <p>{this.state.projects.title}</p>
                            </div>
-                           <div className="detailsline"></div>
                            <div className="detailsline" id="DetailsProgressLine"></div>
+                           <div className="detailsline"></div>
                         </div>
                      </div>
                   </footer>
@@ -157,29 +157,30 @@ class ProjectDetails extends Component {
          let mainimg = document.querySelector("#main_wrapper #Mainimg");
          let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
          let footer = document.querySelector("#DetailsFooter");
-         
+
 
          //animate footer
          footer.style = "position:relative";
          footer.animate([
             { top: 0 },
-            { top: "calc(100% + 140px)" }
-         ], { duration: 1001, easing:"ease-out" })
+            { top: "calc(100% + 140px)" },
+         ], { duration: 1001, easing: "ease-out" })
 
          //animate right side
          secondimg.animate([
             { marginLeft: nextMultiplier - 100 + "vw" },
             { marginLeft: 0 }
-         ], { duration: 1001, easing:"ease-out" })
+         ], { duration: 1001, easing: "ease-out" })
 
          //animate left side
-         if(this.state.displayDescription){
+         if (this.state.displayDescription) {
             let left = document.querySelector("#detail_description_text")
             left.animate([
-               { top: left.getBoundingClientRect().top + "px", opacity:1 },
-               { top: left.getBoundingClientRect().top + 40 + "px", opacity:1 },
+               { top: left.getBoundingClientRect().top + "px", opacity: 1 },
+               { top: left.getBoundingClientRect().top + 40 + "px", opacity: 1 },
                { top: left.getBoundingClientRect().top + 80 + "px", opacity: 0 },
-            ], { duration: 1001, easing:"ease-out" })
+               { top: left.getBoundingClientRect().top + 80 + "px", opacity: 0 }
+            ], { duration: 1001, easing: "ease-out" })
          }
 
          //animate main img
@@ -201,7 +202,7 @@ class ProjectDetails extends Component {
    }
 
    updateProgressBar = (index) => {
-      document.querySelector("#DetailsFooter #DetailsProgressLine").style = `width: ${this.perCentStep * (index+1)}%`
+      document.querySelector("#DetailsFooter #DetailsProgressLine").style = `width: ${this.perCentStep * (index)}%`
    }
 
    nextPicture = (event, add) => {
@@ -209,10 +210,10 @@ class ProjectDetails extends Component {
          && this.state.currentpic + add < this.state.projects.images.length
          && !BlockNextImage) {
 
-            let realindex = this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)
-            //remove highlight of old
-            document.querySelectorAll(".centeritem")[realindex].classList.remove("showFull")
-            if(this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.add("hide");
+         let realindex = this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)
+         //remove highlight of old
+         document.querySelectorAll(".centeritem")[realindex].classList.remove("showFull")
+         if (this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.add("hide");
 
          this.setState({
             currentpic: this.state.currentpic + add,
@@ -220,10 +221,9 @@ class ProjectDetails extends Component {
             realindex = realindex + add;
 
             this.updateProgressBar(realindex)
-            
             document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
 
-            if(this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.remove("hide")
+            if (this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.remove("hide")
             //add highlight to new
             document.querySelectorAll(".centeritem")[realindex].classList.add("showFull")
 
@@ -308,21 +308,23 @@ class ProjectDetails extends Component {
 
    animateMount = () => {
       //left side
-      if(this.state.displayDescription){      
+      if (this.state.displayDescription) {
          let left = document.querySelector("#detail_description_text");
          this.calculateTextWidthHeight()
          left.animate([
-            { top: left.getBoundingClientRect().top + 80 + "px", opacity:0 },
+            { top: left.getBoundingClientRect().top + 80 + "px", opacity: 0 },
             { top: left.getBoundingClientRect().top + 0 + "px", opacity: 1 },
-         ], { duration: 1500, delay: 0, easing:"ease-out" })
+         ], { duration: 1000, delay: 0, easing: "ease-out" })
+
+         //right side
+         let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
+         secondimg.animate([
+            { marginLeft: 0 },
+            { marginLeft: nextMultiplier - 100 + "vw" },
+         ], { duration: 1000, delay: 500, easing: "ease-out" })
       }
 
-      //right side
-      let secondimg = document.querySelectorAll("#main_wrapper > div")[1]
-      secondimg.animate([
-         { marginLeft: 0 },
-         { marginLeft: nextMultiplier - 100 + "vw" },
-      ], { duration: 1000, delay: 500, easing:"ease-out" })
+
 
       //animate footer
       let footer = document.querySelector("#DetailsFooter");
@@ -330,22 +332,22 @@ class ProjectDetails extends Component {
       let footeranim = footer.animate([
          { top: "calc(100% + 140px)" },
          { top: 0 }
-      ], { duration: 1000, delay: 500, easing:"ease-out" })
+      ], { duration: 1000, delay: 500, easing: "ease-out" })
       footeranim.onfinish = () => footer.style = "";
    }
 
    calculateTextWidthHeight = () => {
-      if(this.state.displayDescription){
+      if (this.state.displayDescription) {
          let mainImgWidth = document.querySelector("#Mainimg").clientWidth;
 
          if (mainImgWidth === 0) { //just so if it don't get called to early (before rendering of the imgs)..
             setTimeout(this.calculateTextWidthHeight, 10)
             return;
          }
-   
+
          let windowwidth = document.body.clientWidth;
          let texttochange = document.querySelector("#detail_description_text")
-   
+
          texttochange.style = `width: calc(${(windowwidth - mainImgWidth) / 2}px - 10%)`
          return (windowwidth - mainImgWidth) / 2
       }

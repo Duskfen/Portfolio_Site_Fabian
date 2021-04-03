@@ -1,0 +1,46 @@
+/* ------------------- Footer ------------------- */
+
+.FooterSubPage {
+   display: flex;
+   align-items: center;
+   margin-top: 20px;
+   width: 100vw;
+   margin-left:-70px;
+}
+
+.FooterSubPage>div {
+   width: 100%;
+}
+
+.FooterSubPage #DetailsFooterBase {
+   width: 100%;
+}
+
+.FooterSubPage .detailsline {
+   width: 100%;
+}
+
+.FooterSubPage #DetailsFooterBase .detailsline {
+   border-bottom: 1px solid var(--foreground);
+   position: relative;
+   bottom: 30px;
+}
+
+.FooterSubPage #DetailsFooterBase #DetailsFooterBaseTitle {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 60px;
+   font-family: Coconut;
+}
+
+.FooterSubPage #DetailsFooterBase #DetailsFooterBaseTitle p {
+   display: inline;
+   background-color: var(--background);
+   z-index: 1;
+   font-family: Coconut;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+/* ------------------- End Footer ------------------- */

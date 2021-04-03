@@ -33,7 +33,7 @@
    clip-path: inset(5%);
 }
 
-footer, header {
+header {
    width: calc(100vw - 140px)
 }
 
@@ -79,6 +79,11 @@ footer, header {
 
 /* ------------------- Footer ------------------- */
 
+#DetailsFooter{
+   width: 100vw;
+   margin-left:-70px;
+}
+
 #DetailsFooter {
    display: flex;
    align-items: center;
@@ -108,12 +113,14 @@ footer, header {
    align-items: center;
    justify-content: center;
    height: 60px;
+   font-family: Coconut;
 }
 
 #DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle p {
    display: inline;
    background-color: var(--background);
    z-index: 1;
+   font-family: Coconut;
    padding-left: 10px;
    padding-right: 10px;
 }

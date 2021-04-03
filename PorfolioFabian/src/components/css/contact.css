@@ -1,0 +1,10 @@
+.main_aside > div > p{
+   font-family: Coconut;
+   font-size: 16pt;
+}
+.main_aside > div > div p{
+   padding:0;
+   margin:0;
+   font-family: Clarica-Pro-Grotesque;
+   font-size: 13pt;
+}

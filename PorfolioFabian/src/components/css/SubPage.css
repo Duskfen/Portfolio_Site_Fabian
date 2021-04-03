@@ -1,0 +1,7 @@
+.main_aside{
+   grid-area: project_overview;
+   width:calc(100vw - 140px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

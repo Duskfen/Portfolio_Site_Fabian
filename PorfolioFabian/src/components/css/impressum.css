@@ -1,0 +1,9 @@
+#impressumWrapper .main_aside p {
+ font-family:  ClarikaProGrotesque;
+ margin: 0;
+ font-size: 13pt;
+}
+
+#impressumWrapper .main_aside div {
+   margin-top: 10px;
+  }

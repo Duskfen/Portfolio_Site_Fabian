@@ -187,9 +187,9 @@ class Index extends Component {
 
                   <footer id="footerOverview">
                      <div id="footer_overview_items">
-                        <a onClick={() => { this.setState({ clickedRoute: "Impressum" }); this.fadeAnimation() }}>impressum</a>
-                        <a onClick={() => { this.setState({ clickedRoute: "About" }); this.fadeAnimation() }}>über mich</a>
-                        <a onClick={() => { this.setState({ clickedRoute: "Contact" }); this.fadeAnimation() }}>kontakt</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "Impressum" }); this.animateToSubPage() }}>impressum</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "About" }); this.animateToSubPage() }}>über mich</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "Contact" }); this.animateToSubPage() }}>kontakt</a>
                      </div>
                   </footer>
                </div>
@@ -202,17 +202,15 @@ class Index extends Component {
       );
    }
 
-   fadeAnimation = () => {
-
-      //TODO:
+   animateToSubPage = () => {
       let footer = document.querySelector("#footerOverview")
       let arrow = document.querySelector("header .right_arrow")
       let currentpicture = document.querySelector("#currentpicture")
       document.querySelector("#picturebefore").style="opacity:0"
 
       currentpicture.animate([
-         { clipPath: "inset(5%)", opacity:1 },
-         { clipPath: "inset(50%)", opacity:0 }
+         { clipPath: "inset(5% 5% 5% 5%)", opacity:1 },
+         { clipPath: "inset(5% 5% 100% 5%)", opacity:0 }
       ], { duration: 1001, easing: "ease-in-out" })
 
       arrow.animate([
@@ -227,6 +225,21 @@ class Index extends Component {
       ], { duration: 1001, easing:"ease-out" })
 
       setTimeout(() => document.querySelector("#wrapper").remove(),1000);
+   }
+
+   animateMountFromSubpage = () => {
+      let currentpicture = document.querySelector("#currentpicture")
+      let picturebefore = document.querySelector("#picturebefore")
+
+      picturebefore.animate([
+         { opacity:0 },
+         { opacity:0 }
+      ], { duration: 1001, delay: 1000, easing: "ease-in-out" })
+      currentpicture.animate([
+         { clipPath: "inset(5% 5% 100% 5%)", opacity:0 },
+         { clipPath: "inset(5% 5% 5% 5%)", opacity:1 }
+      ], { duration: 1001, delay: 1000, easing: "ease-in-out" })
+
    }
 
    removeLoadingScreen() {
@@ -288,13 +301,17 @@ class Index extends Component {
       if (this.props.removeDetailWrapper) {
          this.removeDetailWrapper();
       }
-      else {
+      else if(this.props.calledFromSubPage) {
+         this.animateMountFromSubpage();
+      }
+      else{
          this.removeLoadingScreen();
       }
       window.addEventListener("resize", this.windowListenerHandler);
 
       this.CheckIfHmoreThanWidth()
       this.calculateMarqueeCount();
+
    }
 
    componentWillUnmount() {

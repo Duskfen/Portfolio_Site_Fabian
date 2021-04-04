@@ -18,7 +18,7 @@ class Contact extends Component {
       return (
          <React.Fragment>
 
-            <div id="contactWrapper">
+            <div id="contactWrapper"  className="subWrapper">
                <div id="projectDetailWrapper">
                   <header>
                      <div id="head_items">
@@ -31,11 +31,11 @@ class Contact extends Component {
                   <section className="main_aside">
                      <div>
                         <p id="contacttel"><a href="tel:+436502322462">+43 650&#8202;/&#8202;23 22 462</a></p>
-                        <p id="contactmail"><a href="mailto:mail@fabianschwarzinger.work">mail@fabianschwarzinger.work</a></p>
+                        <p id="contactmail"><a href="mailto:mail@fabianschwarzinger.work?subject=Erzähl%20mir%20was">mail@fabianschwarzinger.work</a></p>
                         <div id="contactText">
                            <p>Bindungen einzugehen kann schwierig sein, ich weiß.</p>
                            <p>Aber ich beiße nicht, versprochen.</p>
-                           <p>Machen wir’s doch so: Sie schreiben mir »Fakt bitte« in den</p>
+                           <p>Machen wir’s doch so: Sie schreiben »Erzähl mir was« in den</p>
                            <p>Betreff und ich schreibe Ihnen eine kleine Anekdote aus</p>
                            <p>meinem Leben zurück, dann ist das Eis schon mal gebrochen,</p>
                            <p>einverstanden?</p>

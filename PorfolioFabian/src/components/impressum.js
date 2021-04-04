@@ -17,7 +17,7 @@ class Impressum extends Component {
    render() {
       return (
          <React.Fragment>
-            <div id="impressumWrapper">
+            <div id="impressumWrapper"  className="subWrapper">
                <div id="projectDetailWrapper">
                   <header>
                      <div id="head_items">

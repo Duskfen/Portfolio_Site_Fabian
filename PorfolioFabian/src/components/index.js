@@ -188,7 +188,7 @@ class Index extends Component {
                   <footer id="footerOverview">
                      <div id="footer_overview_items">
                         <a onClick={() => { this.setState({ clickedRoute: "Impressum" }); this.animateToSubPage() }}>impressum</a>
-                        <a onClick={() => { this.setState({ clickedRoute: "About" }); this.animateToSubPage() }}>über mich</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "About" }, () => this.animateToUeberMich());  }}>über mich</a>
                         <a onClick={() => { this.setState({ clickedRoute: "Contact" }); this.animateToSubPage() }}>kontakt</a>
                      </div>
                   </footer>
@@ -202,6 +202,39 @@ class Index extends Component {
       );
    }
 
+   animateToUeberMich = () => {
+      let wrapper = document.querySelector("#wrapper")
+
+
+      let animation = wrapper.animate([
+         { clipPath: "inset(0%)", opacity:1 },
+         { clipPath: "inset(0% 0% 100% 0%)", opacity:1 }
+      ], { duration: 1000, delay: 30, easing: "ease-in-out" })
+
+      animation.onfinish = () =>  {document.querySelector("#aboutWrapper").style=""
+         wrapper.remove()
+      };
+   }
+
+   animateMountFromAbout = () => {
+      let wrapper = document.querySelector("#wrapper")
+
+      wrapper.style="position:relative; bottom:100vh"
+      let animation = wrapper.animate([
+         { clipPath: "inset(0% 0% 100% 0%)"},
+         { clipPath: "inset(0%)"}
+
+      ], {duration: 1000, easing: "ease-in-out" })
+
+      console.log(wrapper);
+
+      animation.onfinish = () =>  {
+         wrapper.style = "";
+         document.querySelector("#aboutWrapper").remove()
+      };
+   }
+
+
    animateToSubPage = () => {
       let footer = document.querySelector("#footerOverview")
       let arrow = document.querySelector("header .right_arrow")
@@ -210,7 +243,7 @@ class Index extends Component {
 
       currentpicture.animate([
          { clipPath: "inset(5% 5% 5% 5%)", opacity:1 },
-         { clipPath: "inset(5% 5% 100% 5%)", opacity:0 }
+         { clipPath: "inset(5% 5% 95% 5%)", opacity:0 }
       ], { duration: 1001, easing: "ease-in-out" })
 
       arrow.animate([
@@ -234,13 +267,16 @@ class Index extends Component {
       picturebefore.animate([
          { opacity:0 },
          { opacity:0 }
-      ], { duration: 1001, delay: 1000, easing: "ease-in-out" })
+      ], { duration: 1001, delay: 900, easing: "ease-in-out" })
       currentpicture.animate([
-         { clipPath: "inset(5% 5% 100% 5%)", opacity:0 },
+         { clipPath: "inset(95% 5% 5%  5%)", opacity:0 },
+         { clipPath: "inset(85% 5% 5%  5%)", opacity:1 },
+         { clipPath: "inset(60% 5% 5%  5%)", opacity:1 },
          { clipPath: "inset(5% 5% 5% 5%)", opacity:1 }
-      ], { duration: 1001, delay: 1000, easing: "ease-in-out" })
+      ], { duration: 1001, delay: 900, easing: "ease-in-out" })
 
    }
+
 
    removeLoadingScreen() {
       try {
@@ -291,8 +327,6 @@ class Index extends Component {
       ], { duration: 1000, delay: 300 })
 
       footeranim.onfinish = () => { footer.style = ""; }
-
-
    }
 
    componentDidMount() {
@@ -304,9 +338,20 @@ class Index extends Component {
       else if(this.props.calledFromSubPage) {
          this.animateMountFromSubpage();
       }
+      else if(this.props.calledFromAbout){
+         this.animateMountFromAbout();
+      }
       else{
          this.removeLoadingScreen();
       }
+
+      if(this.props.instantLoadKontakt){
+         setTimeout(() => {
+            this.setState({ clickedRoute: "Contact" }); 
+            this.animateToSubPage();
+         },1800)
+      }
+
       window.addEventListener("resize", this.windowListenerHandler);
 
       this.CheckIfHmoreThanWidth()

@@ -3,32 +3,32 @@
       {
          "path": "europify",
          "title": "LOGODESIGN",
-         "textheading": "logodesign",
-         "subtext": ["europify branding", "wettbewerbseinreichung", "gewinnerdesign"],
+         "textheading": "europify",
+         "subtext": ["wettbewerbseinreichung", "logodesign für unabhängiges institut", "gewinnerdesign"],
          "count_imgs": 4,
          "image_extention":["jpg", "jpg", "mp4", "jpg"]
       },
       {
          "path": "bhl",
          "title": "BRANDING x PORTRÄTFOTOGRAFIE",
-         "textheading": "NOT EXISTENT",
-         "subtext": ["Lorem Ipsum"],
+         "textheading": "deejay bhl",
+         "subtext": ["logo + branding für deejay", "merchandising design", "social media konzept"],
          "count_imgs": 6,
          "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
       },
       {
          "path": "gin_packaging",
          "title": "PACKAGING-DESIGN",
-         "textheading": "NOT EXISTENT",
-         "subtext": ["Lorem Ipsum"],
+         "textheading": "abstrakt gin",
+         "subtext": ["etikett für hochwertigen gin", "auffallende, herausstechende optik", "eigenes handlettering", "eigene spezialfotografie", "mockup anfertigung"],
          "count_imgs": 4,
          "image_extention":["jpg"]
       },
       {
          "path": "nautilus_branding",
          "title": "BRANDING",
-         "textheading": "NOT EXISTENT",
-         "subtext": ["Lorem Ipsum"],
+         "textheading": "nautilus architecture",
+         "subtext": ["branding für architekturbüro", "schriftmischung", "drucksorten", "webseite", "billboard-anzeige"],
          "count_imgs": 6,
          "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
       }

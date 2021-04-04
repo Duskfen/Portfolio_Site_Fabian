@@ -1,0 +1,38 @@
+#SexyBackgroundImage {
+   position:absolute;
+   top:0;
+   left:0;
+   z-index: -1;
+}
+#SexyBackgroundImage img{
+   object-fit: contain;
+   height: 100vh;
+}
+
+#aboutWrapper footer{
+   padding-top:30px;
+}
+
+#aboutWrapper .FooterSubPage{
+   margin-top: 0;
+}
+
+#aboutWrapper .FooterSubPage #DetailsFooterBase .detailsline {
+   bottom: 0px;
+}
+
+#aboutWrapper .DetailsSubText {
+   width: calc(100vw - 140px);
+   margin-left: 70px;
+   display: flex;
+   justify-content: space-between;
+}
+
+#aboutWrapper .main_aside {
+   display: block;
+}
+
+#aboutWrapper .main_aside > div {
+   position: absolute;
+   width: 300px;
+}

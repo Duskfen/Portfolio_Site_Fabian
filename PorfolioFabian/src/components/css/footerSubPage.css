@@ -20,6 +20,10 @@
    width: 100%;
 }
 
+.FooterSubPage #DetailsProgressLine {
+   width: 0;
+}
+
 .FooterSubPage #DetailsFooterBase .detailsline {
    border-bottom: 1px solid var(--foreground);
    position: relative;

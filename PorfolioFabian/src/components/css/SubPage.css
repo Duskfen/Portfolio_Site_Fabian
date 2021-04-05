@@ -12,3 +12,7 @@
 a{
    cursor: pointer;
 }
+
+.main_aside > div {
+   margin-bottom: 6.5%;
+}

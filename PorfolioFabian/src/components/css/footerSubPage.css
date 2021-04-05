@@ -21,6 +21,7 @@
 }
 
 .FooterSubPage #DetailsProgressLine {
+   transition: width 1s;
    width: 0;
 }
 

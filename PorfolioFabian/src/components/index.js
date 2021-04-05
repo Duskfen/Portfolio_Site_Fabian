@@ -169,7 +169,7 @@ class Index extends Component {
                   </div>
                   <header>
                      <div id="head_items">
-                        <a href="/">
+                        <a href="#" onClick={() => this.nextPicture(null, -1 * this.state.currentProject)}>
                            <img src={full_logo} alt="logo" className="full_logo"></img>
                         </a>
                         <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
@@ -195,17 +195,15 @@ class Index extends Component {
                </div>
             </div>
             {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)} currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></ProjectDetails> : null}
-            {this.state.clickedRoute === "Impressum" ? <Impressum></Impressum> : null}
-            {this.state.clickedRoute === "About" ? <About></About> : null}
-            {this.state.clickedRoute === "Contact" ? <Contact></Contact> : null}
+            {this.state.clickedRoute === "Impressum" ? <Impressum currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></Impressum> : null}
+            {this.state.clickedRoute === "About" ? <About currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></About> : null}
+            {this.state.clickedRoute === "Contact" ? <Contact currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></Contact> : null}
          </React.Fragment>
       );
    }
 
    animateToUeberMich = () => {
       let wrapper = document.querySelector("#wrapper")
-
-
       let animation = wrapper.animate([
          { clipPath: "inset(0%)", opacity:1 },
          { clipPath: "inset(0% 0% 100% 0%)", opacity:1 }
@@ -225,8 +223,6 @@ class Index extends Component {
          { clipPath: "inset(0%)"}
 
       ], {duration: 1000, easing: "ease-in-out" })
-
-      console.log(wrapper);
 
       animation.onfinish = () =>  {
          wrapper.style = "";
@@ -343,13 +339,6 @@ class Index extends Component {
       }
       else{
          this.removeLoadingScreen();
-      }
-
-      if(this.props.instantLoadKontakt){
-         setTimeout(() => {
-            this.setState({ clickedRoute: "Contact" }); 
-            this.animateToSubPage();
-         },1800)
       }
 
       window.addEventListener("resize", this.windowListenerHandler);

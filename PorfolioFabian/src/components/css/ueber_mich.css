@@ -32,7 +32,40 @@
    display: block;
 }
 
-#aboutWrapper .main_aside > div {
+#aboutWrapper .TextElement h2 {
+   font-family: Coconut;
+   font-size: 14pt;
+}
+#aboutWrapper .TextElement p, #aboutWrapper .ElementLinkToNext{
+   font-family: ClarikaProGrotesque;
+   font-size: 14pt;
+   margin:0;
+   margin-top:5px;
+   margin-left: 20px;
+}
+
+#aboutWrapper .TextElement a {
+   font-family: ClarikaProGrotesque;
+   font-style: italic;
+   font-weight: bold;
+}
+
+#aboutWrapper .ElementLinkToNext {
+   margin-top:20px !important;
+}
+#aboutWrapper .ElementLinkToNext a{
+   font-family: ClarikaProGrotesque;
+   font-style: italic;
+}
+
+#aboutWrapper #lastTextElement{
    position: absolute;
-   width: 300px;
+   z-index: -1;
+   top:0;
+   opacity: 0;
+}
+
+#aboutWrapper #lastTextElement, #aboutWrapper #currentTextElement {
+   position: absolute;
+   width: 450px;
 }

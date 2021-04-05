@@ -51,7 +51,7 @@ class Impressum extends Component {
                   </footer>
                </div>
             </div>
-            {this.state.returnToMainPage? <Index calledFromSubPage={true}></Index>:null}
+            {this.state.returnToMainPage? <Index calledFromSubPage={true} currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></Index>:null}
          </React.Fragment>
       );
    }

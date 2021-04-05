@@ -3,14 +3,17 @@ import full_logo from "./img/logo_full.svg"
 import "./css/footerSubPage.css";
 import "./css/SubPage.css";
 import "./css/contact.css";
+
 import Index from "./index"
+import About from './about'
 
 class Contact extends Component {
 
    constructor(props) {
       super(props);
       this.state = {
-         returnToMainPage: false
+         returnToMainPage: false,
+         returnToAbout:false
       }
    }
 
@@ -55,17 +58,24 @@ class Contact extends Component {
                   </footer>
                </div>
             </div>
-            {this.state.returnToMainPage? <Index calledFromSubPage={true}></Index>:null}
+            {this.state.returnToMainPage? <Index calledFromSubPage={true} currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></Index>:null}
+            {this.state.returnToAbout? <About currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></About>:null}
          </React.Fragment>
       );
    }
 
    returnToMainPage = () => {
-      this.setState({returnToMainPage:true});
-
-      this.animateUnMount();
-      
-      setTimeout(() => document.querySelector("#contactWrapper").remove(),1000);
+      if(this.props.calledFromAbout){
+         this.setState({returnToAbout: true});
+         this.animateUnMountToAbout();
+      }
+      else {
+         this.setState({returnToMainPage:true});
+   
+         this.animateUnMount();
+         
+         setTimeout(() => document.querySelector("#contactWrapper").remove(),1000);
+      }
    }
 
    animateMount = () => {
@@ -86,6 +96,19 @@ class Contact extends Component {
 
    }
 
+   animateUnMountToAbout = () => {
+      let wrapper = document.querySelector("#contactWrapper")
+      let animation = wrapper.animate([
+         { clipPath: "inset(0%)", opacity:1 },
+         { clipPath: "inset(0% 0% 100% 0%)", opacity:1 }
+      ], { duration: 1000, delay: 30, easing: "ease-in-out" })
+
+      animation.onfinish = () =>  {
+         document.querySelector("#aboutWrapper").style=""
+         wrapper.remove()
+      };
+   }
+
    animateUnMount = () => {
       let main = document.querySelector(".main_aside")
       let footer = document.querySelector(".FooterSubPage")
@@ -104,8 +127,27 @@ class Contact extends Component {
 
    }
 
+   animateMountFromAbout = () => {
+      let wrapper = document.querySelector("#contactWrapper")
+
+      wrapper.style="position:relative; bottom:100vh"
+      let animation = wrapper.animate([
+         { clipPath: "inset(0% 0% 100% 0%)"},
+         { clipPath: "inset(0%)"}
+
+      ], {duration: 1000, easing: "ease-in-out" })
+
+      animation.onfinish = () =>  {
+         wrapper.style = "";
+         document.querySelector("#aboutWrapper").remove()
+      };
+   }
+
    componentDidMount() {
-      this.animateMount();
+      if(this.props.calledFromAbout){
+         this.animateMountFromAbout();
+      }
+      else this.animateMount();
    }
 }
 

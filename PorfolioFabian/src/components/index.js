@@ -194,7 +194,7 @@ class Index extends Component {
                   </footer>
                </div>
             </div>
-            {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)} currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></ProjectDetails> : null}
+            {this.state.showDetails ? <ProjectDetails currentProject={this.state.projects.getProjectAt(this.state.currentProject)} currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject} allProjects={this.state.projects}></ProjectDetails> : null}
             {this.state.clickedRoute === "Impressum" ? <Impressum currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></Impressum> : null}
             {this.state.clickedRoute === "About" ? <About currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></About> : null}
             {this.state.clickedRoute === "Contact" ? <Contact currentProjectNumber={this.state.currentProject} lastProjectNumber={this.state.lastProject}></Contact> : null}

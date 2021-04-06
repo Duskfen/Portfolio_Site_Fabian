@@ -9,6 +9,18 @@
    font-weight: bold;
 }
 @font-face{
+   font-family: ClarikaProGrotesque;
+   src: url(../fonts/ClarikaProGrot-DmIt.otf);
+   font-style:italic;
+   font-weight: bold;
+}
+@font-face{
+   font-family: ClarikaProGrotesque;
+   src: url(../fonts/ClarikaProGrot-It.otf);
+   font-style:italic;
+}
+
+@font-face{
    font-family: Coconut;
    src: url(../fonts/Coconat-Regular.otf);
    font-weight: normal;

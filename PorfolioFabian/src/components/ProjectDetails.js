@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg");
 
-
 import "./css/projectDetails.css"
 import Index from "./index"
 
@@ -12,11 +11,23 @@ var lastMP4 = null;
 
 class Project {
    constructor(project) {
-      this.images = project.images
-      this.image_extension = [...project.image_extention];
-      this.subtext = [...project.subtext];
-      this.title = project.title;
-      this.textheading = project.textheading;
+      if(project){
+         this.images = project.images
+         this.image_extension = [...project.image_extention];
+         this.subtext = [...project.subtext];
+         this.title = project.title;
+         this.textheading = project?.textheading;
+      }
+      //if i remove this there is a weird build error 
+      //the error is only in npm run build.. when npm run start the issue never happens..
+      //I think this is a error with react-static build
+      else{ 
+         this.images = [];
+         this.image_extension = [];
+         this.subtext = [];
+         this.title = "";
+         this.textheading = "";
+      }
    }
 
    getImageAt(index) {
@@ -81,6 +92,7 @@ class ProjectDetails extends Component {
          projects: new Project(props.currentProject),
          currentpic: 0,
          returnToOverview: false,
+         loadNextProject: false,
          displayDescription: true
       };
 
@@ -126,11 +138,16 @@ class ProjectDetails extends Component {
                         )
                      })}
                   </section>
+                  {this.state.displayDescription ?
+                     <div onClick={() => this.loadNextProject()} className={"hide"} id="detail_next_picture">
+                        <p >nächstes Projekt &gt;</p>
+                     </div> : null
+                  }
                   <footer id="DetailsFooter">
                      <div>
                         <div id="DetailsFooterBase">
                            <div id="DetailsFooterBaseTitle">
-                              <p>{this.state.projects.title}</p>
+                              <p >{this.state.projects.title}</p>
                            </div>
                            <div className="detailsline" id="DetailsProgressLine"></div>
                            <div className="detailsline"></div>
@@ -140,9 +157,32 @@ class ProjectDetails extends Component {
                </div>
             </div>
             {this.state.returnToOverview ? <Index removeDetailWrapper={true} currentProjectNumber={this.props.currentProjectNumber} lastProjectNumber={this.props.lastProjectNumber}></Index> : null}
+            {this.state.loadNextProject ? <ProjectDetails calledFromProjectDetails={true} currentProject={this.props.allProjects.getProjectAt(this.props.currentProjectNumber + 1)} currentProjectNumber={this.props.currentProjectNumber + 1} lastProjectNumber={this.props.lastProjectNumber + 1} allProjects={this.props.allProjects}></ProjectDetails> : null}
          </React.Fragment>
 
       )
+   }
+
+   loadNextProject = () => {
+
+
+      let wrapper = document.querySelector("#Detailwrapper")
+      this.animateUnMountToProjectDetails(wrapper)
+
+      this.setState({ loadNextProject: true })
+
+
+   }
+
+   animateUnMountToProjectDetails = (wrapper) => {
+      let main_wrapper = document.querySelector("#main_wrapper")
+      let animation = main_wrapper.animate([
+
+         { left: `calc(-${this.state.currentpic * nextMultiplier}vw - 70px` },
+         { left: "-100%" }
+      ], { duration: 1000, easing: "ease-out" })
+
+      animation.onfinish = () => {console.log("removed wrapper", wrapper);wrapper.remove();}
    }
 
    returnToOverview = () => {
@@ -194,7 +234,9 @@ class ProjectDetails extends Component {
                easing: "ease-out"
             })
 
-         this.setState({ returnToOverview: true })
+         this.setState({ returnToOverview: true }, () => {
+            console.log(this.state.returnToOverview)
+         })
       }, timeout)
 
 
@@ -213,7 +255,10 @@ class ProjectDetails extends Component {
          let realindex = this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic)
          //remove highlight of old
          document.querySelectorAll(".centeritem")[realindex].classList.remove("showFull")
-         if (this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.add("hide");
+
+         //hide left or right text
+         if (this.state.displayDescription && realindex >= 0) document.querySelector("#detail_description_text").classList.add("hide");
+         if (this.state.displayDescription && realindex <= this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.add("hide");
 
          this.setState({
             currentpic: this.state.currentpic + add,
@@ -223,7 +268,9 @@ class ProjectDetails extends Component {
             this.updateProgressBar(realindex)
             document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
 
+            //display left or right text
             if (this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.remove("hide")
+            if (this.state.displayDescription && realindex === this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.remove("hide")
             //add highlight to new
             document.querySelectorAll(".centeritem")[realindex].classList.add("showFull")
 
@@ -256,7 +303,6 @@ class ProjectDetails extends Component {
          setTimeout(() => BlockNextImage = false, 900)
       }
    }
-
 
    removeOverview() {
       try {
@@ -324,8 +370,6 @@ class ProjectDetails extends Component {
          ], { duration: 1000, delay: 500, easing: "ease-out" })
       }
 
-
-
       //animate footer
       let footer = document.querySelector("#DetailsFooter");
       footer.style = "position:relative";
@@ -334,6 +378,24 @@ class ProjectDetails extends Component {
          { top: 0 }
       ], { duration: 1000, delay: 500, easing: "ease-out" })
       footeranim.onfinish = () => footer.style = "";
+   }
+
+   animateMountFromProjectDetails = () => {
+
+      let main_wrapper = document.querySelector("#main_wrapper");
+      main_wrapper.animate([
+         {left: "100vw"},
+         {left: `calc(-${this.state.currentpic * nextMultiplier}vw - 70px`}
+      ], {duration:1000, easing:"ease-out"})
+
+      if (this.state.displayDescription) {
+         let left = document.querySelector("#detail_description_text");
+         this.calculateTextWidthHeight()
+         left.animate([
+            { top: left.getBoundingClientRect().top + 80 + "px", opacity: 0 },
+            { top: left.getBoundingClientRect().top + 0 + "px", opacity: 1 },
+         ], { duration: 1000, delay: 0, easing: "ease-out" })
+      }
    }
 
    calculateTextWidthHeight = () => {
@@ -355,17 +417,37 @@ class ProjectDetails extends Component {
 
    componentDidMount() {
 
-      this.animateMount();
+      if (this.props.calledFromProjectDetails) {
+         let wrapper = document.querySelectorAll("#main_wrapper")[1]
+         let left = document.querySelectorAll("#detail_description_text")[1]
+         wrapper.classList.add("hide")
+         left.classList.add("hide")
 
-      try {
-         this.removeOverview();
+         setTimeout(() => {
+
+            wrapper.classList.remove("hide")
+            left.classList.remove("hide")
+
+            this.animateMountFromProjectDetails();
+            window.addEventListener("resize", this.WindowEventHandler);
+            this.CheckIfHmoreThanWidth();
+            this.CheckIfNextPictureShouldBeTeasered()
+            this.updateProgressBar(this.state.currentpic);
+
+         }, 1100)
       }
-      catch (e) { console.error(e) }
+      else {
+         this.animateMount();
+         try {
+            this.removeOverview();
+         }
+         catch (e) { console.error(e) }
 
-      window.addEventListener("resize", this.WindowEventHandler);
-      this.CheckIfHmoreThanWidth();
-      this.CheckIfNextPictureShouldBeTeasered()
-      this.updateProgressBar(this.state.currentpic);
+         window.addEventListener("resize", this.WindowEventHandler);
+         this.CheckIfHmoreThanWidth();
+         this.CheckIfNextPictureShouldBeTeasered()
+         this.updateProgressBar(this.state.currentpic);
+      }
    }
 
    WindowEventHandler = () => {

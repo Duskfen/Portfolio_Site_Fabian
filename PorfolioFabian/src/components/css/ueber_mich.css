@@ -69,3 +69,8 @@
    position: absolute;
    width: 450px;
 }
+
+.italic{
+   font-family: ClarikaProGrotesque;
+   font-style: italic;
+}

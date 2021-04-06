@@ -56,9 +56,9 @@ class MainElements {
             <div className="TextElement">
                <h2>noch nicht genug?</h2>
                <p>
-                  Dann downloade doch <a className="linkInTextElement" href={Lebenslauf} download="Schwarzinger-Lebenslauf.pdf">hier </a>
-                  meinen Lebenslauf oder schreibe mir gleich
-                  eine <a href="mailto:mail@fabianschwarzinger.work" className="linkInTextElement">E-Mail </a>!
+                  Dann downloade gleich meinen <a className="linkInTextElement" href={Lebenslauf} download="Schwarzinger-Lebenslauf.pdf">Lebenslauf </a>
+                   und schreibe mir
+                  eine <a href="mailto:mail@fabianschwarzinger.work" className="linkInTextElement">E-Mail</a><span className="italic">!</span>
                </p>
                <p>Wir können uns dann gleich an die Arbeit machen, die Welt gemeinsam zu verschönern!</p>
             </div>
@@ -97,52 +97,6 @@ class Branding extends Component {
       this.perCentStep = 100 / (this.state.textElements.mainElements.length - 1);
    }
 
-   updateProgressBar = (index) => {
-      document.querySelector("#aboutWrapper #DetailsProgressLine").style = `width: ${this.perCentStep * (index)}%`
-   }
-
-   animateNextElement = () => {
-      let lastElement = document.querySelector("#aboutWrapper #lastTextElement")
-      let currentElement = document.querySelector("#aboutWrapper #currentTextElement")
-
-      if(this.state.currentTextElement > this.state.lastTextElement){
-         lastElement.animate([
-            { opacity: 1, left: lastElement.style.left, zIndex: 1 },
-            { opacity: 0, left: lastElement.getBoundingClientRect().left - 300 + "px", zIndex: 1 }
-         ], { duration: 1000, easing: "ease-out" })
-
-         currentElement.animate([
-            { opacity: 0, left: lastElement.getBoundingClientRect().left + 200 + "px" },
-            { opacity: 1, left: lastElement.style.left }
-         ], { duration: 1000, easing: "ease-out" })
-      }
-      else{
-         lastElement.animate([
-            { opacity: 1, left: lastElement.style.left, zIndex: 1 },
-            { opacity: 0, left: lastElement.getBoundingClientRect().left + 200 + "px", zIndex: 1 }
-         ], { duration: 1000, easing: "ease-out" })
-
-         currentElement.animate([
-            { opacity: 0, left: lastElement.getBoundingClientRect().left - 300 + "px" },
-            { opacity: 1, left: lastElement.style.left }
-         ], { duration: 1000, easing: "ease-out" })
-      }
-   }
-
-   nextElement = (add = 1) => {
-      //only if there are no running animations..
-      if (document.querySelector("#aboutWrapper #lastTextElement").getAnimations().length <= 0) {
-         this.setState({
-            currentTextElement: this.state.currentTextElement + add,
-            lastTextElement: this.state.currentTextElement
-         }, () => {
-            this.updateProgressBar(this.state.textElements.getRealIndex(this.state.currentTextElement));
-            this.animateNextElement();
-         })
-
-      }
-   }
-
    render() {
       return (
          <React.Fragment>
@@ -166,11 +120,16 @@ class Branding extends Component {
                      <div>
                         <div id="currentTextElement">
                            {this.state.textElements.getElementAt(this.state.currentTextElement)}
-                           <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p>
+                           {this.state.currentTextElement < this.state.textElements.mainElements.length-1?
+                              <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p>:null
+                           }
+                          
                         </div>
                         <div id="lastTextElement">
                            {this.state.textElements.getElementAt(this.state.lastTextElement)}
-                           <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p>
+                           {this.state.lastTextElement < this.state.textElements.mainElements.length-1?
+                              <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p>:null
+                           }
                         </div>
                      </div>
                   </section>
@@ -196,6 +155,79 @@ class Branding extends Component {
             {this.state.goToContact ? <Contact calledFromAbout={true} currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></Contact> : null}
          </React.Fragment>
       );
+   }
+
+   updateProgressBar = (index) => {
+      document.querySelector("#aboutWrapper #DetailsProgressLine").style = `width: ${this.perCentStep * (index)}%`
+   }
+
+   animateNextElement = () => {
+      let lastElement = document.querySelector("#aboutWrapper #lastTextElement")
+      let currentElement = document.querySelector("#aboutWrapper #currentTextElement")
+
+      if(this.state.currentTextElement > this.state.lastTextElement){
+         lastElement.animate([
+            { opacity: 1, left: lastElement.style.left, zIndex: 1 },
+            { opacity: 0, left: lastElement.getBoundingClientRect().left - 400 + "px", zIndex: 1 }
+         ], { duration: 600, easing: "ease-out" })
+
+         currentElement.animate([
+            { opacity: 0, left: lastElement.getBoundingClientRect().left + 300 + "px" },
+            { opacity: 0, left: lastElement.getBoundingClientRect().left + 300 + "px" },
+            { opacity: 1, left: lastElement.style.left }
+         ], { duration: 1200, easing: "ease-out" })
+      }
+      else{
+         lastElement.animate([
+            { opacity: 1, left: lastElement.style.left, zIndex: 1 },
+            { opacity: 0, left: lastElement.getBoundingClientRect().left + 300 + "px", zIndex: 1 }
+         ], { duration: 600, easing: "ease-out" })
+
+         currentElement.animate([
+            { opacity: 0, left: lastElement.getBoundingClientRect().left - 400 + "px" },
+            { opacity: 0, left: lastElement.getBoundingClientRect().left - 400 + "px" },
+            { opacity: 1, left: lastElement.style.left }
+         ], { duration: 1200, easing: "ease-out" })
+      }
+   }
+
+   animateLastHasReached = (add) => {
+      let currentElement = document.querySelector("#aboutWrapper #currentTextElement")
+
+      if(add < 0){
+         currentElement.animate([
+            { opacity: 1, left: currentElement.style.left },
+            { opacity: 1, left: currentElement.getBoundingClientRect().left + 10 + "px" },
+            { opacity: 1, left: currentElement.style.left }
+         ], { duration: 1000, easing: "ease-out" })
+      }
+      if(add > 0){
+         currentElement.animate([
+            { opacity: 1, left: currentElement.style.left },
+            { opacity: 1, left: currentElement.getBoundingClientRect().left - 110 + "px" },
+            { opacity: 1, left: currentElement.style.left }
+         ], { duration: 1000, easing: "ease-out" })
+      }
+
+   }
+
+   nextElement = (add = 1) => {
+      //only if there are no running animations..
+      if (document.querySelector("#aboutWrapper #currentTextElement").getAnimations().length <= 0) {
+         if(this.state.currentTextElement + add < this.state.textElements.mainElements.length
+            && this.state.currentTextElement + add >= 0){
+            this.setState({
+               currentTextElement: this.state.currentTextElement + add,
+               lastTextElement: this.state.currentTextElement
+            }, () => {
+               this.updateProgressBar(this.state.textElements.getRealIndex(this.state.currentTextElement));
+               this.animateNextElement();
+            })
+         }
+         else{
+            this.animateLastHasReached(add);
+         }
+      }
    }
 
    goToKontaktPage = () => {

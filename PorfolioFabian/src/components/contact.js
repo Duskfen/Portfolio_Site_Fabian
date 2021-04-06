@@ -5,7 +5,6 @@ import "./css/SubPage.css";
 import "./css/contact.css";
 
 import Index from "./index"
-import About from './about'
 
 class Contact extends Component {
 
@@ -13,7 +12,6 @@ class Contact extends Component {
       super(props);
       this.state = {
          returnToMainPage: false,
-         returnToAbout:false
       }
    }
 
@@ -59,23 +57,14 @@ class Contact extends Component {
                </div>
             </div>
             {this.state.returnToMainPage? <Index calledFromSubPage={true} currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></Index>:null}
-            {this.state.returnToAbout? <About currentProjectNumber={this.props.currentProjectNumber | 0} lastProjectNumber={this.props.lastProjectNumber | -1}></About>:null}
          </React.Fragment>
       );
    }
 
    returnToMainPage = () => {
-      if(this.props.calledFromAbout){
-         this.setState({returnToAbout: true});
-         this.animateUnMountToAbout();
-      }
-      else {
-         this.setState({returnToMainPage:true});
-   
-         this.animateUnMount();
-         
-         setTimeout(() => document.querySelector("#contactWrapper").remove(),1000);
-      }
+      this.setState({returnToMainPage:true});
+      this.animateUnMount();
+      setTimeout(() => document.querySelector("#contactWrapper").remove(),1000);
    }
 
    animateMount = () => {
@@ -96,18 +85,6 @@ class Contact extends Component {
 
    }
 
-   animateUnMountToAbout = () => {
-      let wrapper = document.querySelector("#contactWrapper")
-      let animation = wrapper.animate([
-         { clipPath: "inset(0%)", opacity:1 },
-         { clipPath: "inset(0% 0% 100% 0%)", opacity:1 }
-      ], { duration: 1000, delay: 30, easing: "ease-in-out" })
-
-      animation.onfinish = () =>  {
-         document.querySelector("#aboutWrapper").style=""
-         wrapper.remove()
-      };
-   }
 
    animateUnMount = () => {
       let main = document.querySelector(".main_aside")

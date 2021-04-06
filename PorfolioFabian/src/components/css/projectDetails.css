@@ -57,6 +57,17 @@ header {
    transition: opacity 0.7s !important;
 }
 
+#detail_next_picture {
+   position: fixed;
+   display: inline;
+   top: calc(50% - 10px);
+   right: 75px;
+   word-wrap: break-word;
+   transition: none !important;
+   transition: opacity 0.7s !important;
+   cursor: pointer;
+}
+
 #detail_description_text p, #detail_description_text h2 {
    margin: 0;
 }
@@ -67,10 +78,14 @@ header {
    margin-bottom: 10px;
 }
 
-#detail_description_text p {
+#detail_description_text p, #detail_next_picture p {
    font-family: ClarikaProGrotesque;
    font-size: 12pt;
    margin-left: 10px;
+}
+
+#detail_next_picture p{
+   display: inline;
 }
 
 .showFull {

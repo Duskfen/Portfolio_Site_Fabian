@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
+import {Head} from "react-static"
 // Your top level component
 import App from './App'
 
@@ -18,15 +18,22 @@ if (typeof document !== 'undefined') {
 
   const render = Comp => {
     renderMethod(
-      <AppContainer>
-            <Comp />
-      </AppContainer>,
+      <React.Fragment>
+         <Head>
+            <title>Fabian Schwarzinger Portfolio</title>
+         </Head>
+         
+         <AppContainer>
+               <Comp />
+         </AppContainer>
+      </React.Fragment>
+      
+      ,
       target
     )
   }
 
   // Render!
-  document.title = "Schwarzinger Fabian Portfolio"
   render(App)
 
   // Hot Module Replacement

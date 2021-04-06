@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Root, Routes, addPrefetchExcludes } from 'react-static'
+import {Routes } from 'react-static'
 import { Router } from '@reach/router'
-const Dynamic = React.lazy(() => import('containers/Dynamic'))
 import Index from "./components/index"
+import NotFound from "./components/404"
 import ReactSuspenseWrapper from "./components/ReactSuspenseWrapper"
 import LoadingScreen from "./components/LoadingScreen"
 import MouseCircle from "./components/circle"
@@ -10,7 +10,7 @@ import MouseCircle from "./components/circle"
 class App extends Component {
    constructor(props) {
       super(props);
-      this.state = { hasmount: false }
+      this.state = { hasmount: true }
 
    }
    render() {
@@ -18,16 +18,13 @@ class App extends Component {
          <div className="App">
             <MouseCircle></MouseCircle>
             <LoadingScreen></LoadingScreen>
-            {
-               this.state.hasmount ?
                   <ReactSuspenseWrapper>
                      <Router>
                         <Routes path="/"><Index></Index></Routes>
-                        <Dynamic path="dynamic" />
-                        <Routes path="*" />
+                        <Routes path="*"><NotFound></NotFound></Routes>
                      </Router>
-                  </ReactSuspenseWrapper> : null
-            }
+                  </ReactSuspenseWrapper>
+
          </div>
       )
    }

@@ -68,16 +68,18 @@ class LoadingScreen extends Component {
                   return (
                      <div key={`loading_image_${i}`}>
                         <img src={project.titleImage}></img>
-                        {
-                           project.images.map((image, j) => {
-                             return <img src={image} key={`loading_subimage_${j}`}></img>
-                           })
-                        }
                      </div>
                   )
-                  
-               })
-               } 
+               })}
+
+               {this.state.projects.projects.map((project, i) => {
+                  return (
+                        project.images.map((image, j) => {
+                          return <img src={image} key={`loading_subimage_${j}`}></img>
+                        })
+                  )
+               })}
+ 
             
          </div>
       </div>

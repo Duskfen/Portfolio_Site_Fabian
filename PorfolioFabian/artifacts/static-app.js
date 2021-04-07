@@ -592,8 +592,6 @@ var Index = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "wrapper",
         onWheel: function onWheel(e) {
-          console.log(e);
-
           if (!_this2.state.showDetails && !_this2.blockscroll) {
             _this2.blockscroll = true;
             setTimeout(function () {

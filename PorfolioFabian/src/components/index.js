@@ -160,9 +160,6 @@ class Index extends Component {
          <React.Fragment>
 
             <div id="wrapper" onWheel={(e) => {
-
-               console.log(e);
-
                if (!this.state.showDetails && !this.blockscroll) {
                   this.blockscroll = true;
                   setTimeout(() => this.blockscroll = false, 1000);

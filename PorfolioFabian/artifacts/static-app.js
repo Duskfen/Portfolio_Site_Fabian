@@ -1907,15 +1907,24 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "loadNextProject", function () {
       var wrapper = document.querySelector("#Detailwrapper");
 
-      _this.animateUnMountToProjectDetails(wrapper);
+      _this.animateUnMountToProjectDetails(wrapper, document.querySelector("#detail_next_picture"));
 
       _this.setState({
         loadNextProject: true
       });
     });
 
-    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "animateUnMountToProjectDetails", function (wrapper) {
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "animateUnMountToProjectDetails", function (wrapper, detailNextPicture) {
       var main_wrapper = document.querySelector("#main_wrapper");
+      detailNextPicture.classList.add("hide");
+      detailNextPicture.animate([{
+        opacity: 1
+      }, {
+        opacity: 0
+      }], {
+        duration: 300,
+        easing: "ease-out"
+      });
       var animation = main_wrapper.animate([{
         left: "calc(-".concat(_this.state.currentpic * nextMultiplier, "vw - 70px")
       }, {
@@ -2015,7 +2024,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
         document.querySelectorAll(".centeritem")[realindex].classList.remove("showFull"); //hide left or right text
 
         if (_this.state.displayDescription && realindex >= 0) document.querySelector("#detail_description_text").classList.add("hide");
-        if (_this.state.displayDescription && realindex <= _this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.add("hide");
+        if (_this.state.displayDescription && realindex <= _this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.add("displayNone");
 
         _this.setState({
           currentpic: _this.state.currentpic + add
@@ -2026,8 +2035,19 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
           document.querySelector("#main_wrapper").style = "width: ".concat(_this.state.projects.images.length * nextMultiplier + 100, "vw; left: calc(-").concat(_this.state.currentpic * nextMultiplier, "vw - 70px)"); //display left or right text
 
-          if (_this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.remove("hide");
-          if (_this.state.displayDescription && realindex === _this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.remove("hide"); //add highlight to new
+          if (_this.state.displayDescription && realindex === 0) setTimeout(function () {
+            return document.querySelector("#detail_description_text").classList.remove("hide");
+          }, 400);
+
+          if (_this.state.displayDescription && realindex === _this.state.projects.images.length - 1) {
+            var detailNext = document.querySelector("#detail_next_picture");
+            detailNext.style = "opacity:1";
+            setTimeout(function () {
+              detailNext.classList.remove("displayNone");
+              detailNext.style = "";
+            }, 400);
+          } //add highlight to new
+
 
           document.querySelectorAll(".centeritem")[realindex].classList.add("showFull");
 
@@ -2275,7 +2295,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
         onClick: function onClick() {
           return _this2.loadNextProject();
         },
-        className: "hide",
+        className: "displayNone",
         id: "detail_next_picture"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, "n\xE4chstes Projekt >")) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("footer", {
         id: "DetailsFooter"
@@ -4761,7 +4781,7 @@ module.exports = function (originalModule) {
 
 exports = module.exports = __webpack_require__(13)(false);
 // Module
-exports.push([module.i, "#Detailwrapper{\r\n   background-color: var(--background);\r\n}\r\n\r\n#main_wrapper {\r\n   position: relative;\r\n   transition: left .9s ease-out !important;\r\n}\r\n\r\n#main_wrapper>div {\r\n   height: 100%;\r\n   width: 100vw;\r\n   float: left;\r\n}\r\n\r\n#main_wrapper>div img, #main_wrapper>div video {\r\n   opacity: 0.6;\r\n   transition: opacity 0.6s\r\n}\r\n\r\n#main_wrapper>div:not(:first-child) {\r\n   margin-left: -40vw;\r\n}\r\n\r\n#main_wrapper>.toSmallToPreview:not(:first-child) {\r\n   margin-left: 0;\r\n}\r\n\r\n#main_wrapper .centeritem {\r\n   display: block;\r\n   margin: auto;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   height: 100%;\r\n}\r\n\r\n.main_wrapper_return_to_overview #Mainimg {\r\n   -webkit-clip-path: inset(5%);\r\n           clip-path: inset(5%);\r\n}\r\n\r\nheader {\r\n   width: calc(100vw - 140px)\r\n}\r\n\r\n#detail_description_text {\r\n   position: fixed;\r\n   top: calc(11% + 70px);\r\n   left: 75px;\r\n   width: calc(40% - 200px);\r\n   margin-right: 30px;\r\n   height: calc(78% - 140px);\r\n   display: flex;\r\n   align-items: center;\r\n   justify-content: center;\r\n   flex-wrap: wrap;\r\n   word-wrap: break-word;\r\n   transition: none !important;\r\n   transition: opacity 0.7s !important;\r\n}\r\n\r\n#detail_next_picture {\r\n   position: fixed;\r\n   display: inline;\r\n   top: calc(50% - 10px);\r\n   right: 75px;\r\n   word-wrap: break-word;\r\n   transition: none !important;\r\n   transition: opacity 0.7s !important;\r\n   cursor: pointer;\r\n}\r\n\r\n#detail_description_text p, #detail_description_text h2 {\r\n   margin: 0;\r\n}\r\n\r\n#detail_description_text h2 {\r\n   font-family: Coconut;\r\n   font-size: 14pt;\r\n   margin-bottom: 10px;\r\n}\r\n\r\n#detail_description_text p, #detail_next_picture p {\r\n   font-family: ClarikaProGrotesque;\r\n   font-size: 12pt;\r\n   margin-left: 10px;\r\n}\r\n\r\n#detail_next_picture p{\r\n   display: inline;\r\n}\r\n\r\n.showFull {\r\n   opacity: 1 !important;\r\n}\r\n\r\n.hide {\r\n   opacity: 0 !important;\r\n}\r\n\r\n/* ------------------- Footer ------------------- */\r\n\r\n#DetailsFooter{\r\n   width: 100vw;\r\n   margin-left:-70px;\r\n}\r\n\r\n#DetailsFooter {\r\n   display: flex;\r\n   align-items: center;\r\n   margin-top: 20px;\r\n}\r\n\r\n#DetailsFooter>div {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter .detailsline {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase .detailsline {\r\n   border-bottom: 1px solid var(--foreground);\r\n   position: relative;\r\n   bottom: 30px;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle {\r\n   display: flex;\r\n   align-items: center;\r\n   justify-content: center;\r\n   height: 60px;\r\n   font-family: Coconut;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle p {\r\n   display: inline;\r\n   background-color: var(--background);\r\n   z-index: 1;\r\n   font-family: Coconut;\r\n   padding-left: 10px;\r\n   padding-right: 10px;\r\n}\r\n\r\n#DetailsFooter #DetailsProgressLine {\r\n   width: 0;\r\n   transition: width 1s;\r\n}\r\n\r\n/* ------------------- End Footer ------------------- */", ""]);
+exports.push([module.i, "#Detailwrapper{\r\n   background-color: var(--background);\r\n}\r\n\r\n#main_wrapper {\r\n   position: relative;\r\n   transition: left .9s ease-out !important;\r\n}\r\n\r\n#main_wrapper>div {\r\n   height: 100%;\r\n   width: 100vw;\r\n   float: left;\r\n}\r\n\r\n#main_wrapper>div img, #main_wrapper>div video {\r\n   opacity: 0.6;\r\n   transition: opacity 0.6s\r\n}\r\n\r\n#main_wrapper>div:not(:first-child) {\r\n   margin-left: -40vw;\r\n}\r\n\r\n#main_wrapper>.toSmallToPreview:not(:first-child) {\r\n   margin-left: 0;\r\n}\r\n\r\n#main_wrapper .centeritem {\r\n   display: block;\r\n   margin: auto;\r\n   -o-object-fit: contain;\r\n      object-fit: contain;\r\n   height: 100%;\r\n}\r\n\r\n.main_wrapper_return_to_overview #Mainimg {\r\n   -webkit-clip-path: inset(5%);\r\n           clip-path: inset(5%);\r\n}\r\n\r\nheader {\r\n   width: calc(100vw - 140px)\r\n}\r\n\r\n#detail_description_text {\r\n   position: fixed;\r\n   top: calc(11% + 70px);\r\n   left: 75px;\r\n   width: calc(40% - 200px);\r\n   margin-right: 30px;\r\n   height: calc(78% - 140px);\r\n   display: flex;\r\n   align-items: center;\r\n   justify-content: center;\r\n   flex-wrap: wrap;\r\n   word-wrap: break-word;\r\n   transition: none !important;\r\n   transition: opacity 0.3s !important;\r\n}\r\n\r\n#detail_next_picture {\r\n   position: fixed;\r\n   display: inline;\r\n   top: calc(50% - 10px);\r\n   right: 75px;\r\n   word-wrap: break-word;\r\n   transition: none !important;\r\n   transition: opacity 0.3s !important;\r\n   cursor: pointer;\r\n}\r\n\r\n#detail_description_text p, #detail_description_text h2 {\r\n   margin: 0;\r\n}\r\n\r\n#detail_description_text h2 {\r\n   font-family: Coconut;\r\n   font-size: 14pt;\r\n   margin-bottom: 10px;\r\n}\r\n\r\n#detail_description_text p, #detail_next_picture p {\r\n   font-family: ClarikaProGrotesque;\r\n   font-size: 12pt;\r\n   margin-left: 10px;\r\n}\r\n\r\n#detail_next_picture p{\r\n   display: inline;\r\n}\r\n\r\n.showFull {\r\n   opacity: 1 !important;\r\n}\r\n\r\n.hide {\r\n   opacity: 0 !important;\r\n}\r\n\r\n.displayNone {\r\n   display: none;\r\n   opacity: 0 !important;\r\n}\r\n\r\n/* ------------------- Footer ------------------- */\r\n\r\n#DetailsFooter{\r\n   width: 100vw;\r\n   margin-left:-70px;\r\n}\r\n\r\n#DetailsFooter {\r\n   display: flex;\r\n   align-items: center;\r\n   margin-top: 20px;\r\n}\r\n\r\n#DetailsFooter>div {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter .detailsline {\r\n   width: 100%;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase .detailsline {\r\n   border-bottom: 1px solid var(--foreground);\r\n   position: relative;\r\n   bottom: 30px;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle {\r\n   display: flex;\r\n   align-items: center;\r\n   justify-content: center;\r\n   height: 60px;\r\n   font-family: Coconut;\r\n}\r\n\r\n#DetailsFooter #DetailsFooterBase #DetailsFooterBaseTitle p {\r\n   display: inline;\r\n   background-color: var(--background);\r\n   z-index: 1;\r\n   font-family: Coconut;\r\n   padding-left: 10px;\r\n   padding-right: 10px;\r\n}\r\n\r\n#DetailsFooter #DetailsProgressLine {\r\n   width: 0;\r\n   transition: width 1s;\r\n}\r\n\r\n/* ------------------- End Footer ------------------- */", ""]);
 
 
 

@@ -139,7 +139,7 @@ class ProjectDetails extends Component {
                      })}
                   </section>
                   {this.state.displayDescription ?
-                     <div onClick={() => this.loadNextProject()} className={"hide"} id="detail_next_picture">
+                     <div onClick={() => this.loadNextProject()} className={"displayNone"} id="detail_next_picture">
                         <p >nächstes Projekt &gt;</p>
                      </div> : null
                   }
@@ -167,17 +167,23 @@ class ProjectDetails extends Component {
 
 
       let wrapper = document.querySelector("#Detailwrapper")
-      this.animateUnMountToProjectDetails(wrapper)
+      this.animateUnMountToProjectDetails(wrapper, document.querySelector("#detail_next_picture"))
 
       this.setState({ loadNextProject: true })
 
 
    }
 
-   animateUnMountToProjectDetails = (wrapper) => {
+   animateUnMountToProjectDetails = (wrapper, detailNextPicture) => {
       let main_wrapper = document.querySelector("#main_wrapper")
-      let animation = main_wrapper.animate([
 
+      detailNextPicture.classList.add("hide")
+      detailNextPicture.animate([
+         {opacity: 1},
+         {opacity: 0}
+      ], {duration: 300, easing:"ease-out"})
+
+      let animation = main_wrapper.animate([
          { left: `calc(-${this.state.currentpic * nextMultiplier}vw - 70px` },
          { left: "-100%" }
       ], { duration: 1000, easing: "ease-out" })
@@ -258,7 +264,7 @@ class ProjectDetails extends Component {
 
          //hide left or right text
          if (this.state.displayDescription && realindex >= 0) document.querySelector("#detail_description_text").classList.add("hide");
-         if (this.state.displayDescription && realindex <= this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.add("hide");
+         if (this.state.displayDescription && realindex <= this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.add("displayNone");
 
          this.setState({
             currentpic: this.state.currentpic + add,
@@ -269,8 +275,17 @@ class ProjectDetails extends Component {
             document.querySelector("#main_wrapper").style = `width: ${this.state.projects.images.length * nextMultiplier + 100}vw; left: calc(-${this.state.currentpic * nextMultiplier}vw - 70px)`
 
             //display left or right text
-            if (this.state.displayDescription && realindex === 0) document.querySelector("#detail_description_text").classList.remove("hide")
-            if (this.state.displayDescription && realindex === this.state.projects.images.length - 1) document.querySelector("#detail_next_picture").classList.remove("hide")
+            if (this.state.displayDescription && realindex === 0) setTimeout(() => document.querySelector("#detail_description_text").classList.remove("hide"), 400)
+            if (this.state.displayDescription && realindex === this.state.projects.images.length - 1){
+               
+               let detailNext = document.querySelector("#detail_next_picture")
+               detailNext.style="opacity:1"
+
+               setTimeout(() => {
+                  detailNext.classList.remove("displayNone")
+                  detailNext.style=""
+               }, 400) 
+            } 
             //add highlight to new
             document.querySelectorAll(".centeritem")[realindex].classList.add("showFull")
 

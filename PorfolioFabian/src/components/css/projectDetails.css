@@ -54,7 +54,7 @@ header {
    flex-wrap: wrap;
    word-wrap: break-word;
    transition: none !important;
-   transition: opacity 0.7s !important;
+   transition: opacity 0.3s !important;
 }
 
 #detail_next_picture {
@@ -64,7 +64,7 @@ header {
    right: 75px;
    word-wrap: break-word;
    transition: none !important;
-   transition: opacity 0.7s !important;
+   transition: opacity 0.3s !important;
    cursor: pointer;
 }
 
@@ -93,6 +93,11 @@ header {
 }
 
 .hide {
+   opacity: 0 !important;
+}
+
+.displayNone {
+   display: none;
    opacity: 0 !important;
 }
 

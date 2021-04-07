@@ -177,7 +177,7 @@ class ProjectDetails extends Component {
    animateUnMountToProjectDetails = (wrapper, detailNextPicture) => {
       let main_wrapper = document.querySelector("#main_wrapper")
 
-      detailNextPicture.classList.add("hide")
+      detailNextPicture.style="opacity:0"
       detailNextPicture.animate([
          {opacity: 1},
          {opacity: 0}

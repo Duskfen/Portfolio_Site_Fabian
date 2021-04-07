@@ -54,6 +54,8 @@ class Index extends Component {
          showMarquee: false,
          marqueeCount: 2,
       };
+
+      this.blockscroll = false;
    }
 
    calculateMarqueeCount = (ev = null) => {
@@ -158,7 +160,13 @@ class Index extends Component {
          <React.Fragment>
 
             <div id="wrapper" onWheel={(e) => {
-               if (!this.state.showDetails) {
+
+               console.log(e);
+
+               if (!this.state.showDetails && !this.blockscroll) {
+                  this.blockscroll = true;
+                  setTimeout(() => this.blockscroll = false, 1000);
+
                   if (e.deltaY < 0) this.nextPicture(e, -1)
                   else this.nextPicture(e, 1)
                }

@@ -580,6 +580,7 @@ var Index = /*#__PURE__*/function (_Component) {
       showMarquee: false,
       marqueeCount: 2
     };
+    _this.blockscroll = false;
     return _this;
   }
 
@@ -591,7 +592,13 @@ var Index = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "wrapper",
         onWheel: function onWheel(e) {
-          if (!_this2.state.showDetails) {
+          console.log(e);
+
+          if (!_this2.state.showDetails && !_this2.blockscroll) {
+            _this2.blockscroll = true;
+            setTimeout(function () {
+              return _this2.blockscroll = false;
+            }, 1000);
             if (e.deltaY < 0) _this2.nextPicture(e, -1);else _this2.nextPicture(e, 1);
           }
         }
@@ -1916,7 +1923,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "animateUnMountToProjectDetails", function (wrapper, detailNextPicture) {
       var main_wrapper = document.querySelector("#main_wrapper");
-      detailNextPicture.classList.add("hide");
+      detailNextPicture.style = "opacity:0";
       detailNextPicture.animate([{
         opacity: 1
       }, {

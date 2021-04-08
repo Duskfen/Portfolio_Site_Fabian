@@ -592,6 +592,8 @@ var Index = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "wrapper",
         onWheel: function onWheel(e) {
+          e.preventDefault();
+
           if (!_this2.state.showDetails && !_this2.blockscroll) {
             _this2.blockscroll = true;
             setTimeout(function () {
@@ -1940,7 +1942,6 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
       });
 
       animation.onfinish = function () {
-        console.log("removed wrapper", wrapper);
         wrapper.remove();
       };
     });
@@ -2011,8 +2012,6 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
 
         _this.setState({
           returnToOverview: true
-        }, function () {
-          console.log(_this.state.returnToOverview);
         });
       }, timeout);
     });

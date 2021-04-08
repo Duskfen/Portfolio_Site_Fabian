@@ -188,7 +188,7 @@ class ProjectDetails extends Component {
          { left: "-100%" }
       ], { duration: 1000, easing: "ease-out" })
 
-      animation.onfinish = () => {console.log("removed wrapper", wrapper);wrapper.remove();}
+      animation.onfinish = () => {wrapper.remove();}
    }
 
    returnToOverview = () => {
@@ -240,9 +240,7 @@ class ProjectDetails extends Component {
                easing: "ease-out"
             })
 
-         this.setState({ returnToOverview: true }, () => {
-            console.log(this.state.returnToOverview)
-         })
+         this.setState({ returnToOverview: true })
       }, timeout)
 
 

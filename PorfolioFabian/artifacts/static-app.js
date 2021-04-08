@@ -231,12 +231,18 @@ var ProjectList = /*#__PURE__*/function () {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var project = _step.value;
         this.projects.push(new Project(project));
-      }
+      } // ------------ for mac trackpad prevent inertia scrolling ---
+
     } catch (err) {
       _iterator.e(err);
     } finally {
       _iterator.f();
     }
+
+    this.minScrollWheelInterval = 1000;
+    this.lastScrollWheelTimestamp = 0;
+    this.lastScrollWheelDelta = 0;
+    this.animating = false; // -------------- end ------------
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_6___default()(ProjectList, [{
@@ -592,15 +598,25 @@ var Index = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "wrapper",
         onWheel: function onWheel(e) {
-          e.preventDefault();
+          var now = Date.now();
+          var rapidSuccession = now - _this2.lastScrollWheelTimestamp < _this2.minScrollWheelInterval;
+          var otherDirection = _this2.lastScrollWheelDelta > 0 !== e.deltaY > 0;
+          var speedDecrease = Math.abs(e.deltaY) < Math.abs(_this2.lastScrollWheelDelta);
+          var isHuman = otherDirection || !rapidSuccession || !speedDecrease;
 
-          if (!_this2.state.showDetails && !_this2.blockscroll) {
-            _this2.blockscroll = true;
-            setTimeout(function () {
-              return _this2.blockscroll = false;
-            }, 1000);
+          if (isHuman && !_this2.animating) {
+            // current animation starting: future animations blocked
             if (e.deltaY < 0) _this2.nextPicture(e, -1);else _this2.nextPicture(e, 1);
           }
+
+          _this2.lastScrollWheelTimestamp = now;
+          _this2.lastScrollWheelDelta = e.deltaY; // e.preventDefault();
+          // if (!this.state.showDetails && !this.blockscroll) {
+          //    this.blockscroll = true;
+          //    setTimeout(() => this.blockscroll = false, 1000);
+          //    if (e.deltaY < 0) this.nextPicture(e, -1)
+          //    else this.nextPicture(e, 1)
+          // }
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "projectDetailWrapper",

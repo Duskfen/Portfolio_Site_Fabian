@@ -17,6 +17,15 @@ class ProjectList {
       for (let project of ProjectInformation.projects) {
          this.projects.push(new Project(project))
       }
+
+      // ------------ for mac trackpad prevent inertia scrolling ---
+      this.minScrollWheelInterval = 1000;
+
+      this.lastScrollWheelTimestamp = 0;
+      this.lastScrollWheelDelta = 0;
+      this.animating = false;
+
+      // -------------- end ------------
    }
 
    getProjectAt(index) {
@@ -63,7 +72,7 @@ class Index extends Component {
          let marquee = document.querySelectorAll(".marquee_text")[0]
          this.setState({ marqueeCount: Math.ceil(window.innerWidth / marquee.scrollWidth) + 1 })
       }
-      catch (e) {}
+      catch (e) { }
    }
 
    nextPicture = (ev, add = 1) => {
@@ -160,14 +169,36 @@ class Index extends Component {
          <React.Fragment>
 
             <div id="wrapper" onWheel={(e) => {
-               e.preventDefault();
-               if (!this.state.showDetails && !this.blockscroll) {
-                  this.blockscroll = true;
-                  setTimeout(() => this.blockscroll = false, 1000);
 
-                  if (e.deltaY < 0) this.nextPicture(e, -1)
-                  else this.nextPicture(e, 1)
+               const now = Date.now();
+
+               const rapidSuccession = now - this.lastScrollWheelTimestamp < this.minScrollWheelInterval;
+               const otherDirection = (this.lastScrollWheelDelta > 0) !== (e.deltaY > 0);
+               const speedDecrease = Math.abs(e.deltaY) < Math.abs(this.lastScrollWheelDelta);
+
+               const isHuman = otherDirection || !rapidSuccession || !speedDecrease;
+
+               if (isHuman && !this.animating) {
+                   // current animation starting: future animations blocked
+                  
+                  if (e.deltaY < 0) this.nextPicture(e, -1);
+                  else this.nextPicture(e, 1);
+                  
                }
+
+               this.lastScrollWheelTimestamp = now;
+               this.lastScrollWheelDelta = e.deltaY;
+
+              
+
+               // e.preventDefault();
+               // if (!this.state.showDetails && !this.blockscroll) {
+               //    this.blockscroll = true;
+               //    setTimeout(() => this.blockscroll = false, 1000);
+
+               //    if (e.deltaY < 0) this.nextPicture(e, -1)
+               //    else this.nextPicture(e, 1)
+               // }
             }}>
                <div id="projectDetailWrapper" className={this.state.showMarquee ? "marqueeactive" : null}>
                   <div id="marquee" className={this.state.showMarquee ? null : "hide"}>
@@ -194,7 +225,7 @@ class Index extends Component {
                   <footer id="footerOverview">
                      <div id="footer_overview_items">
                         <a onClick={() => { this.setState({ clickedRoute: "Impressum" }); this.animateToSubPage() }}>impressum</a>
-                        <a onClick={() => { this.setState({ clickedRoute: "About" }, () => this.animateToUeberMich());  }}>über mich</a>
+                        <a onClick={() => { this.setState({ clickedRoute: "About" }, () => this.animateToUeberMich()); }}>über mich</a>
                         <a onClick={() => { this.setState({ clickedRoute: "Contact" }); this.animateToSubPage() }}>kontakt</a>
                      </div>
                   </footer>
@@ -211,11 +242,12 @@ class Index extends Component {
    animateToUeberMich = () => {
       let wrapper = document.querySelector("#wrapper")
       let animation = wrapper.animate([
-         { clipPath: "inset(0%)", opacity:1 },
-         { clipPath: "inset(0% 0% 100% 0%)", opacity:1 }
+         { clipPath: "inset(0%)", opacity: 1 },
+         { clipPath: "inset(0% 0% 100% 0%)", opacity: 1 }
       ], { duration: 1000, delay: 30, easing: "ease-in-out" })
 
-      animation.onfinish = () =>  {document.querySelector("#aboutWrapper").style=""
+      animation.onfinish = () => {
+         document.querySelector("#aboutWrapper").style = ""
          wrapper.remove()
       };
    }
@@ -223,14 +255,14 @@ class Index extends Component {
    animateMountFromAbout = () => {
       let wrapper = document.querySelector("#wrapper")
 
-      wrapper.style="position:relative; bottom:100vh"
+      wrapper.style = "position:relative; bottom:100vh"
       let animation = wrapper.animate([
-         { clipPath: "inset(0% 0% 100% 0%)"},
-         { clipPath: "inset(0%)"}
+         { clipPath: "inset(0% 0% 100% 0%)" },
+         { clipPath: "inset(0%)" }
 
-      ], {duration: 1000, easing: "ease-in-out" })
+      ], { duration: 1000, easing: "ease-in-out" })
 
-      animation.onfinish = () =>  {
+      animation.onfinish = () => {
          wrapper.style = "";
          document.querySelector("#aboutWrapper").remove()
       };
@@ -241,25 +273,25 @@ class Index extends Component {
       let footer = document.querySelector("#footerOverview")
       let arrow = document.querySelector("header .right_arrow")
       let currentpicture = document.querySelector("#currentpicture")
-      document.querySelector("#picturebefore").style="opacity:0"
+      document.querySelector("#picturebefore").style = "opacity:0"
 
       currentpicture.animate([
-         { clipPath: "inset(5% 5% 5% 5%)", opacity:1 },
-         { clipPath: "inset(5% 5% 95% 5%)", opacity:0 }
+         { clipPath: "inset(5% 5% 5% 5%)", opacity: 1 },
+         { clipPath: "inset(5% 5% 95% 5%)", opacity: 0 }
       ], { duration: 1001, easing: "ease-in-out" })
 
       arrow.animate([
-         {opacity:1},
-         {opacity:0}
-      ], {duration: 1001, easing: "ease-out"})
+         { opacity: 1 },
+         { opacity: 0 }
+      ], { duration: 1001, easing: "ease-out" })
 
       footer.style = "position:relative";
       footer.animate([
          { top: 0 },
          { top: "calc(100% + 140px)" },
-      ], { duration: 1001, easing:"ease-out" })
+      ], { duration: 1001, easing: "ease-out" })
 
-      setTimeout(() => document.querySelector("#wrapper").remove(),1000);
+      setTimeout(() => document.querySelector("#wrapper").remove(), 1000);
    }
 
    animateMountFromSubpage = () => {
@@ -267,14 +299,14 @@ class Index extends Component {
       let picturebefore = document.querySelector("#picturebefore")
 
       picturebefore.animate([
-         { opacity:0 },
-         { opacity:0 }
+         { opacity: 0 },
+         { opacity: 0 }
       ], { duration: 1001, delay: 900, easing: "ease-in-out" })
       currentpicture.animate([
-         { clipPath: "inset(95% 5% 5%  5%)", opacity:0 },
-         { clipPath: "inset(85% 5% 5%  5%)", opacity:1 },
-         { clipPath: "inset(60% 5% 5%  5%)", opacity:1 },
-         { clipPath: "inset(5% 5% 5% 5%)", opacity:1 }
+         { clipPath: "inset(95% 5% 5%  5%)", opacity: 0 },
+         { clipPath: "inset(85% 5% 5%  5%)", opacity: 1 },
+         { clipPath: "inset(60% 5% 5%  5%)", opacity: 1 },
+         { clipPath: "inset(5% 5% 5% 5%)", opacity: 1 }
       ], { duration: 1001, delay: 900, easing: "ease-in-out" })
 
    }
@@ -337,13 +369,13 @@ class Index extends Component {
       if (this.props.removeDetailWrapper) {
          this.removeDetailWrapper();
       }
-      else if(this.props.calledFromSubPage) {
+      else if (this.props.calledFromSubPage) {
          this.animateMountFromSubpage();
       }
-      else if(this.props.calledFromAbout){
+      else if (this.props.calledFromAbout) {
          this.animateMountFromAbout();
       }
-      else{
+      else {
          this.removeLoadingScreen();
       }
 

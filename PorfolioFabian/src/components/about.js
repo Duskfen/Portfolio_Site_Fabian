@@ -7,6 +7,7 @@ import Contact from './contact'
 import "./css/footerSubPage.css";
 import "./css/SubPage.css";
 import "./css/ueber_mich.css"
+import {Lethargy} from "lethargy";
 
 import full_logo from "./img/logo_full.svg"
 const right_arrow = require("./img/arrow_right.svg")
@@ -64,6 +65,8 @@ class MainElements {
             </div>
          )
       ];
+
+     
    }
 
    getElementAt(index) {
@@ -94,6 +97,8 @@ class Branding extends Component {
          lastTextElement: -1
       }
 
+      this.lethargy = new Lethargy(8,100,1.1,700)
+
       this.perCentStep = 100 / (this.state.textElements.mainElements.length - 1);
    }
 
@@ -101,6 +106,9 @@ class Branding extends Component {
       return (
          <React.Fragment>
             <div id="aboutWrapper" onWheel={(e) => {
+
+               if(this.lethargy.check(e) === false) return;
+
                if (!this.state.showDetails) {
                   if (e.deltaY < 0) this.nextElement(-1)
                   else this.nextElement(1)

@@ -4,6 +4,7 @@ const right_arrow = require("./img/arrow_right.svg");
 
 import "./css/projectDetails.css"
 import Index from "./index"
+import {Lethargy} from "lethargy";
 
 var BlockNextImage = false;
 var nextMultiplier = 60;
@@ -96,6 +97,8 @@ class ProjectDetails extends Component {
          displayDescription: true
       };
 
+      this.lethargy = new Lethargy(8,100,1.1,700)
+
       this.perCentStep = 100 / (this.state.projects.images.length - 1);
    }
 
@@ -105,6 +108,9 @@ class ProjectDetails extends Component {
       return (
          <React.Fragment>
             <div id="Detailwrapper" onWheel={(e) => {
+               
+               if(this.lethargy.check(e) === false) return;
+
                if (e.deltaY < 0) this.nextPicture(e, -1)
                else this.nextPicture(e, 1)
             }}>

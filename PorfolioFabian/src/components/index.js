@@ -55,7 +55,7 @@ class Index extends Component {
          marqueeCount: 2,
       };
 
-      this.lethargy = new Lethargy(8,100,1.1,700)
+      this.lethargy = new Lethargy()
    }
 
    calculateMarqueeCount = (ev = null) => {

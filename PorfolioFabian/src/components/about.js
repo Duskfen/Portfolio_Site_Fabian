@@ -97,7 +97,7 @@ class Branding extends Component {
          lastTextElement: -1
       }
 
-      this.lethargy = new Lethargy(8,100,1.1,700)
+      this.lethargy = new Lethargy()
 
       this.perCentStep = 100 / (this.state.textElements.mainElements.length - 1);
    }

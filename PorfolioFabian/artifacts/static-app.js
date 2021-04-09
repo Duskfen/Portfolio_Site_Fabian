@@ -584,7 +584,7 @@ var Index = /*#__PURE__*/function (_Component) {
       showMarquee: false,
       marqueeCount: 2
     };
-    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_15__["Lethargy"](8, 100, 1.1, 700);
+    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_15__["Lethargy"]();
     return _this;
   }
 
@@ -2255,7 +2255,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
       loadNextProject: false,
       displayDescription: true
     };
-    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_12__["Lethargy"](8, 100, 1.1, 700);
+    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_12__["Lethargy"]();
     _this.perCentStep = 100 / (_this.state.projects.images.length - 1);
     return _this;
   }
@@ -2895,7 +2895,7 @@ var Branding = /*#__PURE__*/function (_Component) {
       currentTextElement: 0,
       lastTextElement: -1
     };
-    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_13__["Lethargy"](8, 100, 1.1, 700);
+    _this.lethargy = new lethargy__WEBPACK_IMPORTED_MODULE_13__["Lethargy"]();
     _this.perCentStep = 100 / (_this.state.textElements.mainElements.length - 1);
     return _this;
   }

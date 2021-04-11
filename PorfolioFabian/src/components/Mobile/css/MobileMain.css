@@ -19,6 +19,10 @@
    width: 100%;
 }
 
+#mobileWrapper #footer_overview_items{
+   align-items:center;
+}
+
 #mobileWrapper #project_overview_arrows {
    width:calc(100vw - 40px);
    display:flex;

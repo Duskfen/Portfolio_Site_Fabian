@@ -1,0 +1,33 @@
+#mobileWrapper #aboutWrapper .TextElement p, #mobileWrapper #aboutWrapper .ElementLinkToNext{
+   font-size:10pt;
+}
+
+#mobileWrapper #aboutWrapper #lastTextElement, #mobileWrapper #aboutWrapper #currentTextElement{
+   width:calc(100vw - 40px);
+   margin-left:20px;
+}
+
+#mobileWrapper .main_aside > div {
+   margin-top:calc(20vh - 10%);
+}
+#mobileWrapper #aboutWrapper #lastTextElement{
+   top: unset;
+}
+
+#mobileWrapper .main_aside {
+   width: 100vw;
+   margin-left:-20px;
+}
+
+#mobileWrapper #aboutWrapper footer {
+   width: 100vw;
+   margin-left:-20px;
+}
+
+#mobileWrapper .rightText {
+   text-align: right;
+}
+
+#mobileWrapper #aboutWrapper .main_aside > div{
+   padding: 0;
+}

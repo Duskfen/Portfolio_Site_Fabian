@@ -1,0 +1,13 @@
+#mobileWrapper #DetailsFooter{
+   margin-left:-20px;
+   font-size: 10pt;
+   width:100vw !important;
+}
+
+#mobileWrapper #main_wrapper .centeritem{
+   width: 100%
+}
+
+#mobileWrapper #mobile_detail_next_picture{
+   cursor:pointer; /* actually useless for mobile devices... */
+}

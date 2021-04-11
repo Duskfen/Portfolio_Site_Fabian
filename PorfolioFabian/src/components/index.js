@@ -70,7 +70,9 @@ class Index extends Component {
       if (document.querySelector("#currentpicture").getAnimations()[0] === undefined) {
          this.setState({ currentProject: this.state.currentProject + add, lastProject: this.state.currentProject }, () => {
             this.calculateMarqueeCount();
-            setTimeout(() => { this.calculateMarqueeCount(); this.animateMarquee(document.querySelectorAll(".marquee_text")); }, 1501)
+            let marquee = document.querySelector("#marquee")
+            marquee.style = "opacity: 0 !important";
+            setTimeout(() => { this.calculateMarqueeCount(); this.animateMarquee(document.querySelectorAll(".marquee_text")); marquee.style = "";}, 1501)
             this.handleNextAnimations();
          })
       }

@@ -1,0 +1,34 @@
+#mobileWrapper #projectDetailWrapper{
+   padding:40px 20px 40px 20px;
+   height: calc(100vh - 80px);
+   grid-template-rows: 1fr 6fr 1fr 2fr;
+   grid-template-areas: "header" "project_overview" "arrows" "footer";
+}
+
+#mobileWrapper header, #mobileWrapper footer{
+   width: calc(100vw - 40px)
+}
+
+#mobileWrapper #project_overview_wrapper {
+   width: 100vw;
+   margin-left:-20px;
+}
+
+#mobileWrapper #project_overview_section img{
+   margin:0;
+   width: 100%;
+}
+
+#mobileWrapper #project_overview_arrows {
+   width:calc(100vw - 40px);
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+   grid-area: "arrows";
+
+}
+
+#mobileWrapper header *, #mobileWrapper footer *{
+   font-family: ClarikaProGrotesque;
+   font-size:12pt;
+}

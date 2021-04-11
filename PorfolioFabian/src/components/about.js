@@ -297,6 +297,12 @@ class Branding extends Component {
 
    componentWillUnmount = () => {
       window.removeEventListener("resize", this.ScaleSexyImageAndText)
+
+   }
+
+   WindowPopstateEventHandler = (e) => {
+      e.preventDefault();
+      this.returnToMainPage();
    }
 
 }

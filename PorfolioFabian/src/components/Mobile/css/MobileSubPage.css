@@ -1,0 +1,20 @@
+#mobileWrapper .main_aside{
+   width: calc(100% - 20px);
+}
+
+#mobileWrapper .FooterSubPage{
+   width:100vw;
+   margin-left: -20px;
+}
+
+#mobileWrapper .main_aside > div{
+   padding-left: 20px;
+   padding-right: 20px;
+}
+
+#mobileWrapper #contacttel, #mobileWrapper #contactmail {
+   font-size: 14pt;
+}
+#mobileWrapper #contactText p{
+   font-size: 10pt;
+}

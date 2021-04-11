@@ -113,6 +113,10 @@ footer{
    width: 153px;
    object-fit: contain;
 }
-.right_arrow{
+.right_arrow, .left_arrow{
    width:53px;
+}
+
+.left_arrow img {
+   rotate: 180deg
 }

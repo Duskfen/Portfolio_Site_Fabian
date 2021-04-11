@@ -435,7 +435,6 @@ class ProjectDetails extends Component {
    }
 
    componentDidMount() {
-
       if (this.props.calledFromProjectDetails) {
          let wrapper = document.querySelectorAll("#main_wrapper")[1]
          let left = document.querySelectorAll("#detail_description_text")[1]
@@ -463,11 +462,17 @@ class ProjectDetails extends Component {
          catch (e) { console.error(e) }
 
          window.addEventListener("resize", this.WindowEventHandler);
+        
          this.CheckIfHmoreThanWidth();
          this.CheckIfNextPictureShouldBeTeasered()
          this.updateProgressBar(this.state.currentpic);
       }
    }
+
+   componentWillUnmount(){
+      window.removeEventListener("resize", this.WindowEventHandler)
+   }
+
 
    WindowEventHandler = () => {
       this.CheckIfHmoreThanWidth();

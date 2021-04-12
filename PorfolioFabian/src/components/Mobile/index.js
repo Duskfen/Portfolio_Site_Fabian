@@ -185,8 +185,12 @@ class Index extends Component {
                   </section>
 
                   <section id="project_overview_arrows">
-                   <a href="#" className="left_arrow" onClick={(ev) => this.nextPicture(ev, -1)}><img src={right_arrow}></img></a>
-                   <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
+                     <div className="left_arrow" onClick={(ev) => this.nextPicture(ev, -1)}>
+                        <img src={right_arrow}></img>
+                     </div>
+                     <div className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}>
+                        <img src={right_arrow}></img>
+                     </div>
                   </section>
 
                   <footer id="footerOverview">

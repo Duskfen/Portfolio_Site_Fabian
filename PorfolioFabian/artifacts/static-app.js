@@ -1846,16 +1846,14 @@ var Index = /*#__PURE__*/function (_Component) {
         className: "TitleImage"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
         id: "project_overview_arrows"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-        href: "#",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "left_arrow",
         onClick: function onClick(ev) {
           return _this2.nextPicture(ev, -1);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
         src: right_arrow
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-        href: "#",
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "right_arrow",
         onClick: function onClick(ev) {
           return _this2.nextPicture(ev, 1);
@@ -4525,6 +4523,15 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "animateMountFromProjectDetails", function () {
+      var right_arrow = document.querySelector(".right_arrow");
+      right_arrow.animate([{
+        opacity: 0
+      }, {
+        opacity: 1
+      }], {
+        duration: 1000,
+        easing: "ease-out"
+      });
       var main_wrapper = document.querySelector("#main_wrapper");
       main_wrapper.animate([{
         left: "100vw"
@@ -4582,8 +4589,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
         }, _this2.state.projects.getImageAt(i));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("section", {
         id: "project_overview_arrows"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("a", {
-        href: "#",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "left_arrow",
         onClick: function onClick(ev) {
           return _this2.nextPicture(ev, -1);
@@ -4595,8 +4601,7 @@ var ProjectDetails = /*#__PURE__*/function (_Component) {
           return _this2.loadNextProject();
         },
         id: "mobile_detail_next_picture"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, "n\xE4chstes Projekt >")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("a", {
-        href: "#",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, "n\xE4chstes Projekt >")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "right_arrow",
         onClick: function onClick(ev) {
           return _this2.nextPicture(ev, 1);
@@ -5095,7 +5100,23 @@ var Branding = /*#__PURE__*/function (_Component) {
             currentTextElement: _this.state.currentTextElement + add,
             lastTextElement: _this.state.currentTextElement
           }, function () {
-            if (_this.state.currentTextElement === 1) _this.PositionSexyImageLeft();else if (_this.state.currentTextElement === 0) _this.PositionSexyImageInitial();
+            if (_this.state.currentTextElement === 1) {
+              _this.PositionSexyImageLeft();
+
+              document.querySelector("#currentTextElement").style = "";
+            } else if (_this.state.currentTextElement === 0) {
+              _this.PositionSexyImageInitial();
+
+              document.querySelector("#currentTextElement").style = "top: ".concat(document.body.clientHeight / 7 * 3, "px");
+            }
+
+            ;
+
+            if (_this.state.lastTextElement === 0) {
+              document.querySelector("#lastTextElement").style = "top: ".concat(document.body.clientHeight / 7 * 3, "px");
+            } else {
+              document.querySelector("#lastTextElement").style = "";
+            }
 
             _this.updateProgressBar(_this.state.textElements.getRealIndex(_this.state.currentTextElement));
 
@@ -5190,17 +5211,16 @@ var Branding = /*#__PURE__*/function (_Component) {
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "PositionSexyImageLeft", function () {
-      //todo animation
       var image = document.querySelector("#SexyBackgroundImage");
       image.animate([{
         left: image.style.left
       }, {
-        left: -image.clientWidth / 2 + "px"
+        left: -image.clientWidth / 1.88 + "px"
       }], {
         duration: 1200,
         easing: "ease-out"
       });
-      image.style = "left: ".concat(-image.clientWidth / 2, "px");
+      image.style = "left: ".concat(-image.clientWidth / 1.88, "px");
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "componentDidMount", function () {
@@ -5256,21 +5276,22 @@ var Branding = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
         className: "main_aside"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        id: "currentTextElement"
+        id: "currentTextElement",
+        style: {
+          top: document.body.clientHeight / 7 * 3 + "px"
+        }
       }, this.state.textElements.getElementAt(this.state.currentTextElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "lastTextElement"
       }, this.state.textElements.getElementAt(this.state.lastTextElement)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
         id: "project_overview_arrows"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-        href: "#",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "left_arrow",
         onClick: function onClick(ev) {
           return _this2.nextElement(-1);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
         src: right_arrow
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-        href: "#",
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "right_arrow",
         onClick: function onClick(ev) {
           return _this2.nextElement(1);
@@ -7372,7 +7393,7 @@ exports.push([module.i, "#mobileWrapper #DetailsFooter{\r\n   margin-left:-20px;
 
 exports = module.exports = __webpack_require__(12)(false);
 // Module
-exports.push([module.i, "#mobileWrapper #projectDetailWrapper{\r\n   padding:40px 20px 40px 20px;\r\n   height: calc(100vh - 80px);\r\n   grid-template-rows: 1fr 6fr 1fr 2fr;\r\n   grid-template-areas: \"header\" \"project_overview\" \"arrows\" \"footer\";\r\n}\r\n\r\n#mobileWrapper header, #mobileWrapper footer{\r\n   width: calc(100vw - 40px)\r\n}\r\n\r\n#mobileWrapper #project_overview_wrapper {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #project_overview_section img{\r\n   margin:0;\r\n   width: 100%;\r\n}\r\n\r\n#mobileWrapper #footer_overview_items{\r\n   align-items:center;\r\n}\r\n\r\n#mobileWrapper #project_overview_arrows {\r\n   width:calc(100vw - 40px);\r\n   display:flex;\r\n   justify-content: space-between;\r\n   align-items: center;\r\n   grid-area: \"arrows\";\r\n\r\n}\r\n\r\n#mobileWrapper header *, #mobileWrapper footer *{\r\n   font-family: ClarikaProGrotesque;\r\n   font-size:12pt;\r\n}", ""]);
+exports.push([module.i, "#mobileWrapper #projectDetailWrapper{\r\n   padding:40px 20px 40px 20px;\r\n   height: calc(100vh - 80px);\r\n   grid-template-rows: 1fr 6fr 1fr 2fr;\r\n   grid-template-areas: \"header\" \"project_overview\" \"arrows\" \"footer\";\r\n}\r\n\r\n#mobileWrapper header, #mobileWrapper footer{\r\n   width: calc(100vw - 40px)\r\n}\r\n\r\n#mobileWrapper #project_overview_wrapper {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #project_overview_section img{\r\n   margin:0;\r\n   width: 100%;\r\n}\r\n\r\n#mobileWrapper #footer_overview_items{\r\n   align-items:center;\r\n}\r\n\r\n#mobileWrapper #project_overview_arrows {\r\n   width:calc(100vw);\r\n   margin-left: -20px;\r\n   display:flex;\r\n   justify-content: space-evenly;\r\n   align-items: center;\r\n   grid-area: \"arrows\";\r\n\r\n}\r\n\r\n#mobileWrapper header *, #mobileWrapper footer *{\r\n   font-family: ClarikaProGrotesque;\r\n   font-size:12pt;\r\n}\r\n\r\n#mobileWrapper .right_arrow, #mobileWrapper .left_arrow {\r\n   width:calc(50% - 30px);\r\n   border: 1px solid var(--foreground);\r\n   height: 50px;\r\n   border-radius: 8px;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   cursor: pointer;\r\n}\r\n\r\n#mobileWrapper .right_arrow img, #mobileWrapper .left_arrow img {\r\n  width: 70px;\r\n}\r\n\r\n", ""]);
 
 
 

@@ -24,9 +24,10 @@
 }
 
 #mobileWrapper #project_overview_arrows {
-   width:calc(100vw - 40px);
+   width:calc(100vw);
+   margin-left: -20px;
    display:flex;
-   justify-content: space-between;
+   justify-content: space-evenly;
    align-items: center;
    grid-area: "arrows";
 
@@ -36,3 +37,19 @@
    font-family: ClarikaProGrotesque;
    font-size:12pt;
 }
+
+#mobileWrapper .right_arrow, #mobileWrapper .left_arrow {
+   width:calc(50% - 30px);
+   border: 1px solid var(--foreground);
+   height: 50px;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+#mobileWrapper .right_arrow img, #mobileWrapper .left_arrow img {
+  width: 70px;
+}
+

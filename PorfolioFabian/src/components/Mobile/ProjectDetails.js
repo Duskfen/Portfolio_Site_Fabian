@@ -146,14 +146,18 @@ class ProjectDetails extends Component {
                   </section>
 
                   <section id="project_overview_arrows">
-                     <a href="#" className="left_arrow" onClick={(ev) => this.nextPicture(ev, -1)}><img src={right_arrow}></img></a>
+                     <div className="left_arrow" onClick={(ev) => this.nextPicture(ev, -1)}>
+                        <img src={right_arrow}></img>
+                     </div>
 
-                     {(this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic) >= this.state.projects.images.length-1)? 
+                     {(this.state.projects.calcCurrentPictureInRealIndex(this.state.currentpic) >= this.state.projects.images.length - 1) ?
                         <div onClick={() => this.loadNextProject()} id="mobile_detail_next_picture">
                            <p >nächstes Projekt &gt;</p>
                         </div>
-                     :
-                        <a href="#" className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}><img src={right_arrow}></img></a>
+                        :
+                        <div className="right_arrow" onClick={(ev) => this.nextPicture(ev, 1)}>
+                           <img src={right_arrow}></img>
+                        </div>
                      }
 
                   </section>
@@ -333,6 +337,12 @@ class ProjectDetails extends Component {
    }
 
    animateMountFromProjectDetails = () => {
+
+      let right_arrow = document.querySelector(".right_arrow")
+      right_arrow.animate([
+         {opacity:0},
+         {opacity:1}
+      ], {duration: 1000, easing:"ease-out"})
 
       let main_wrapper = document.querySelector("#main_wrapper");
       main_wrapper.animate([

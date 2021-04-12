@@ -131,7 +131,7 @@ class Branding extends Component {
 
                   <section className="main_aside">
                      <div>
-                        <div id="currentTextElement">
+                        <div id="currentTextElement" style={{top: ((document.body.clientHeight / 7)*3) + "px"}}>
                            {this.state.textElements.getElementAt(this.state.currentTextElement)}
                            {/* {this.state.currentTextElement < this.state.textElements.mainElements.length - 1 && this.state.currentTextElement > 0 ?
                               <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p> : null
@@ -148,8 +148,12 @@ class Branding extends Component {
                   </section>
 
                   <section id="project_overview_arrows">
-                   <a href="#" className="left_arrow" onClick={(ev) => this.nextElement(-1)}><img src={right_arrow}></img></a>
-                   <a href="#" className="right_arrow" onClick={(ev) => this.nextElement(1)}><img src={right_arrow}></img></a>
+                     <div className="left_arrow" onClick={(ev) => this.nextElement(-1)}>
+                        <img src={right_arrow}></img>
+                     </div>
+                     <div className="right_arrow" onClick={(ev) => this.nextElement(1)}>
+                        <img src={right_arrow}></img>
+                     </div>
                   </section>
 
                   <footer className="FooterSubPage">
@@ -240,8 +244,22 @@ class Branding extends Component {
                lastTextElement: this.state.currentTextElement
             }, () => {
                
-               if(this.state.currentTextElement === 1) this.PositionSexyImageLeft();
-               else if(this.state.currentTextElement === 0) this.PositionSexyImageInitial();
+               if(this.state.currentTextElement === 1){
+                  this.PositionSexyImageLeft();
+                  
+                  document.querySelector("#currentTextElement").style ="";
+               } 
+               else if(this.state.currentTextElement === 0) {
+                  this.PositionSexyImageInitial()
+                  document.querySelector("#currentTextElement").style = `top: ${(document.body.clientHeight / 7)*3}px`
+                  
+               };
+               if(this.state.lastTextElement === 0){
+                  document.querySelector("#lastTextElement").style = `top: ${(document.body.clientHeight / 7)*3}px`
+               }
+               else {
+                  document.querySelector("#lastTextElement").style = ``;
+               }
 
                this.updateProgressBar(this.state.textElements.getRealIndex(this.state.currentTextElement));
                this.animateNextElement();
@@ -309,7 +327,6 @@ class Branding extends Component {
    }
 
    PositionSexyImageInitial = () => {
-
       let body = document.body;
       let image = document.querySelector("#SexyBackgroundImage");
 
@@ -322,15 +339,14 @@ class Branding extends Component {
    }
 
    PositionSexyImageLeft = () => {
-      //todo animation
       let image = document.querySelector("#SexyBackgroundImage");
 
       image.animate([
          {left: image.style.left},
-         {left: -image.clientWidth / 2 + "px"}
+         {left: -image.clientWidth / 1.88 + "px"}
       ], {duration: 1200, easing:"ease-out"})
 
-      image.style = `left: ${-image.clientWidth / 2}px`;
+      image.style = `left: ${-image.clientWidth / 1.88}px`;
    }
 
    componentDidMount = () => {

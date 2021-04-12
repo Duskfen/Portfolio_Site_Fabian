@@ -134,8 +134,8 @@ class Branding extends Component {
                         <div id="currentTextElement" style={{top: ((document.body.clientHeight / 7)*3) + "px"}} className={this.state.currentTextElement === 0? "FirstText":null}>
                            {this.state.textElements.getElementAt(this.state.currentTextElement)}
                         </div>
-                        <div id="lastTextElement">
-                           {this.state.textElements.getElementAt(this.state.lastTextElement)}
+                        <div id="lastTextElement" className={this.state.lastTextElement === 0? "FirstText":null}>
+                           {this.state.textElements.getElementAt(this.state.lastTextElement) }
                         </div>
                      </div>
                   </section>

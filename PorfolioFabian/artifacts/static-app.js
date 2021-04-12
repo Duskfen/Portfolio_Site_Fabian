@@ -5319,7 +5319,8 @@ var Branding = /*#__PURE__*/function (_Component) {
         },
         className: this.state.currentTextElement === 0 ? "FirstText" : null
       }, this.state.textElements.getElementAt(this.state.currentTextElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        id: "lastTextElement"
+        id: "lastTextElement",
+        className: this.state.lastTextElement === 0 ? "FirstText" : null
       }, this.state.textElements.getElementAt(this.state.lastTextElement)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
         id: "project_overview_arrows"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {

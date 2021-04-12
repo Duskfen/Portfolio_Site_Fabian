@@ -4932,7 +4932,7 @@ var MainElements = /*#__PURE__*/function () {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_5___default()(this, MainElements);
 
     this.mainElements = [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-      className: "TextElement rightText"
+      className: "TextElement FirstText"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "gr\xFC\xDF gott!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: "TextElement"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "gr\xFC\xDF gott!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Ich bin ein Designer stammend aus dem Waldviertel, einem idyllischen Fleck im Osten \xD6sterreichs."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Meine Ausbildung habe ich an der h\xF6heren technischen Lehranstalt f\xFCr Grafik- & Kommunikationsdesign in Linz mit Auszeichnung abgeschlossen. Seitdem verfolge ich das Ziel, die Welt Tag f\xFCr Tag zu versch\xF6nern.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -4999,11 +4999,11 @@ var Branding = /*#__PURE__*/function (_Component) {
       if (_this.state.currentTextElement > _this.state.lastTextElement) {
         lastElement.animate([{
           opacity: 1,
-          left: 0 + "px",
+          left: _this.getLeftTocenterElement(lastElement) + "px",
           zIndex: 1
         }, {
           opacity: 0,
-          left: -400 + "px",
+          left: _this.getLeftTocenterElement(lastElement) - 400 + "px",
           zIndex: 1
         }], {
           duration: 600,
@@ -5011,13 +5011,13 @@ var Branding = /*#__PURE__*/function (_Component) {
         });
         currentElement.animate([{
           opacity: 0,
-          left: 300 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + 300 + "px"
         }, {
           opacity: 0,
-          left: 300 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + 300 + "px"
         }, {
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }], {
           duration: 1200,
           easing: "ease-out"
@@ -5025,11 +5025,11 @@ var Branding = /*#__PURE__*/function (_Component) {
       } else {
         lastElement.animate([{
           opacity: 1,
-          left: 0 + "px",
+          left: _this.getLeftTocenterElement(lastElement) + "px",
           zIndex: 1
         }, {
           opacity: 0,
-          left: 300 + "px",
+          left: _this.getLeftTocenterElement(lastElement) + 300 + "px",
           zIndex: 1
         }], {
           duration: 600,
@@ -5037,16 +5037,16 @@ var Branding = /*#__PURE__*/function (_Component) {
         });
         currentElement.animate([{
           opacity: 0,
-          left: -400 + "px"
+          left: _this.getLeftTocenterElement(currentElement) - 400 + "px"
         }, {
           opacity: 0,
-          left: -400 + "px"
+          left: _this.getLeftTocenterElement(currentElement) - 400 + "px"
         }, {
           opacity: 0,
-          left: -250 + "px"
+          left: _this.getLeftTocenterElement(currentElement) - 250 + "px"
         }, {
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }], {
           duration: 1200,
           easing: "ease-out"
@@ -5060,13 +5060,13 @@ var Branding = /*#__PURE__*/function (_Component) {
       if (add < 0) {
         currentElement.animate([{
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }, {
           opacity: 1,
-          left: 90 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + 50 + "px"
         }, {
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }], {
           duration: 1000,
           easing: "ease-out"
@@ -5076,18 +5076,26 @@ var Branding = /*#__PURE__*/function (_Component) {
       if (add > 0) {
         currentElement.animate([{
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }, {
           opacity: 1,
-          left: -90 + "px"
+          left: _this.getLeftTocenterElement(currentElement) - 50 + "px"
         }, {
           opacity: 1,
-          left: 0 + "px"
+          left: _this.getLeftTocenterElement(currentElement) + "px"
         }], {
           duration: 1000,
           easing: "ease-out"
         });
       }
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "centerElement", function (el) {
+      el.style.left = "".concat(_this.getLeftTocenterElement(el), "px");
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "getLeftTocenterElement", function (el) {
+      return document.body.clientWidth / 2 - el.clientWidth / 2;
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "nextElement", function () {
@@ -5100,23 +5108,30 @@ var Branding = /*#__PURE__*/function (_Component) {
             currentTextElement: _this.state.currentTextElement + add,
             lastTextElement: _this.state.currentTextElement
           }, function () {
+            var currentElement = document.querySelector("#currentTextElement");
+            var lastElement = document.querySelector("#lastTextElement");
+
+            _this.centerElement(currentElement); //---------------- if first picture, text more below, image not so much left --------------------
+
+
             if (_this.state.currentTextElement === 1) {
               _this.PositionSexyImageLeft();
 
-              document.querySelector("#currentTextElement").style = "";
+              currentElement.style.top = "";
             } else if (_this.state.currentTextElement === 0) {
               _this.PositionSexyImageInitial();
 
-              document.querySelector("#currentTextElement").style = "top: ".concat(document.body.clientHeight / 7 * 3, "px");
+              currentElement.style.top = "".concat(document.body.clientHeight / 7 * 3, "px");
             }
 
             ;
 
             if (_this.state.lastTextElement === 0) {
-              document.querySelector("#lastTextElement").style = "top: ".concat(document.body.clientHeight / 7 * 3, "px");
+              lastElement.style.top = "".concat(document.body.clientHeight / 7 * 3, "px");
             } else {
-              document.querySelector("#lastTextElement").style = "";
-            }
+              lastElement.style.top = "";
+            } //----------------                                                            --------------------
+
 
             _this.updateProgressBar(_this.state.textElements.getRealIndex(_this.state.currentTextElement));
 
@@ -5230,11 +5245,33 @@ var Branding = /*#__PURE__*/function (_Component) {
 
       _this.ScaleSexyImage();
 
-      window.addEventListener("resize", _this.ScaleSexyImage);
+      window.addEventListener("resize", _this.WindowResizeHandler);
+
+      _this.centerElement(document.querySelector("#currentTextElement"));
     });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "componentWillUnmount", function () {
-      window.removeEventListener("resize", _this.ScaleSexyImage);
+      window.removeEventListener("resize", _this.WindowResizeHandler);
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_4___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this), "WindowResizeHandler", function () {
+      if (document.body.clientWidth <= 0) {
+        setTimeout(_this.WindowResizeHandler, 5);
+        return;
+      }
+
+      var currentElement = document.querySelector("#currentTextElement");
+
+      if (_this.state.currentTextElement === 0) {
+        _this.ScaleSexyImage();
+
+        console.log(document.body.getBoundingClientRect());
+        currentElement.style.top = "".concat(document.body.clientHeight / 7 * 3, "px");
+      } else {
+        _this.PositionSexyImageLeft();
+      }
+
+      _this.centerElement(currentElement);
     });
 
     _this.state = {
@@ -7403,7 +7440,7 @@ exports.push([module.i, "#mobileWrapper #projectDetailWrapper{\r\n   padding:40p
 
 exports = module.exports = __webpack_require__(12)(false);
 // Module
-exports.push([module.i, "#mobileWrapper #aboutWrapper .TextElement p, #mobileWrapper #aboutWrapper .ElementLinkToNext{\r\n   font-size:10pt;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper #lastTextElement, #mobileWrapper #aboutWrapper #currentTextElement{\r\n   width:calc(100vw - 40px);\r\n   margin-left:20px;\r\n}\r\n\r\n#mobileWrapper .main_aside > div {\r\n   margin-top:calc(20vh - 10%);\r\n}\r\n#mobileWrapper #aboutWrapper #lastTextElement{\r\n   top: unset;\r\n}\r\n\r\n#mobileWrapper .main_aside {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper footer {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper .rightText {\r\n   text-align: right;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper .main_aside > div{\r\n   padding: 0;\r\n}", ""]);
+exports.push([module.i, "#mobileWrapper #aboutWrapper .TextElement p, #mobileWrapper #aboutWrapper .ElementLinkToNext{\r\n   font-size:10pt;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper #lastTextElement, #mobileWrapper #aboutWrapper #currentTextElement{\r\n   display: flex;\r\n   justify-content: center;\r\n\r\n   width: calc(100vw - 40px);\r\n   max-width: 450px;\r\n   padding-left: 20px;\r\n   padding-right: 20px;\r\n}\r\n\r\n#mobileWrapper .main_aside > div {\r\n   margin-top:calc(20vh);\r\n}\r\n#mobileWrapper #aboutWrapper #lastTextElement{\r\n   top: unset;\r\n}\r\n\r\n#mobileWrapper .main_aside {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper footer {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper .main_aside > div{\r\n   padding: 0;\r\n}\r\n\r\n#SexyBackgroundImage{\r\n   transition: left 1s\r\n}", ""]);
 
 
 

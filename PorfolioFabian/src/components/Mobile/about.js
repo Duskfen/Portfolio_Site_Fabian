@@ -19,7 +19,7 @@ class MainElements {
    constructor() {
       this.mainElements = [
          (
-            <div className="TextElement rightText">
+            <div className="TextElement FirstText">
                <h2>grüß gott!</h2>
             </div>
          ),
@@ -133,16 +133,9 @@ class Branding extends Component {
                      <div>
                         <div id="currentTextElement" style={{top: ((document.body.clientHeight / 7)*3) + "px"}}>
                            {this.state.textElements.getElementAt(this.state.currentTextElement)}
-                           {/* {this.state.currentTextElement < this.state.textElements.mainElements.length - 1 && this.state.currentTextElement > 0 ?
-                              <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p> : null
-                           } */}
-
                         </div>
                         <div id="lastTextElement">
                            {this.state.textElements.getElementAt(this.state.lastTextElement)}
-                           {/* {this.state.lastTextElement < this.state.textElements.mainElements.length - 1  && this.state.lastTextElement > 0 ?
-                              <p className="ElementLinkToNext"><a onClick={() => this.nextElement()}>nächste &gt;</a></p> : null
-                           } */}
                         </div>
                      </div>
                   </section>
@@ -189,27 +182,27 @@ class Branding extends Component {
 
       if (this.state.currentTextElement > this.state.lastTextElement) {
          lastElement.animate([
-            { opacity: 1, left: 0 + "px", zIndex: 1 },
-            { opacity: 0, left: -400 + "px", zIndex: 1 }
+            { opacity: 1, left: this.getLeftTocenterElement(lastElement) + "px", zIndex: 1 },
+            { opacity: 0, left: this.getLeftTocenterElement(lastElement)-400 + "px", zIndex: 1 }
          ], { duration: 600, easing: "ease-out" })
 
          currentElement.animate([
-            { opacity: 0, left: 300 + "px" },
-            { opacity: 0, left: 300 + "px" },
-            { opacity: 1, left: 0 + "px" }
+            { opacity: 0, left: this.getLeftTocenterElement(currentElement)+300 + "px" },
+            { opacity: 0, left: this.getLeftTocenterElement(currentElement)+300 + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" }
          ], { duration: 1200, easing: "ease-out" })
       }
       else {
          lastElement.animate([
-            { opacity: 1, left: 0 + "px", zIndex: 1 },
-            { opacity: 0, left: 300 + "px", zIndex: 1 }
+            { opacity: 1, left: this.getLeftTocenterElement(lastElement) + "px", zIndex: 1 },
+            { opacity: 0, left: this.getLeftTocenterElement(lastElement)+300 + "px", zIndex: 1 }
          ], { duration: 600, easing: "ease-out" })
 
          currentElement.animate([
-            { opacity: 0, left: -400 + "px" },
-            { opacity: 0, left: -400 + "px" },
-            { opacity: 0, left: -250 + "px" },
-            { opacity: 1, left: 0 + "px" }
+            { opacity: 0, left: this.getLeftTocenterElement(currentElement)-400 + "px" },
+            { opacity: 0, left: this.getLeftTocenterElement(currentElement)-400 + "px" },
+            { opacity: 0, left: this.getLeftTocenterElement(currentElement)-250 + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" }
          ], { duration: 1200, easing: "ease-out" })
       }
    }
@@ -219,20 +212,25 @@ class Branding extends Component {
 
       if (add < 0) {
          currentElement.animate([
-            { opacity: 1, left: 0 + "px" },
-            { opacity: 1, left: 90 + "px" },
-            { opacity: 1, left: 0 + "px" }
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + 50 + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" }
          ], { duration: 1000, easing: "ease-out" })
       }
       if (add > 0) {
          currentElement.animate([
-            { opacity: 1, left: 0 + "px" },
-            { opacity: 1, left: -90 + "px" },
-            { opacity: 1, left: 0 + "px" }
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement)-50 + "px" },
+            { opacity: 1, left: this.getLeftTocenterElement(currentElement) + "px" }
          ], { duration: 1000, easing: "ease-out" })
       }
 
    }
+
+   centerElement = (el) => {
+      el.style.left = `${this.getLeftTocenterElement(el)}px`;
+   }
+   getLeftTocenterElement = (el) =>  document.body.clientWidth/2 - el.clientWidth/2
 
    nextElement = (add = 1) => {
       //only if there are no running animations..
@@ -243,23 +241,32 @@ class Branding extends Component {
                currentTextElement: this.state.currentTextElement + add,
                lastTextElement: this.state.currentTextElement
             }, () => {
-               
+
+               let currentElement = document.querySelector("#currentTextElement")
+               let lastElement = document.querySelector("#lastTextElement")
+
+
+               this.centerElement(currentElement)
+
+               //---------------- if first picture, text more below, image not so much left --------------------
                if(this.state.currentTextElement === 1){
                   this.PositionSexyImageLeft();
                   
-                  document.querySelector("#currentTextElement").style ="";
+                  currentElement.style.top ="";
                } 
                else if(this.state.currentTextElement === 0) {
                   this.PositionSexyImageInitial()
-                  document.querySelector("#currentTextElement").style = `top: ${(document.body.clientHeight / 7)*3}px`
+                  currentElement.style.top = `${(document.body.clientHeight / 7)*3}px`
                   
                };
                if(this.state.lastTextElement === 0){
-                  document.querySelector("#lastTextElement").style = `top: ${(document.body.clientHeight / 7)*3}px`
+                  lastElement.style.top = `${(document.body.clientHeight / 7)*3}px`
                }
                else {
-                  document.querySelector("#lastTextElement").style = ``;
+                  lastElement.style.top = ``;
                }
+               //----------------                                                            --------------------
+
 
                this.updateProgressBar(this.state.textElements.getRealIndex(this.state.currentTextElement));
                this.animateNextElement();
@@ -354,13 +361,35 @@ class Branding extends Component {
       document.querySelector("#aboutWrapper").style = "position:relative;top:-100vh";
 
       this.ScaleSexyImage();
-      window.addEventListener("resize", this.ScaleSexyImage)
+      window.addEventListener("resize", this.WindowResizeHandler)
 
-
+      this.centerElement(document.querySelector("#currentTextElement"));
    }
 
    componentWillUnmount = () => {
-      window.removeEventListener("resize", this.ScaleSexyImage)
+      window.removeEventListener("resize", this.WindowResizeHandler)
+   }
+
+   WindowResizeHandler = () => {
+
+      if(document.body.clientWidth <= 0){
+         setTimeout(this.WindowResizeHandler,5);
+         return;
+      }
+
+      let currentElement = document.querySelector("#currentTextElement")
+
+      if(this.state.currentTextElement === 0){
+         this.ScaleSexyImage()
+         console.log(document.body.getBoundingClientRect())
+         currentElement.style.top = `${(document.body.clientHeight / 7)*3}px`
+      }
+      else {
+         this.PositionSexyImageLeft();
+      }
+      this.centerElement(currentElement);
+      
+
    }
 
 }

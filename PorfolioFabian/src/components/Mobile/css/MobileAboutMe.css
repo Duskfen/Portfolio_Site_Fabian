@@ -16,6 +16,10 @@
    justify-content: flex-end !important;
 }
 
+#mobileWrapper #aboutWrapper .FirstText .TextElement{
+   position:relative;
+   left:-15px;
+}
 
 #mobileWrapper .main_aside > div {
    margin-top:calc(20vh);

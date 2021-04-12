@@ -12,6 +12,11 @@
    padding-right: 20px;
 }
 
+#mobileWrapper #aboutWrapper .FirstText{
+   justify-content: flex-end !important;
+}
+
+
 #mobileWrapper .main_aside > div {
    margin-top:calc(20vh);
 }

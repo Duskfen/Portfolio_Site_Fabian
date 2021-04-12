@@ -19,7 +19,7 @@ class MainElements {
    constructor() {
       this.mainElements = [
          (
-            <div className="TextElement FirstText">
+            <div className="TextElement">
                <h2>grüß gott!</h2>
             </div>
          ),
@@ -131,7 +131,7 @@ class Branding extends Component {
 
                   <section className="main_aside">
                      <div>
-                        <div id="currentTextElement" style={{top: ((document.body.clientHeight / 7)*3) + "px"}}>
+                        <div id="currentTextElement" style={{top: ((document.body.clientHeight / 7)*3) + "px"}} className={this.state.currentTextElement === 0? "FirstText":null}>
                            {this.state.textElements.getElementAt(this.state.currentTextElement)}
                         </div>
                         <div id="lastTextElement">

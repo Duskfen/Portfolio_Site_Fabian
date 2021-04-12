@@ -4932,7 +4932,7 @@ var MainElements = /*#__PURE__*/function () {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_5___default()(this, MainElements);
 
     this.mainElements = [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-      className: "TextElement FirstText"
+      className: "TextElement"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "gr\xFC\xDF gott!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: "TextElement"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "gr\xFC\xDF gott!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Ich bin ein Designer stammend aus dem Waldviertel, einem idyllischen Fleck im Osten \xD6sterreichs."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "Meine Ausbildung habe ich an der h\xF6heren technischen Lehranstalt f\xFCr Grafik- & Kommunikationsdesign in Linz mit Auszeichnung abgeschlossen. Seitdem verfolge ich das Ziel, die Welt Tag f\xFCr Tag zu versch\xF6nern.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -5316,7 +5316,8 @@ var Branding = /*#__PURE__*/function (_Component) {
         id: "currentTextElement",
         style: {
           top: document.body.clientHeight / 7 * 3 + "px"
-        }
+        },
+        className: this.state.currentTextElement === 0 ? "FirstText" : null
       }, this.state.textElements.getElementAt(this.state.currentTextElement)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "lastTextElement"
       }, this.state.textElements.getElementAt(this.state.lastTextElement)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
@@ -7440,7 +7441,7 @@ exports.push([module.i, "#mobileWrapper #projectDetailWrapper{\r\n   padding:40p
 
 exports = module.exports = __webpack_require__(12)(false);
 // Module
-exports.push([module.i, "#mobileWrapper #aboutWrapper .TextElement p, #mobileWrapper #aboutWrapper .ElementLinkToNext{\r\n   font-size:10pt;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper #lastTextElement, #mobileWrapper #aboutWrapper #currentTextElement{\r\n   display: flex;\r\n   justify-content: center;\r\n\r\n   width: calc(100vw - 40px);\r\n   max-width: 450px;\r\n   padding-left: 20px;\r\n   padding-right: 20px;\r\n}\r\n\r\n#mobileWrapper .main_aside > div {\r\n   margin-top:calc(20vh);\r\n}\r\n#mobileWrapper #aboutWrapper #lastTextElement{\r\n   top: unset;\r\n}\r\n\r\n#mobileWrapper .main_aside {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper footer {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper .main_aside > div{\r\n   padding: 0;\r\n}\r\n\r\n#SexyBackgroundImage{\r\n   transition: left 1s\r\n}", ""]);
+exports.push([module.i, "#mobileWrapper #aboutWrapper .TextElement p, #mobileWrapper #aboutWrapper .ElementLinkToNext{\r\n   font-size:10pt;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper #lastTextElement, #mobileWrapper #aboutWrapper #currentTextElement{\r\n   display: flex;\r\n   justify-content: center;\r\n\r\n   width: calc(100vw - 40px);\r\n   max-width: 450px;\r\n   padding-left: 20px;\r\n   padding-right: 20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper .FirstText{\r\n   justify-content: flex-end !important;\r\n}\r\n\r\n\r\n#mobileWrapper .main_aside > div {\r\n   margin-top:calc(20vh);\r\n}\r\n#mobileWrapper #aboutWrapper #lastTextElement{\r\n   top: unset;\r\n}\r\n\r\n#mobileWrapper .main_aside {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper footer {\r\n   width: 100vw;\r\n   margin-left:-20px;\r\n}\r\n\r\n#mobileWrapper #aboutWrapper .main_aside > div{\r\n   padding: 0;\r\n}\r\n\r\n#SexyBackgroundImage{\r\n   transition: left 1s\r\n}", ""]);
 
 
 

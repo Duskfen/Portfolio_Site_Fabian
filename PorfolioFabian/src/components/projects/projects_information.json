@@ -31,6 +31,22 @@
          "subtext": ["branding für architekturbüro", "schriftmischung", "drucksorten", "webseite", "billboard-anzeige"],
          "count_imgs": 6,
          "image_extention":["jpg","jpg","jpg","jpg","mp4","jpg"]
+      },
+      {
+         "path": "produktfotografie",
+         "title": "PRODUKTFOTOGRAFIE",
+         "textheading": "produktfotografie",
+         "subtext": ["produktfotos mit diversen briefings", "lichtsetzung und nachbearbeitung für einzelprodukte und kompositionen"],
+         "count_imgs": 4,
+         "image_extention":["jpg"]
+      },
+      {
+         "path": "kurzfilm",
+         "title": "KURZFILM",
+         "textheading": "liyah - kurzfilmprojekt",
+         "subtext": ["projektplanung", "casting", "shotlisting", "kamera", "schnitt + montage", "color grading", "mit limitiertem equipment und ohne finanzielle mittel erstellt"],
+         "count_imgs": 4,
+         "image_extention":["jpg", "json", "jpg", "jpg"]
       }
    ]
 }

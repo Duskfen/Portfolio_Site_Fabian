@@ -33,46 +33,86 @@ class Project {
 
    getImageAt(index) {
       let returnstring;
-      let ismp4 = false;
+      let type = null;
 
       if ((index % this.images.length) < 0) {
          returnstring = this.images[this.images.length + (index % this.images.length)]
-         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") ismp4 = true;
+
+         switch(this.image_extension[this.image_extension.length + (index % this.image_extension.length)]){
+            case "mp4":
+               type="mp4";
+               break;
+            case "iframe":
+               type = "iframe";
+               break;
+
+         }
       }
       else {
          returnstring = this.images[index % this.images.length]
-         if (this.image_extension[index % this.image_extension.length] === "mp4") ismp4 = true;
+         switch(this.image_extension[index % this.image_extension.length]){
+            case "mp4":
+               type="mp4";
+               break;
+            case "json":
+               type = returnstring.type;
+               returnstring = returnstring.content
+               break;
+
+         }
       }
 
-      if (ismp4) {
+      if (type === "mp4") {
          return (
-            <video preload="auto" loop className="centeritem" id={"video" + returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")}>
+            <video preload="auto" loop className="centeritem" id={"video" + this.stringSelectorify(returnstring)}>
                <source src={returnstring} type="video/mp4"></source>
             </video>
+         )
+      }
+      else if (type === "iframe"){
+         return (
+            <iframe /*width="560" height="315"*/seamless className={`centeritem iframe ${index == 0 ? "showFull" : ""}`} id={"video" + this.stringSelectorify(returnstring)} src={returnstring} frameBorder="0" sandbox='allow-scripts allow-same-origin' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+               <p>Your Browser does not support Iframes</p>
+            </iframe>
          )
       }
       else return <img src={returnstring} className={`centeritem ${index == 0 ? "showFull" : ""}`} id={index == 0 ? "Mainimg" : null}></img>
    }
 
-   isMp4(index) {
+   stringSelectorify(input){
+      return input.replaceAll("/", "SLASH").replaceAll(".", "DOT").replaceAll(":", "DOUBLEPOINT").replaceAll("?", "QUESTIONMARK").replaceAll("=", "EQUALS")
+   }
+
+   isType(index, type = "mp4"){
       if ((index % this.images.length) < 0) {
-         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") return true;
+         if(this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "json"){
+            if(this.images[this.images.length + (index % this.images.length)].type === type) return true;
+         }
+         else if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === type) return true;
       }
       else {
-         if (this.image_extension[index % this.image_extension.length] === "mp4") return true;
+         if(this.image_extension[index % this.image_extension.length] === "json"){
+            if (this.images[index % this.images.length].type === type) return true;
+         }
+         else if (this.image_extension[index % this.image_extension.length] === type) return true;
       }
       return false;
    }
+
    getMp4id(index) {
       let returnstring;
 
+   
       if ((index % this.images.length) < 0) {
          returnstring = this.images[this.images.length + (index % this.images.length)]
       }
       else {
          returnstring = this.images[index % this.images.length]
       }
-      return returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")
+      if(typeof returnstring === 'object' && returnstring !== null){
+         returnstring = returnstring.content;
+      }
+      return this.stringSelectorify(returnstring)
    }
 
    calcCurrentPictureInRealIndex(index) {
@@ -98,7 +138,7 @@ class ProjectDetails extends Component {
       };
 
       this.lethargy = new Lethargy()
-
+      this.iframewidth = null;
       this.perCentStep = 100 / (this.state.projects.images.length - 1);
    }
 
@@ -293,7 +333,13 @@ class ProjectDetails extends Component {
             //add highlight to new
             document.querySelectorAll(".centeritem")[realindex].classList.add("showFull")
 
-            if (this.state.projects.isMp4(this.state.currentpic)) {
+            //if its a mp4, pause it/play it
+            //if(this.state.projects.isType(this.state.currentpic, "iframe")){
+            //   //TODO handle that playing of frame/iframe (also if lastMP$ !== null)# or just leave it to the user
+            //   //(also don't forget to handle size of iframe)
+            //   console.log(document.querySelector(`#video${this.state.projects.getMp4id(this.state.currentpic)}`))
+            //}
+            if (this.state.projects.isType(this.state.currentpic, "mp4")) {
                lastMP4 = document.querySelector(`#video${this.state.projects.getMp4id(this.state.currentpic)}`)
                lastMP4.play()
             }
@@ -451,6 +497,7 @@ class ProjectDetails extends Component {
             this.CheckIfHmoreThanWidth();
             this.CheckIfNextPictureShouldBeTeasered()
             this.updateProgressBar(this.state.currentpic);
+            this.calculateIframeWidth();
 
          }, 1100)
       }
@@ -466,6 +513,7 @@ class ProjectDetails extends Component {
          this.CheckIfHmoreThanWidth();
          this.CheckIfNextPictureShouldBeTeasered()
          this.updateProgressBar(this.state.currentpic);
+         this.calculateIframeWidth();
       }
    }
 
@@ -473,11 +521,16 @@ class ProjectDetails extends Component {
       window.removeEventListener("resize", this.WindowEventHandler)
    }
 
+   calculateIframeWidth(){
+      let iframewidth = document.querySelector(".centeritem").clientWidth;
+      document.querySelector(":root").style.setProperty("--IframeWidth", iframewidth + "px")
+   }
 
    WindowEventHandler = () => {
       this.CheckIfHmoreThanWidth();
       this.CheckIfNextPictureShouldBeTeasered()
       this.calculateTextWidthHeight();
+      this.calculateIframeWidth();
    }
 }
 

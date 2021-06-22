@@ -1,5 +1,6 @@
 :root{
    --IframeWidth: 300px;
+   --IframeHeight: 100%;
 }
 
 #Detailwrapper{
@@ -52,6 +53,7 @@
 
 #main_wrapper .iframe{
    width: var(--IframeWidth);
+   height: var(--IframeHeight);
 }
 
 .main_wrapper_return_to_overview #Mainimg {

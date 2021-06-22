@@ -42,9 +42,10 @@ class Project {
             case "mp4":
                type="mp4";
                break;
-            case "iframe":
-               type = "iframe";
-               break;
+               case "json":
+                  type = returnstring.type;
+                  returnstring = returnstring.content
+                  break;
 
          }
       }
@@ -138,7 +139,7 @@ class ProjectDetails extends Component {
       };
 
       this.lethargy = new Lethargy()
-      this.iframewidth = null;
+
       this.perCentStep = 100 / (this.state.projects.images.length - 1);
    }
 
@@ -497,7 +498,7 @@ class ProjectDetails extends Component {
             this.CheckIfHmoreThanWidth();
             this.CheckIfNextPictureShouldBeTeasered()
             this.updateProgressBar(this.state.currentpic);
-            this.calculateIframeWidth();
+            this.calculateIframeDimensions();
 
          }, 1100)
       }
@@ -513,7 +514,7 @@ class ProjectDetails extends Component {
          this.CheckIfHmoreThanWidth();
          this.CheckIfNextPictureShouldBeTeasered()
          this.updateProgressBar(this.state.currentpic);
-         this.calculateIframeWidth();
+         this.calculateIframeDimensions();
       }
    }
 
@@ -521,16 +522,18 @@ class ProjectDetails extends Component {
       window.removeEventListener("resize", this.WindowEventHandler)
    }
 
-   calculateIframeWidth(){
-      let iframewidth = document.querySelector(".centeritem").clientWidth;
-      document.querySelector(":root").style.setProperty("--IframeWidth", iframewidth + "px")
+   calculateIframeDimensions(){
+      let iframe = document.querySelector(".centeritem");
+      let root = document.querySelector(":root");
+      root.style.setProperty("--IframeWidth", iframe.clientWidth + "px");
+      root.style.setProperty("--IframeHeight", iframe.clientHeight + "px")
    }
 
    WindowEventHandler = () => {
       this.CheckIfHmoreThanWidth();
       this.CheckIfNextPictureShouldBeTeasered()
       this.calculateTextWidthHeight();
-      this.calculateIframeWidth();
+      this.calculateIframeDimensions();
    }
 }
 

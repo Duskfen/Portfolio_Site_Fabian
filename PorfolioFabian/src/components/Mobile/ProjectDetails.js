@@ -14,7 +14,7 @@ var lastMP4 = null;
 
 class Project {
    constructor(project) {
-      if (project) {
+      if(project){
          this.images = project.images
          this.image_extension = [...project.image_extention];
          this.subtext = [...project.subtext];
@@ -24,7 +24,7 @@ class Project {
       //if i remove this there is a weird build error 
       //the error is only in npm run build.. when npm run start the issue never happens..
       //I think this is a error with react-static build
-      else {
+      else{ 
          this.images = [];
          this.image_extension = [];
          this.subtext = [];
@@ -35,46 +35,87 @@ class Project {
 
    getImageAt(index) {
       let returnstring;
-      let ismp4 = false;
+      let type = null;
 
       if ((index % this.images.length) < 0) {
          returnstring = this.images[this.images.length + (index % this.images.length)]
-         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") ismp4 = true;
+
+         switch(this.image_extension[this.image_extension.length + (index % this.image_extension.length)]){
+            case "mp4":
+               type="mp4";
+               break;
+               case "json":
+                  type = returnstring.type;
+                  returnstring = returnstring.content
+                  break;
+
+         }
       }
       else {
          returnstring = this.images[index % this.images.length]
-         if (this.image_extension[index % this.image_extension.length] === "mp4") ismp4 = true;
+         switch(this.image_extension[index % this.image_extension.length]){
+            case "mp4":
+               type="mp4";
+               break;
+            case "json":
+               type = returnstring.type;
+               returnstring = returnstring.content
+               break;
+
+         }
       }
 
-      if (ismp4) {
+      if (type === "mp4") {
          return (
-            <video preload="auto" loop className="centeritem" id={"video" + returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")}>
+            <video preload="auto" loop className="centeritem" id={"video" + this.stringSelectorify(returnstring)}>
                <source src={returnstring} type="video/mp4"></source>
             </video>
+         )
+      }
+      else if (type === "iframe"){
+         return (
+            <iframe /*width="560" height="315"*/seamless className={`centeritem iframe ${index == 0 ? "showFull" : ""}`} id={"video" + this.stringSelectorify(returnstring)} src={returnstring} frameBorder="0" sandbox='allow-scripts allow-same-origin' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+               <p>Your Browser does not support Iframes</p>
+            </iframe>
          )
       }
       else return <img src={returnstring} className={`centeritem ${index == 0 ? "showFull" : ""}`} id={index == 0 ? "Mainimg" : null}></img>
    }
 
-   isMp4(index) {
+   stringSelectorify(input){
+      return input.replaceAll("/", "SLASH").replaceAll(".", "DOT").replaceAll(":", "DOUBLEPOINT").replaceAll("?", "QUESTIONMARK").replaceAll("=", "EQUALS")
+   }
+
+   isType(index, type = "mp4"){
       if ((index % this.images.length) < 0) {
-         if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "mp4") return true;
+         if(this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === "json"){
+            if(this.images[this.images.length + (index % this.images.length)].type === type) return true;
+         }
+         else if (this.image_extension[this.image_extension.length + (index % this.image_extension.length)] === type) return true;
       }
       else {
-         if (this.image_extension[index % this.image_extension.length] === "mp4") return true;
+         if(this.image_extension[index % this.image_extension.length] === "json"){
+            if (this.images[index % this.images.length].type === type) return true;
+         }
+         else if (this.image_extension[index % this.image_extension.length] === type) return true;
       }
       return false;
    }
+
    getMp4id(index) {
       let returnstring;
 
+   
       if ((index % this.images.length) < 0) {
          returnstring = this.images[this.images.length + (index % this.images.length)]
       }
       else {
          returnstring = this.images[index % this.images.length]
       }
-      return returnstring.replaceAll("/", "SLASH").replaceAll(".", "DOT")
+      if(typeof returnstring === 'object' && returnstring !== null){
+         returnstring = returnstring.content;
+      }
+      return this.stringSelectorify(returnstring)
    }
 
    calcCurrentPictureInRealIndex(index) {
@@ -284,7 +325,7 @@ class ProjectDetails extends Component {
             //add highlight to new
             document.querySelectorAll(".centeritem")[realindex].classList.add("showFull")
 
-            if (this.state.projects.isMp4(this.state.currentpic)) {
+            if (this.state.projects.isType(this.state.currentpic, "mp4")) {
                lastMP4 = document.querySelector(`#video${this.state.projects.getMp4id(this.state.currentpic)}`)
                lastMP4.play()
             }
@@ -365,6 +406,7 @@ class ProjectDetails extends Component {
             this.animateMountFromProjectDetails();
             window.addEventListener("resize", this.WindowEventHandler);
             this.updateProgressBar(this.state.currentpic);
+            this.calculateIframeDimensions();
 
          }, 1100)
       }
@@ -375,8 +417,16 @@ class ProjectDetails extends Component {
          }
          catch (e) { console.error(e) }
 
+         this.calculateIframeDimensions();
          this.updateProgressBar(this.state.currentpic);
       }
+   }
+
+   calculateIframeDimensions(){
+      let iframe = document.querySelector(".centeritem");
+      let root = document.querySelector(":root");
+      root.style.setProperty("--IframeWidth", iframe.clientWidth + "px");
+      root.style.setProperty("--IframeHeight", iframe.clientHeight + "px")
    }
 
 }

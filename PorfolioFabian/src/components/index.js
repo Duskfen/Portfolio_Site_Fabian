@@ -20,6 +20,9 @@ class ProjectList {
    }
 
    getProjectAt(index) {
+
+      console.log(this.projects)
+
       if ((index % this.projects.length) < 0) {
          return this.projects[this.projects.length + (index % this.projects.length)]
       }
@@ -38,6 +41,8 @@ class Project {
       for (let i = 0; i < information.count_imgs; i++) {
          this.images.push(require(`./projects/${information.path}/img/${i}.${information.image_extention[i % information.image_extention.length]}`))
       }
+
+      
    }
 }
 
